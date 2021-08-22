@@ -3,7 +3,7 @@ name: default
 
 steps:
   - name: sonar
-    image: java:openjdk-16
+    image: gradle:7.2.0-jdk16
     environment:
       USERNAME:
           from_secret: SONAR_TOKEN
