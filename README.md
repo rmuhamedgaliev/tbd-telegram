@@ -28,3 +28,9 @@ implementation("dev.tobee:tbd-telegram-sdk:0.0.1")
 License
 
 This project is licensed under the [Apache V2 License](LICENSE).
+
+    when:
+      event:
+        - push
+      branch:
+        - master
