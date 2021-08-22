@@ -5,8 +5,8 @@ steps:
   - name: sonar
     image: java:openjdk-16
     environment:
-      - USERNAME:
+      USERNAME:
           from_secret: SONAR_TOKEN
-      - GRADLE_USER_HOME=~/.gradle
+      GRADLE_USER_HOME: ~/.gradle
     commands:
       - ./gradlew sonarqube
