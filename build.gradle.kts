@@ -1,6 +1,7 @@
 plugins {
     `java-library`
     `maven-publish`
+    signing
 }
 
 group = "dev.tobee"
@@ -29,22 +30,75 @@ tasks.test {
     useJUnitPlatform()
 }
 
+java {
+    withJavadocJar()
+    withSourcesJar()
+}
+
 publishing {
-    repositories {
-        maven {
-            name = "GitHubPackages"
-            url = uri("https://maven.pkg.github.com/rmuhamedgaliev/tbd-telegram")
-            credentials {
-                username = System.getenv("GITHUB_PACKAGE_USERNAME")
-                password = System.getenv("GITHUB_PACKAGE_TOKEN")
+    publications {
+        create<MavenPublication>("mavenJava") {
+            artifactId = "tbd-telegram-sdk"
+            from(components["java"])
+            versionMapping {
+                usage("java-api") {
+                    fromResolutionOf("runtimeClasspath")
+                }
+                usage("java-runtime") {
+                    fromResolutionResult()
+                }
+            }
+
+
+            pom {
+                name.set("tbd-telegram-sdk")
+                description.set("TBD Telegram SDK - a simple Java Telegram BOT Api client. It have small footprint and use Java 11 async HTTP client \n" +
+                        "with latest Java syntax.")
+                url.set("https://tobee.dev")
+                licenses {
+                    license {
+                        name.set("The Apache License, Version 2.0")
+                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                    }
+                }
+                developers {
+                    developer {
+                        id.set("rmuhamedgaliev")
+                        name.set("Rinat Muhamedgaliev")
+                        email.set("rinat.muhamedgaliev@gmail.com")
+                    }
+                }
+                scm {
+                    connection.set("scm:git:git://github.com/rmuhamedgaliev/tbd-telegram.git")
+                    developerConnection.set("scm:git:ssh://github.com/rmuhamedgaliev/tbd-telegram.git")
+                    url.set("https://github.com/rmuhamedgaliev/tbd-telegram")
+                }
             }
         }
     }
-    publications {
-        register<MavenPublication>("gpr") {
-            from(components["java"])
+    repositories {
+        maven {
+            // change URLs to point to your repos, e.g. http://my.org/repo
+            val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
+            val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
+            url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
+            credentials {
+
+                val ossrhUsername: String by project
+                val ossrhPassword: String by project
+                username = ossrhUsername
+                password = ossrhPassword
+            }
         }
     }
 }
 
+signing {
+    sign(publishing.publications["mavenJava"])
+}
 
+tasks.javadoc {
+    if (JavaVersion.current().isJava9Compatible) {
+        (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+    }
+}
