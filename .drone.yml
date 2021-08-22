@@ -9,3 +9,8 @@ steps:
           from_secret: SONAR_TOKEN
     commands:
       - ./gradlew sonarqube
+    when:
+      event:
+        - push
+      branch:
+        - master
