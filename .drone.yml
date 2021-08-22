@@ -1,0 +1,16 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: sonar
+    image: gradle:7.2.0-jdk16
+    environment:
+      SONAR_TOKEN:
+          from_secret: SONAR_TOKEN
+    commands:
+      - ./gradlew sonarqube
+    when:
+      event:
+        - push
+      branch:
+        - master
