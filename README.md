@@ -1,6 +1,7 @@
 # 🛩 TBD Telegram SDK
 
 ![Maven Central](https://img.shields.io/maven-central/v/dev.tobee/tbd-telegram-sdk?style=flat-square)
+[![Build Status](https://cloud.drone.io/api/badges/rmuhamedgaliev/tbd-telegram/status.svg?ref=refs/heads/master)](https://cloud.drone.io/rmuhamedgaliev/tbd-telegram)
 
 ## Description
 
