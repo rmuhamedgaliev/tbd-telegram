@@ -2,6 +2,7 @@ plugins {
     `java-library`
     `maven-publish`
     signing
+    id("org.sonarqube") version "3.3"
 }
 
 group = "dev.tobee"
@@ -100,5 +101,13 @@ signing {
 tasks.javadoc {
     if (JavaVersion.current().isJava9Compatible) {
         (options as StandardJavadocDocletOptions).addBooleanOption("html5", true)
+    }
+}
+
+sonarqube {
+    properties {
+        property("sonar.projectKey", "rmuhamedgaliev_tbd-telegram")
+        property("sonar.organization", "rmuhamedgaliev")
+        property("sonar.host.url", "https://sonarcloud.io")
     }
 }

@@ -1,0 +1,12 @@
+kind: pipeline
+name: default
+
+steps:
+  - name: sonar
+    image: java:openjdk-16
+    environment:
+      - USERNAME:
+          from_secret: SONAR_TOKEN
+      - GRADLE_USER_HOME=~/.gradle
+    commands:
+      - ./gradlew sonarqube
