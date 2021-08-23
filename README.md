@@ -6,7 +6,7 @@
 
 ## Description
 
-TBD Telegram SDK - a simple Java Telegram BOT Api client. It have small footprint and use Java 11 async HTTP client 
+TBD Telegram SDK - a simple Java [Telegram BOT Api](https://core.telegram.org/bots/api) client. It have small footprint and use Java 11 async HTTP client 
 with latest Java syntax.
 
 ## Instalation
