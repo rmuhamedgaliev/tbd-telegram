@@ -13,6 +13,7 @@ public record SendMessageBody(
         @JsonProperty("disable_web_page_preview") Optional<Boolean> disableWebPagePreview,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
         @JsonProperty("reply_to_message_id") Optional<Integer> replyToMessageId,
-        @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply
+        @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
+        @JsonProperty("reply_markup") Optional<String> replyMarkup
 ) {
 }

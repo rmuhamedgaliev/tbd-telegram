@@ -1,5 +1,6 @@
 package dev.tobee.telegram.util;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
@@ -17,11 +18,16 @@ public class DefaultJsonMapper {
     public DefaultJsonMapper() {
         this.mapper = JsonMapper.builder()
                 .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-                .addModule(new Jdk8Module())
+                .addModule(new Jdk8Module().configureAbsentsAsNulls(true))
                 .addModule(new ParameterNamesModule())
                 .enable(SerializationFeature.INDENT_OUTPUT)
+                .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .build();
+    }
+
+    public JsonMapper getMapper() {
+        return mapper;
     }
 
     public <T> T parseResponse(String response, TypeReference<T> reference) {

@@ -2,6 +2,8 @@ package dev.tobee.telegram.client;
 
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.util.DefaultJsonMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
@@ -18,6 +20,8 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public class TbdTGReactorClient {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TbdTGReactorClient.class);
 
     private static final DefaultJsonMapper mapper = new DefaultJsonMapper();
 
@@ -93,7 +97,8 @@ public class TbdTGReactorClient {
                         HttpResponse.BodyHandlers.ofString()
                 )
                 .thenApply(abc -> {
-                    System.out.println();
+                    LOGGER.info("{}", abc.body());
+
                     return abc;
                 })
                 .thenApply(HttpResponse::body)
