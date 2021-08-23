@@ -1,7 +1,7 @@
 package dev.tobee.telegram;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import dev.tobee.telegram.client.TbdTGReactorClient;
+import dev.tobee.telegram.client.TbdAsyncClient;
 import dev.tobee.telegram.request.GetMe;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.SendMessage;
@@ -26,12 +26,12 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
-class TbdTGReactorClientTest {
+class TbdAsyncClientTest {
 
     private final String host = "https://api.telegram.org";
     private final String token = System.getenv("TBD_TELEGRAM_TOKEN");
 
-    private final TbdTGReactorClient tbdTGReactorClient = new TbdTGReactorClient(true);
+    private final TbdAsyncClient tbdTGReactorClient = new TbdAsyncClient(true);
 
     private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
 

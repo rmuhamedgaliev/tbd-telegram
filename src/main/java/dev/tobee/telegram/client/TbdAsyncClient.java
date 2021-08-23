@@ -18,18 +18,53 @@ import java.util.Map;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-public class TbdTGReactorClient {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TbdTGReactorClient.class);
+public class TbdAsyncClient {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TbdAsyncClient.class);
+
     private static final DefaultJsonMapper mapper = new DefaultJsonMapper();
+
+    private static final String DEFAULT_MIME_TYPE = "application/json";
 
     private final boolean isDebugEnabled;
 
-    public TbdTGReactorClient(boolean isDebugEnabled) {
+    public TbdAsyncClient(boolean isDebugEnabled) {
         this.isDebugEnabled = isDebugEnabled;
     }
 
-    public HttpRequest.BodyPublisher oMultipartData(Map<Object, Object> data,
-                                                           String boundary) {
+    public <T> CompletableFuture<T> getRequest(Request<T> request) {
+        return HttpClient.newHttpClient().sendAsync(
+                        HttpRequest.newBuilder()
+                                .header("Content-Type", DEFAULT_MIME_TYPE)
+                                .headers("Accept", DEFAULT_MIME_TYPE)
+                                .timeout(Duration.ofSeconds(1))
+                                .uri(request.getUri())
+                                .build(),
+                        HttpResponse.BodyHandlers.ofString()
+                )
+                .thenApply(HttpResponse::body)
+                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
+    }
+
+    public <T> CompletableFuture<T> postRequest(Request<T> request) {
+
+        String boundary = UUID.randomUUID().toString();
+
+        return HttpClient.newHttpClient().sendAsync(
+                        HttpRequest.newBuilder()
+                                .header("Content-Type", "multipart/form-data; charset=utf-8; " +
+                                        "boundary=" + boundary)
+                                .uri(request.getUri())
+                                .timeout(Duration.ofSeconds(1))
+                                .POST(prepareMultipartData(request.body().orElseThrow(), boundary))
+                                .build(),
+                        HttpResponse.BodyHandlers.ofString()
+                )
+                .thenApplyAsync(this::logingResponse)
+                .thenApply(HttpResponse::body)
+                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
+    }
+
+    private HttpRequest.BodyPublisher prepareMultipartData(Map<Object, Object> data, String boundary) {
         var byteArrays = new ArrayList<byte[]>();
         try {
             byte[] separator = ("--" + boundary
@@ -54,8 +89,7 @@ public class TbdTGReactorClient {
                     }
                 }
             }
-            byteArrays
-                    .add(("--" + boundary + "--").getBytes(StandardCharsets.UTF_8));
+            byteArrays.add(("--" + boundary + "--").getBytes(StandardCharsets.UTF_8));
         } catch (IOException e) {
             throw new IllegalStateException("Error on generate multipart object", e);
         }
@@ -81,41 +115,8 @@ public class TbdTGReactorClient {
         LOGGER.debug("Multipart request data \n{}", data);
     }
 
-    public <T> CompletableFuture<T> getRequest(Request<T> request) {
-        return HttpClient.newHttpClient().sendAsync(
-                        HttpRequest.newBuilder()
-                                .header("Content-Type", "application/json")
-                                .headers("Accept", "application/json")
-                                .timeout(Duration.ofSeconds(1))
-                                .uri(request.getUri())
-                                .build(),
-                        HttpResponse.BodyHandlers.ofString()
-                )
-                .thenApply(HttpResponse::body)
-                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
+    private HttpResponse<String> logingResponse(HttpResponse<String> response) {
+        LOGGER.debug("Response {}", response.body());
+        return response;
     }
-
-    public <T> CompletableFuture<T> postRequest(Request<T> request) {
-
-        String boundary = UUID.randomUUID().toString();
-
-        return HttpClient.newHttpClient().sendAsync(
-                        HttpRequest.newBuilder()
-                                .header("Content-Type", "multipart/form-data; charset=utf-8; boundary=" + boundary)
-                                .uri(request.getUri())
-                                .timeout(Duration.ofSeconds(1))
-                                .POST(oMultipartData(request.body().orElseThrow(), boundary))
-                                .build(),
-                        HttpResponse.BodyHandlers.ofString()
-                )
-                .thenApply(abc -> {
-                    LOGGER.info("{}", abc.body());
-
-                    return abc;
-                })
-                .thenApply(HttpResponse::body)
-                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
-    }
-
-
 }
