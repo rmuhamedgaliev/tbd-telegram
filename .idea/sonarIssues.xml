@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="issues">
+    <option name="index">
+      <map>
+        <entry key="/Dummy.txt">
+          <value>
+            <set />
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/dev/tobee/telegram/client/TbdTGReactorClient.java">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWWW6grbhLYYU0pb" />
+                <option name="line" value="100" />
+                <option name="message" value="Remove the parentheses around the &quot;body&quot; parameter" />
+                <option name="ruleKey" value="java:S1611" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWWW6grbhLYYU0pa" />
+                <option name="line" value="96" />
+                <option name="message" value="Replace this use of System.out or System.err by a logger." />
+                <option name="ruleKey" value="java:S106" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWWW6grbhLYYU0pc" />
+                <option name="line" value="91" />
+                <option name="message" value="Call &quot;Optional#isPresent()&quot; before accessing the value." />
+                <option name="ruleKey" value="java:S3655" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWWW6grbhLYYU0pZ" />
+                <option name="line" value="79" />
+                <option name="message" value="Remove the parentheses around the &quot;body&quot; parameter" />
+                <option name="ruleKey" value="java:S1611" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWWW6grbhLYYU0pY" />
+                <option name="line" value="63" />
+                <option name="message" value="Remove this unused &quot;result&quot; local variable." />
+                <option name="ruleKey" value="java:S1481" />
+                <option name="severity" value="MINOR" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWWW6grbhLYYU0pX" />
+                <option name="line" value="63" />
+                <option name="message" value="Remove this useless assignment to local variable &quot;result&quot;." />
+                <option name="ruleKey" value="java:S1854" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/dev/tobee/telegram/request/SendPhoto.java">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWWG6grbhLYYU0pW" />
+                <option name="line" value="42" />
+                <option name="message" value="Define a constant instead of duplicating this literal &quot;photo&quot; 4 times." />
+                <option name="ruleKey" value="java:S1192" />
+                <option name="severity" value="CRITICAL" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/main/java/dev/tobee/telegram/util/DefaultJsonMapper.java">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWVw6grbhLYYU0pV" />
+                <option name="line" value="31" />
+                <option name="message" value="Define and throw a dedicated exception instead of using a generic one." />
+                <option name="ruleKey" value="java:S112" />
+                <option name="severity" value="MAJOR" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/src/test/java/dev/tobee/telegram/TbdTGReactorClientTest.java">
+          <value>
+            <set>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWTw6grbhLYYU0pT" />
+                <option name="line" value="64" />
+                <option name="message" value="Remove this 'public' modifier." />
+                <option name="ruleKey" value="java:S5786" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWTw6grbhLYYU0pS" />
+                <option name="line" value="47" />
+                <option name="message" value="Remove this 'public' modifier." />
+                <option name="ruleKey" value="java:S5786" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWTw6grbhLYYU0pR" />
+                <option name="line" value="34" />
+                <option name="message" value="Remove this 'public' modifier." />
+                <option name="ruleKey" value="java:S5786" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+              <SonarIssue>
+                <option name="isNew" value="false" />
+                <option name="key" value="AXtwHWTw6grbhLYYU0pU" />
+                <option name="line" value="25" />
+                <option name="message" value="Remove this 'public' modifier." />
+                <option name="ruleKey" value="java:S5786" />
+                <option name="severity" value="INFO" />
+              </SonarIssue>
+            </set>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
