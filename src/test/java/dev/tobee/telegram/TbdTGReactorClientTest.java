@@ -26,18 +26,18 @@ import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.stream.Stream;
 
-public class TbdTGReactorClientTest {
+class TbdTGReactorClientTest {
 
     private final String host = "https://api.telegram.org";
     private final String token = System.getenv("TBD_TELEGRAM_TOKEN");
 
-    private final TbdTGReactorClient tbdTGReactorClient = new TbdTGReactorClient();
+    private final TbdTGReactorClient tbdTGReactorClient = new TbdTGReactorClient(true);
 
     private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
 
     @Test
     @DisplayName("Test success getMe action")
-    public void getMeSuccess() {
+    void getMeSuccess() {
 
         Request<ResponseWrapper<GetMeResponse>> getMe = new GetMe(host, token);
 
@@ -50,7 +50,7 @@ public class TbdTGReactorClientTest {
 
     @Test
     @DisplayName("Test send message")
-    public void sendMessage() throws JsonProcessingException {
+    void sendMessage() throws JsonProcessingException {
 
         String replyMarkup = jsonMapper.getMapper().writeValueAsString(new ReplyKeyboardMarkup(
                 List.of(List.of(new KeyboardButton("abc", Optional.empty(), Optional.empty(),
@@ -74,7 +74,7 @@ public class TbdTGReactorClientTest {
 
     @Test
     @DisplayName("Test send photo")
-    public void sendPhoto() {
+    void sendPhoto() {
         Request<ResponseWrapper<SendPhotoResponse>> sendPhoto = new SendPhoto(
                 host, token,
                 new SendPhotoBody(

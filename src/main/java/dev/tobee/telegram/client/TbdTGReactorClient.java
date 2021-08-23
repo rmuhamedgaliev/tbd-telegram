@@ -5,7 +5,6 @@ import dev.tobee.telegram.util.DefaultJsonMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -20,12 +19,16 @@ import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 public class TbdTGReactorClient {
-
     private static final Logger LOGGER = LoggerFactory.getLogger(TbdTGReactorClient.class);
-
     private static final DefaultJsonMapper mapper = new DefaultJsonMapper();
 
-    public static HttpRequest.BodyPublisher oMultipartData(Map<Object, Object> data,
+    private final boolean isDebugEnabled;
+
+    public TbdTGReactorClient(boolean isDebugEnabled) {
+        this.isDebugEnabled = isDebugEnabled;
+    }
+
+    public HttpRequest.BodyPublisher oMultipartData(Map<Object, Object> data,
                                                            String boundary) {
         var byteArrays = new ArrayList<byte[]>();
         try {
@@ -57,6 +60,14 @@ public class TbdTGReactorClient {
             throw new IllegalStateException("Error on generate multipart object", e);
         }
 
+        if (this.isDebugEnabled) {
+            printDebugMultipartData(byteArrays);
+        }
+
+        return HttpRequest.BodyPublishers.ofByteArrays(byteArrays);
+    }
+
+    private void printDebugMultipartData(ArrayList<byte[]> byteArrays) {
         byte[] all = new byte[byteArrays.stream().mapToInt(a -> a.length).sum()];
         int pos = 0;
         for (byte[] bin : byteArrays) {
@@ -64,9 +75,10 @@ public class TbdTGReactorClient {
             System.arraycopy(bin, 0, all, pos, length);
             pos += length;
         }
-        var result = new ByteArrayInputStream(all);
 
-        return HttpRequest.BodyPublishers.ofByteArrays(byteArrays);
+        String data = new String(all);
+
+        LOGGER.debug("Multipart request data \n{}", data);
     }
 
     public <T> CompletableFuture<T> getRequest(Request<T> request) {
@@ -80,7 +92,7 @@ public class TbdTGReactorClient {
                         HttpResponse.BodyHandlers.ofString()
                 )
                 .thenApply(HttpResponse::body)
-                .thenApply((body) -> mapper.parseResponse(body, request.getResponseType()));
+                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
     }
 
     public <T> CompletableFuture<T> postRequest(Request<T> request) {
@@ -92,7 +104,7 @@ public class TbdTGReactorClient {
                                 .header("Content-Type", "multipart/form-data; charset=utf-8; boundary=" + boundary)
                                 .uri(request.getUri())
                                 .timeout(Duration.ofSeconds(1))
-                                .POST(oMultipartData(request.body().get(), boundary))
+                                .POST(oMultipartData(request.body().orElseThrow(), boundary))
                                 .build(),
                         HttpResponse.BodyHandlers.ofString()
                 )
@@ -102,7 +114,7 @@ public class TbdTGReactorClient {
                     return abc;
                 })
                 .thenApply(HttpResponse::body)
-                .thenApply((body) -> mapper.parseResponse(body, request.getResponseType()));
+                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
     }
 
 
