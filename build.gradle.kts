@@ -1,8 +1,14 @@
+val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+
 plugins {
     `java-library`
     `maven-publish`
     signing
     id("org.sonarqube") version "3.3"
+    id("org.shipkit.shipkit-changelog") version "1.1.15"
+    id("org.shipkit.shipkit-github-release") version "1.1.15"
+    id("org.shipkit.shipkit-auto-version") version "1.1.19"
+    id("com.palantir.git-version") version "0.12.3"
 }
 
 group = "dev.tobee"
@@ -109,4 +115,18 @@ sonarqube {
         property("sonar.organization", "rmuhamedgaliev")
         property("sonar.host.url", "https://sonarcloud.io")
     }
+}
+
+tasks.generateChangelog {
+    repository = "rmuhamedgaliev/tbd-telegram"
+    previousRevision = project.ext["shipkit-auto-version.previous-tag"]?.toString()
+    githubToken = System.getenv("GITHUB_PACKAGE_TOKEN")
+}
+
+tasks.githubRelease {
+    dependsOn(tasks.generateChangelog)
+    repository = "rmuhamedgaliev/tbd-telegram"
+    changelog = tasks.generateChangelog.get().outputFile
+    githubToken = System.getenv("GITHUB_PACKAGE_TOKEN")
+    newTagRevision = versionDetails().gitHashFull
 }
