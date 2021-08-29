@@ -1,9 +1,9 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.request.body.SendPhotoBody;
-import dev.tobee.telegram.response.ResponseWrapper;
-import dev.tobee.telegram.response.SendPhotoResponse;
+import dev.tobee.telegram.model.SendPhotoBody;
+import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.SendPhotoResponse;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 import java.net.URI;

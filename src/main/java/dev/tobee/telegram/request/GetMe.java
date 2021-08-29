@@ -1,8 +1,8 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.response.GetMeResponse;
-import dev.tobee.telegram.response.ResponseWrapper;
+import dev.tobee.telegram.model.GetMeResponse;
+import dev.tobee.telegram.model.ResponseWrapper;
 
 import java.net.URI;
 import java.util.Map;

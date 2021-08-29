@@ -5,13 +5,16 @@ import dev.tobee.telegram.request.GetMe;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.SendMessage;
 import dev.tobee.telegram.request.SendPhoto;
-import dev.tobee.telegram.request.body.ParseMode;
-import dev.tobee.telegram.request.body.SendMessageBody;
-import dev.tobee.telegram.request.body.SendPhotoBody;
-import dev.tobee.telegram.response.GetMeResponse;
-import dev.tobee.telegram.response.ResponseWrapper;
-import dev.tobee.telegram.response.SendMessageResponse;
-import dev.tobee.telegram.response.SendPhotoResponse;
+import dev.tobee.telegram.request.SetWebHook;
+import dev.tobee.telegram.model.ParseMode;
+import dev.tobee.telegram.model.SendMessageBody;
+import dev.tobee.telegram.model.SendPhotoBody;
+import dev.tobee.telegram.model.SetWebHookBody;
+import dev.tobee.telegram.model.UpdateTypes;
+import dev.tobee.telegram.model.GetMeResponse;
+import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.SendMessageResponse;
+import dev.tobee.telegram.model.SendPhotoResponse;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -75,5 +78,29 @@ public class TbdTGReactorClientTest {
 
         Assertions.assertTrue(sendPhotoResponse.get().ok());
         Assertions.assertTrue(sendPhotoResponse.get().result().isPresent());
+    }
+
+    @Test
+    @DisplayName("Test set webhook")
+    public void setWebHook() {
+        Request<ResponseWrapper<String>> request = new SetWebHook(host, token,
+                new SetWebHookBody("https://a88d-2a02-2698-242a-2d25-31c8-6260-921b-cec0.ngrok.io", Optional.empty(),
+                        Optional.empty(), Optional.empty(), List.of(UpdateTypes.MESSAGE, UpdateTypes.CALLBACK_QUERY, UpdateTypes.CHANNEL_POST)
+                        , Optional.empty()));
+
+        var response = Stream.of(tbdTGReactorClient.postRequest(request)).map(CompletableFuture::join).findFirst();
+
+        Assertions.assertTrue(response.get().ok());
+        Assertions.assertTrue(response.get().result().isPresent());
+    }
+
+    @Test
+    @DisplayName("test bot")
+    public void testBot() {
+        UpdateSubscriber subscriber = new UpdateSubscriber();
+
+        TelegramBot bot = new LongPollingTelegramBot(host, token, subscriber);
+
+        bot.subscribeToUpdate();
     }
 }

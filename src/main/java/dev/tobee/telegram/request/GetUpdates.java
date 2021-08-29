@@ -1,18 +1,19 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.response.ResponseWrapper;
+import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.Update;
 
 import java.net.URI;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class GetUpdates implements Request<ResponseWrapper<List<Map<String, Object>>>>{
+public class GetUpdates implements Request<ResponseWrapper<List<Update>>>{
 
     private static final String METHOD = "/getUpdates";
 
-    private static final TypeReference<ResponseWrapper<List<Map<String, Object>>>> reference =
+    private static final TypeReference<ResponseWrapper<List<Update>>> reference =
             new TypeReference<>() {};
 
     private final String host;
@@ -30,7 +31,7 @@ public class GetUpdates implements Request<ResponseWrapper<List<Map<String, Obje
     }
 
     @Override
-    public TypeReference<ResponseWrapper<List<Map<String, Object>>>> getResponseType() {
+    public TypeReference<ResponseWrapper<List<Update>>> getResponseType() {
         return reference;
     }
 

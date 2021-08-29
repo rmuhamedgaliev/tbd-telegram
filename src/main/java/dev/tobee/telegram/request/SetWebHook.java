@@ -1,25 +1,24 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.SendMessageBody;
+import dev.tobee.telegram.model.SetWebHookBody;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.SendMessageResponse;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 import java.net.URI;
 import java.util.Map;
 import java.util.Optional;
 
-public class SendMessage extends BaseRequest implements Request<ResponseWrapper<SendMessageResponse>> {
+public class SetWebHook extends BaseRequest implements Request<ResponseWrapper<String>> {
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
-    private static final TypeReference<ResponseWrapper<SendMessageResponse>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<String>> reference = new TypeReference<>() {};
 
-    private final SendMessageBody body;
+    private final SetWebHookBody body;
 
-    public SendMessage(String host, String token, SendMessageBody body) {
-        super("sendMessage", host, token);
+    public SetWebHook(String host, String token, SetWebHookBody body) {
+        super("setWebhook", host, token);
         this.body = body;
     }
 
@@ -29,7 +28,7 @@ public class SendMessage extends BaseRequest implements Request<ResponseWrapper<
     }
 
     @Override
-    public TypeReference<ResponseWrapper<SendMessageResponse>> getResponseType() {
+    public TypeReference<ResponseWrapper<String>> getResponseType() {
         return reference;
     }
 
