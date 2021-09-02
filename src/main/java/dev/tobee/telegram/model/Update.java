@@ -3,9 +3,10 @@ package dev.tobee.telegram.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Optional;
+import java.util.OptionalInt;
 
 public record Update(
-        @JsonProperty("update_id") Integer updateId,
+        @JsonProperty("update_id") OptionalInt updateId,
         @JsonProperty("message") Optional<Message> message,
         @JsonProperty("edited_message") Optional<Message> editedMessage,
         @JsonProperty("channel_post") Optional<Message> channelPost,
@@ -15,7 +16,7 @@ public record Update(
         @JsonProperty("callback_query") Optional<CallbackQuery> callbackQuery,
         @JsonProperty("shipping_query") Optional<ShippingQuery> shippingQuery,
         @JsonProperty("pre_checkout_query") Optional<PreCheckoutQuery> preCheckoutQuery,
-        @JsonProperty("pre_checkout_query") Optional<Poll> poll,
+        @JsonProperty("poll") Optional<Poll> poll,
         @JsonProperty("poll_answer") Optional<PollAnswer> pollAnswer,
         @JsonProperty("my_chat_member") Optional<ChatMemberUpdated> myChatMember,
         @JsonProperty("chat_member") Optional<ChatMemberUpdated> chatMember

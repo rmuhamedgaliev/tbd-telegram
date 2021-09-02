@@ -26,6 +26,11 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${Versions.jacksonVersion}")
     implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:${Versions.jacksonVersion}")
 
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.8.1")
+    implementation("org.slf4j:slf4j-api:1.7.10")
+    implementation("org.apache.logging.log4j:log4j-core:2.8.1")
+    implementation("org.apache.logging.log4j:log4j-api:2.8.1")
+
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.junitVersion}")
 

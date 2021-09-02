@@ -19,6 +19,8 @@ public class UpdateSubscriber implements Flow.Subscriber<Update> {
     @Override
     public void onNext(Update item) {
         System.out.println("Processing Employee " + item.updateId());
+
+        System.out.println(item.message().get().text().get());
         this.subscription.request(1);
     }
 
