@@ -21,9 +21,14 @@ public class DefaultJsonMapper {
                 .addModule(new Jdk8Module().configureAbsentsAsNulls(true))
                 .addModule(new ParameterNamesModule())
                 .enable(SerializationFeature.INDENT_OUTPUT)
+                .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .build();
+    }
+
+    public JsonMapper getMapper() {
+        return mapper;
     }
 
     public <T> T parseResponse(String response, TypeReference<T> reference) {
