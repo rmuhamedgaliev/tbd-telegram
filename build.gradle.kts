@@ -3,6 +3,9 @@
 plugins {
     `java-library`
     `maven-publish`
+    `project-report`
+    `build-dashboard`
+    jacoco
     signing
     id("org.sonarqube") version "3.3"
     id("org.shipkit.shipkit-changelog") version "1.1.15"
@@ -120,6 +123,9 @@ sonarqube {
         property("sonar.projectKey", "rmuhamedgaliev_tbd-telegram")
         property("sonar.organization", "rmuhamedgaliev")
         property("sonar.host.url", "https://sonarcloud.io")
+        property("sonar.jacoco.reportPaths", "${project.buildDir}/reports/jacoco.xml")
+        property("sonar.core.codeCoveragePlugin", "jacoco")
+        property("sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco.xml")
     }
 }
 
@@ -127,6 +133,14 @@ tasks.generateChangelog {
     repository = "rmuhamedgaliev/tbd-telegram"
     previousRevision = project.ext["shipkit-auto-version.previous-tag"]?.toString()
     githubToken = System.getenv("GITHUB_PACKAGE_TOKEN")
+}
+
+tasks.jacocoTestReport {
+    reports {
+        xml.required.set(true)
+        csv.required.set(false)
+        html.required.set(true)
+    }
 }
 
 //tasks.githubRelease {
