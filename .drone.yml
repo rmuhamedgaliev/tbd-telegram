@@ -8,7 +8,7 @@ steps:
       SONAR_TOKEN:
           from_secret: SONAR_TOKEN
     commands:
-      - ./gradlew jacocoTestReport sonarqube
+      - ./gradlew build test sonarqube
     when:
       event:
         - push
