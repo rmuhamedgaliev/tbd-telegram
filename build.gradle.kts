@@ -37,6 +37,8 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.junitVersion}")
 
+    testImplementation("org.mockito:mockito-core:${Versions.mockitoVersion}")
+    testImplementation("org.mockito:mockito-junit-jupiter:${Versions.mockitoVersion}")
 
     testImplementation("uk.org.webcompere:system-stubs-core:1.2.0")
     testImplementation("uk.org.webcompere:system-stubs-jupiter:1.2.0")
@@ -123,9 +125,9 @@ sonarqube {
         property("sonar.projectKey", "rmuhamedgaliev_tbd-telegram")
         property("sonar.organization", "rmuhamedgaliev")
         property("sonar.host.url", "https://sonarcloud.io")
-        property("sonar.jacoco.reportPaths", "${project.buildDir}/reports/jacoco.xml")
         property("sonar.core.codeCoveragePlugin", "jacoco")
         property("sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco.xml")
+
     }
 }
 
