@@ -1,5 +1,5 @@
 object Versions {
-    const val helidonVersion = "2.3.1"
     const val jacksonVersion = "2.12.3"
-    const val junitVersion = "5.7.1"
+    const val mockitoVersion = "3.12.4"
+    const val junitVersion = "5.7.2"
 }
