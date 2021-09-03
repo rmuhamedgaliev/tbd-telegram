@@ -126,7 +126,7 @@ sonarqube {
         property("sonar.organization", "rmuhamedgaliev")
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.core.codeCoveragePlugin", "jacoco")
-        property("sonar.coverage.jacoco.xmlReportPaths", "${project.buildDir}/reports/jacoco.xml")
+        property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
 
     }
 }
@@ -142,6 +142,14 @@ tasks.jacocoTestReport {
         xml.required.set(true)
         csv.required.set(false)
         html.required.set(true)
+    }
+}
+
+tasks.test {
+    finalizedBy("jacocoTestReport")
+    doLast {
+        println("View code coverage at:")
+        println("file://$buildDir/reports/jacoco/test/html/index.html")
     }
 }
 
