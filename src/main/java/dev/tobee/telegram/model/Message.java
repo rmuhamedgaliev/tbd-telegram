@@ -1,0 +1,65 @@
+package dev.tobee.telegram.model;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.List;
+import java.util.Optional;
+
+public record Message(
+        @JsonProperty("message_id") Integer messageId,
+        @JsonProperty("from") Optional<User> user,
+        @JsonProperty("sender_chat") Optional<Chat> senderChat,
+        @JsonProperty("date") int date,
+        @JsonProperty("chat") Chat chat,
+        @JsonProperty("forward_from") Optional<User> forwardFrom,
+        @JsonProperty("forward_from_chat") Optional<Chat> forwardFromChat,
+        @JsonProperty("forward_from_message_id") Optional<Integer> forwardFromMessageId,
+        @JsonProperty("forward_signature") Optional<String> forwardSignature,
+        @JsonProperty("forward_sender_name") Optional<String> forwardSenderName,
+        @JsonProperty("forward_date") Optional<Integer> forwardDate,
+        @JsonProperty("reply_to_message") Optional<Message> replyToMessage,
+        @JsonProperty("via_bot") Optional<User> viaBot,
+        @JsonProperty("edit_date") Optional<Integer> editDate,
+        @JsonProperty("media_group_id") Optional<String> mediaGroupId,
+        @JsonProperty("author_signature") Optional<String> authorSignature,
+        @JsonProperty("text") Optional<String> text,
+        @JsonProperty("entities") List<MessageEntity> entities,
+        @JsonProperty("animation") Optional<Animation> animation,
+        @JsonProperty("audio") Optional<Audio> audio,
+        @JsonProperty("document") Optional<Document> document,
+        @JsonProperty("photo") List<PhotoSize> photo,
+        @JsonProperty("sticker") Optional<Sticker> sticker,
+        @JsonProperty("video") Optional<Video> video,
+        @JsonProperty("video_note") Optional<VideoNote> video_note,
+        @JsonProperty("voice") Optional<Voice> voice,
+        @JsonProperty("caption") Optional<String> caption,
+        @JsonProperty("caption_entities") List<MessageEntity> captionEntities,
+        @JsonProperty("contact") Optional<Contact> contact,
+        @JsonProperty("dice") Optional<Dice> dice,
+        @JsonProperty("game") Optional<Game> game,
+        @JsonProperty("poll") Optional<Poll> poll,
+        @JsonProperty("location") Optional<Location> location,
+        @JsonProperty("new_chat_members") List<User> newChatMembers,
+        @JsonProperty("left_chat_member") User leftChatMember,
+        @JsonProperty("new_chat_title") String newChatTitle,
+        @JsonProperty("new_chat_photo") List<PhotoSize> newChatPhoto,
+        @JsonProperty("delete_chat_photo") Optional<Boolean> deleteChatPhoto,
+        @JsonProperty("group_chat_created") Optional<Boolean> groupChatCreated,
+        @JsonProperty("supergroup_chat_created") Optional<Boolean> supergroupChatCreated,
+        @JsonProperty("message_auto_delete_timer_changed") Optional<MessageAutoDeleteTimerChanged> messageAutoDeleteTimerChanged,
+        @JsonProperty("migrate_to_chat_id") Optional<Integer> migrateToChatId,
+        @JsonProperty("migrate_from_chat_id") Optional<Integer> migrateFromChatId,
+        @JsonProperty("pinned_message") Optional<Message> pinnedMessage,
+        @JsonProperty("invoice") Optional<Invoice> invoice,
+        @JsonProperty("successful_payment") Optional<SuccessfulPayment> successfulPayment,
+        @JsonProperty("connected_website") Optional<String> connectedWebsite,
+        @JsonProperty("passport_data") Optional<PassportData> passportData,
+        @JsonProperty("proximity_alert_triggered") Optional<ProximityAlertTriggered> proximityAlertTriggered,
+        @JsonProperty("voice_chat_scheduled") Optional<VoiceChatScheduled> voiceChatScheduled,
+        @JsonProperty("voice_chat_started") Optional<VoiceChatStarted> voiceChatStarted,
+        @JsonProperty("voice_chat_ended") Optional<VoiceChatEnded> voiceChatEnded,
+        @JsonProperty("voice_chat_participants_invited") Optional<VoiceChatParticipantsInvited> voiceChatParticipantsInvited,
+        @JsonProperty("reply_markup") Optional<InlineKeyboardMarkup> replyMarkup
+
+        ) {
+}

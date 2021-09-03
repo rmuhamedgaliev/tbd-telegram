@@ -23,6 +23,7 @@ public class DefaultJsonMapper {
                 .enable(SerializationFeature.INDENT_OUTPUT)
                 .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                .serializationInclusion(JsonInclude.Include.NON_NULL)
                 .build();
     }
 

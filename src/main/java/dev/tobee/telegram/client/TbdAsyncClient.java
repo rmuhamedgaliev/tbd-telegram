@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -32,12 +33,17 @@ public class TbdAsyncClient {
     }
 
     public <T> CompletableFuture<T> getRequest(Request<T> request) {
+
+        URI uri = request.getUri();
+
+        LOGGER.debug("Request to {}", uri.toString());
+
         return HttpClient.newHttpClient().sendAsync(
                         HttpRequest.newBuilder()
                                 .header("Content-Type", DEFAULT_MIME_TYPE)
                                 .headers("Accept", DEFAULT_MIME_TYPE)
-                                .timeout(Duration.ofSeconds(1))
-                                .uri(request.getUri())
+                                .timeout(Duration.ofSeconds(5))
+                                .uri(uri)
                                 .build(),
                         HttpResponse.BodyHandlers.ofString()
                 )
