@@ -18,7 +18,7 @@ public class SetWebHook implements Request<ResponseWrapper<String>> {
 
     private final SetWebHookBody body;
 
-    public SetWebHook(String host, String token, SetWebHookBody body) {
+    public SetWebHook(SetWebHookBody body) {
         this.body = body;
     }
 
@@ -33,7 +33,7 @@ public class SetWebHook implements Request<ResponseWrapper<String>> {
     }
 
     @Override
-    public Optional<Map<Object, Object>> body() {
+    public Optional<Map<Object, Object>> getBody() {
         return Optional.ofNullable(mapper.convertToMap(body));
     }
 }

@@ -34,7 +34,7 @@ public class SendMessage implements Request<ResponseWrapper<SendMessageResponse>
     }
 
     @Override
-    public Optional<Map<Object, Object>> body() {
+    public Optional<Map<Object, Object>> getBody() {
         return Optional.ofNullable(mapper.convertToMap(body));
     }
 }

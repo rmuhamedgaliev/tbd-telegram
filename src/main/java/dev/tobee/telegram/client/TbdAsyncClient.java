@@ -16,6 +16,7 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Map;
+import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
@@ -69,7 +70,7 @@ public class TbdAsyncClient {
                                         "boundary=" + boundary)
                                 .uri(uri)
                                 .timeout(Duration.ofSeconds(1))
-                                .POST(prepareMultipartData(request.body().orElseThrow(), boundary))
+                                .POST(prepareMultipartData(request.getBody().orElseThrow(), boundary))
                                 .build(),
                         HttpResponse.BodyHandlers.ofString()
                 )
@@ -130,7 +131,10 @@ public class TbdAsyncClient {
     }
 
     private HttpResponse<String> logingResponse(HttpResponse<String> response) {
-        LOGGER.debug("Response {}", response.body());
+
+        if (LOGGER.isDebugEnabled() && Objects.nonNull(response.body())) {
+            LOGGER.debug("Response {}", response.body());
+        }
         return response;
     }
 }

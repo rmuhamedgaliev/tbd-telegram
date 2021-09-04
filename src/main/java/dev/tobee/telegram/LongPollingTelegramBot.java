@@ -8,11 +8,11 @@ import dev.tobee.telegram.request.GetUpdateBody;
 import dev.tobee.telegram.request.GetUpdates;
 import dev.tobee.telegram.request.Request;
 
+import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
-import java.util.Random;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.SubmissionPublisher;
@@ -31,20 +31,16 @@ public class LongPollingTelegramBot implements TelegramBot {
 
     private final SubmissionPublisher<Update> publisher = new SubmissionPublisher<>();
 
-    private final UpdateSubscriber subscriber;
-
     public LongPollingTelegramBot(String host, String token, ScheduledExecutorService executorService,
                                   UpdateSubscriber subscriber) {
         this.tbdTGReactorClient = new TbdAsyncClient(true, host, token);
         this.executorService = executorService;
-        this.subscriber = subscriber;
         this.publisher.subscribe(subscriber);
     }
 
     public LongPollingTelegramBot(String host, String token, UpdateSubscriber subscriber) {
         this.tbdTGReactorClient = new TbdAsyncClient(true, host, token);
         this.executorService = Executors.newSingleThreadScheduledExecutor();
-        this.subscriber = subscriber;
         this.publisher.subscribe(subscriber);
     }
 
@@ -90,7 +86,7 @@ public class LongPollingTelegramBot implements TelegramBot {
     private Optional<Update> getLastUpdateFromResponse(Optional<List<Update>> lastUpdate) {
         Optional<Update> lastUpdateObj = Optional.empty();
 
-        if (lastUpdate.isPresent() && lastUpdate.get().size() > 0) {
+        if (lastUpdate.isPresent() && !lastUpdate.orElseThrow().isEmpty()) {
             lastUpdateObj = Optional.ofNullable(lastUpdate.get().get(lastUpdate.get().size() - 1));
         }
         return lastUpdateObj;
@@ -112,7 +108,7 @@ public class LongPollingTelegramBot implements TelegramBot {
     }
 
     private int getDefaultPeriodInMilliseconds() {
-        Random random = new Random();
+        SecureRandom random = new SecureRandom();
 
         int min = 500;
         int max = 1000;

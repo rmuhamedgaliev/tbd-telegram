@@ -18,10 +18,10 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
     private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {};
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
-    private final Optional<GetUpdateBody> body;
+    private final Optional<GetUpdateBody> queryParams;
 
     public GetUpdates(Optional<GetUpdateBody> body) {
-        this.body = body;
+        this.queryParams = body;
     }
 
     @Override
@@ -29,10 +29,12 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
 
         String method = METHOD;
 
-        if (body().isPresent()) {
+        Optional<Map<Object, Object>> body = getBody();
+
+        if (body.isPresent()) {
 
             StringBuilder methodBuilder = new StringBuilder(method + "?");
-            for (Map.Entry<Object, Object> entry : body().get().entrySet()) {
+            for (Map.Entry<Object, Object> entry : body.get().entrySet()) {
                 try {
                     methodBuilder
                             .append(URLEncoder.encode((String) entry.getKey(), StandardCharsets.UTF_8.toString())).append("=")
@@ -56,7 +58,7 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
     }
 
     @Override
-    public Optional<Map<Object, Object>> body() {
-        return body.map(mapper::convertToMap);
+    public Optional<Map<Object, Object>> getBody() {
+        return queryParams.map(mapper::convertToMap);
     }
 }

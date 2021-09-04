@@ -69,7 +69,7 @@ class TbdAsyncClientTest {
     public <T> void testRequestMethods(Request<ResponseWrapper<T>> request, String method, String responseType) {
         var response = client.getRequest(request);
 
-        Assertions.assertTrue(request.body().isEmpty());
+        Assertions.assertTrue(request.getBody().isEmpty());
         Assertions.assertEquals(method, request.getMethod());
         Assertions.assertTrue(request.getResponseType().getType().getTypeName().contains(responseType));
         Assertions.assertTrue(response.join().ok());

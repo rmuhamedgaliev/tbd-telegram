@@ -24,7 +24,7 @@ public class GetMe implements Request<ResponseWrapper<GetMeResponse>> {
     }
 
     @Override
-    public Optional<Map<Object, Object>> body() {
+    public Optional<Map<Object, Object>> getBody() {
         return Optional.empty();
     }
 }

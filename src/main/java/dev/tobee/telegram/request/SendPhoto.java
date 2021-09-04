@@ -36,7 +36,7 @@ public class SendPhoto implements Request<ResponseWrapper<SendPhotoResponse>> {
     }
 
     @Override
-    public Optional<Map<Object, Object>> body() {
+    public Optional<Map<Object, Object>> getBody() {
 
         Map<Object, Object> requestMap = mapper.convertToMap(body);
 
