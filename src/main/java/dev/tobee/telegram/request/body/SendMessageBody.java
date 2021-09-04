@@ -1,6 +1,8 @@
-package dev.tobee.telegram.model;
+package dev.tobee.telegram.request.body;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.MessageEntity;
+import dev.tobee.telegram.model.ParseMode;
 
 import java.util.List;
 import java.util.Optional;

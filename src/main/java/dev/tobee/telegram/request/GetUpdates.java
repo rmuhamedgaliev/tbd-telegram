@@ -3,6 +3,7 @@ package dev.tobee.telegram.request;
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.model.Update;
+import dev.tobee.telegram.request.body.GetUpdateBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 import java.net.URLEncoder;
