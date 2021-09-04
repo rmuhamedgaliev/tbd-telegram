@@ -2,7 +2,7 @@ package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.SendMessageBody;
+import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.model.SendMessageResponse;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 

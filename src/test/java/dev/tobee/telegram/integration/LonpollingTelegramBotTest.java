@@ -1,4 +1,8 @@
-package dev.tobee.telegram;
+package dev.tobee.telegram.integration;
+
+import dev.tobee.telegram.LongPollingTelegramBot;
+import dev.tobee.telegram.TelegramBot;
+import dev.tobee.telegram.UpdateSubscriber;
 
 public class LonpollingTelegramBotTest {
 
