@@ -7,6 +7,8 @@ import dev.tobee.telegram.model.UpdateTypes;
 import dev.tobee.telegram.request.GetUpdateBody;
 import dev.tobee.telegram.request.GetUpdates;
 import dev.tobee.telegram.request.Request;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.security.SecureRandom;
 import java.util.Collection;
@@ -20,6 +22,7 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
 public class LongPollingTelegramBot implements TelegramBot {
+    private static final Logger LOGGER = LoggerFactory.getLogger(LongPollingTelegramBot.class);
 
     private final ScheduledExecutorService executorService;
 
@@ -73,7 +76,7 @@ public class LongPollingTelegramBot implements TelegramBot {
                                     return getLastUpdateFromResponse(result);
                                 }).thenAcceptAsync(update -> handleLastUpdateId(update, lastUpdate));
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        LOGGER.error("Error on receive update", e);
                     }
 
                 },
