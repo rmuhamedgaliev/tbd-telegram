@@ -61,5 +61,5 @@ public record Message(
         @JsonProperty("voice_chat_participants_invited") Optional<VoiceChatParticipantsInvited> voiceChatParticipantsInvited,
         @JsonProperty("reply_markup") Optional<InlineKeyboardMarkup> replyMarkup
 
-        ) {
+) {
 }

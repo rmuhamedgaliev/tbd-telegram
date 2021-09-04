@@ -23,5 +23,5 @@ public record Chat(
         @JsonProperty("can_set_sticker_set") Optional<Boolean> canSetStickerSet,
         @JsonProperty("linked_chat_id") Optional<Integer> linkedChatId,
         @JsonProperty("location") Optional<ChatLocation> location
-        ) {
+) {
 }

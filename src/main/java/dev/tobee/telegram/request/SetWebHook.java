@@ -14,7 +14,8 @@ public class SetWebHook implements Request<ResponseWrapper<Boolean>> {
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
 
     private final SetWebHookBody body;
 

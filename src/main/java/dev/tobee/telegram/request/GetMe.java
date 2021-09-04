@@ -11,7 +11,8 @@ public class GetMe implements Request<ResponseWrapper<GetMeResponse>> {
 
     private static final String METHOD = "getMe";
 
-    private static final TypeReference<ResponseWrapper<GetMeResponse>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<GetMeResponse>> reference = new TypeReference<>() {
+    };
 
     @Override
     public String getMethod() {

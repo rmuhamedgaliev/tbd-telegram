@@ -12,5 +12,5 @@ public record SuccessfulPayment(
         @JsonProperty("order_info") Optional<OrderInfo> orderInfo,
         @JsonProperty("telegram_payment_charge_id") String telegramPaymentChargeId,
         @JsonProperty("provider_payment_charge_id") String providerPaymentChargeId
-        ) {
+) {
 }

@@ -7,6 +7,6 @@ import java.util.List;
 public record PollAnswer(
         @JsonProperty("poll_id") String pollId,
         @JsonProperty("user") User user,
-        @JsonProperty("option_ids")List<Integer> optionIds
-        ) {
+        @JsonProperty("option_ids") List<Integer> optionIds
+) {
 }

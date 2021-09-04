@@ -9,5 +9,5 @@ public record LoginUrl(
         @JsonProperty("forward_text") Optional<String> forwardText,
         @JsonProperty("bot_username") Optional<String> botUsername,
         @JsonProperty("request_write_access") Optional<Boolean> requestWriteAccess
-        ) {
+) {
 }

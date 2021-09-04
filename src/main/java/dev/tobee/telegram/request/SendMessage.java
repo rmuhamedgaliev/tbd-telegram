@@ -2,8 +2,8 @@ package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.model.SendMessageResponse;
+import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 import java.util.Map;
@@ -15,7 +15,8 @@ public class SendMessage implements Request<ResponseWrapper<SendMessageResponse>
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
-    private static final TypeReference<ResponseWrapper<SendMessageResponse>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<SendMessageResponse>> reference = new TypeReference<>() {
+    };
 
     private final SendMessageBody body;
 

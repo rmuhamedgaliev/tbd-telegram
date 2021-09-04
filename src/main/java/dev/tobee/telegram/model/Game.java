@@ -12,5 +12,5 @@ public record Game(
         @JsonProperty("text") Optional<String> text,
         @JsonProperty("text_entities") List<MessageEntity> textEntities,
         @JsonProperty("animation") Optional<Animation> animation
-        ) {
+) {
 }
