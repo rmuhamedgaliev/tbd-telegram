@@ -16,7 +16,8 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
 
     private static final String METHOD = "getUpdates";
 
-    private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {
+    };
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
     private final Optional<GetUpdateBody> queryParams;

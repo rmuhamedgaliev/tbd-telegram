@@ -1,9 +1,9 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.request.body.SendPhotoBody;
 import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.model.SendPhotoResponse;
+import dev.tobee.telegram.request.body.SendPhotoBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 import java.net.URI;
@@ -17,7 +17,8 @@ public class SendPhoto implements Request<ResponseWrapper<SendPhotoResponse>> {
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
-    private static final TypeReference<ResponseWrapper<SendPhotoResponse>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<SendPhotoResponse>> reference = new TypeReference<>() {
+    };
 
     private final SendPhotoBody body;
 

@@ -41,7 +41,7 @@ class TbdAsyncClientTest {
 
     private final String token = System.getenv("TBD_TELEGRAM_TOKEN");
 
-    private TbdAsyncClient client = Mockito.mock(TbdAsyncClient.class);
+    private final TbdAsyncClient client = Mockito.mock(TbdAsyncClient.class);
 
     @Test
     @DisplayName("Test success getMe action")
@@ -68,7 +68,8 @@ class TbdAsyncClientTest {
     void getValidURLForgetUpdates() {
 
         var request = new GetUpdates(Optional.of(new GetUpdateBody(OptionalInt.of(100), OptionalInt.of(5),
-                OptionalInt.of(100), List.of(UpdateTypes.MESSAGE, UpdateTypes.CALLBACK_QUERY, UpdateTypes.CHANNEL_POST))));
+                OptionalInt.of(100), List.of(UpdateTypes.MESSAGE, UpdateTypes.CALLBACK_QUERY,
+                UpdateTypes.CHANNEL_POST))));
 
         URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
 

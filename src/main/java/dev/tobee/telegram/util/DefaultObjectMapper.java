@@ -25,7 +25,8 @@ public class DefaultObjectMapper {
 
     public <T> Map<Object, Object> convertToMap(T t) {
 
-        TypeReference<Map<Object, Object>> reference = new TypeReference<>() {};
+        TypeReference<Map<Object, Object>> reference = new TypeReference<>() {
+        };
 
         return mapper.convertValue(t, reference);
     }

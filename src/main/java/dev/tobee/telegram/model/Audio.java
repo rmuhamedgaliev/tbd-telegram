@@ -15,5 +15,5 @@ public record Audio(
         @JsonProperty("mime_type") Optional<String> mimeType,
         @JsonProperty("file_size") OptionalInt fileSize,
         @JsonProperty("thumb") Optional<PhotoSize> thumb
-        ) {
+) {
 }
