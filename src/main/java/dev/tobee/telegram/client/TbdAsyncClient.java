@@ -28,15 +28,21 @@ public class TbdAsyncClient {
 
     private final boolean isDebugEnabled;
 
-    public TbdAsyncClient(boolean isDebugEnabled) {
+    private final String host;
+
+    private final String token;
+
+    public TbdAsyncClient(boolean isDebugEnabled, String host, String token) {
         this.isDebugEnabled = isDebugEnabled;
+        this.host = host;
+        this.token = token;
     }
 
     public <T> CompletableFuture<T> getRequest(Request<T> request) {
 
-        URI uri = request.getUri();
+        URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
 
-        LOGGER.debug("Request to {}", uri.toString());
+        LOGGER.debug("Request to {}", uri);
 
         return HttpClient.newHttpClient().sendAsync(
                         HttpRequest.newBuilder()
@@ -55,11 +61,13 @@ public class TbdAsyncClient {
 
         String boundary = UUID.randomUUID().toString();
 
+        URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
+
         return HttpClient.newHttpClient().sendAsync(
                         HttpRequest.newBuilder()
                                 .header("Content-Type", "multipart/form-data; charset=utf-8; " +
                                         "boundary=" + boundary)
-                                .uri(request.getUri())
+                                .uri(uri)
                                 .timeout(Duration.ofSeconds(1))
                                 .POST(prepareMultipartData(request.body().orElseThrow(), boundary))
                                 .build(),

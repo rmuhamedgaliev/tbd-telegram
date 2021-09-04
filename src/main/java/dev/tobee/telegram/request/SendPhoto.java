@@ -11,7 +11,9 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
-public class SendPhoto extends BaseRequest implements Request<ResponseWrapper<SendPhotoResponse>> {
+public class SendPhoto implements Request<ResponseWrapper<SendPhotoResponse>> {
+
+    private static final String METHOD = "sendPhoto";
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
@@ -19,14 +21,13 @@ public class SendPhoto extends BaseRequest implements Request<ResponseWrapper<Se
 
     private final SendPhotoBody body;
 
-    public SendPhoto(String host, String token, SendPhotoBody body) {
-        super("sendPhoto", host, token);
+    public SendPhoto(SendPhotoBody body) {
         this.body = body;
     }
 
     @Override
-    public URI getUri() {
-        return super.buildUri();
+    public String getMethod() {
+        return METHOD;
     }
 
     @Override

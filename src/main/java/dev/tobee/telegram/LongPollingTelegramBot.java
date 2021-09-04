@@ -21,17 +21,13 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public class LongPollingTelegramBot implements TelegramBot {
 
-    private final String host;
-
-    private final String token;
-
     private final ScheduledExecutorService executorService;
 
     private final OptionalInt initialDelay = OptionalInt.empty();
 
     private final OptionalInt period = OptionalInt.empty();
 
-    private final TbdAsyncClient tbdTGReactorClient = new TbdAsyncClient(true);
+    private final TbdAsyncClient tbdTGReactorClient;
 
     private final SubmissionPublisher<Update> publisher = new SubmissionPublisher<>();
 
@@ -39,16 +35,14 @@ public class LongPollingTelegramBot implements TelegramBot {
 
     public LongPollingTelegramBot(String host, String token, ScheduledExecutorService executorService,
                                   UpdateSubscriber subscriber) {
-        this.host = host;
-        this.token = token;
+        this.tbdTGReactorClient = new TbdAsyncClient(true, host, token);
         this.executorService = executorService;
         this.subscriber = subscriber;
         this.publisher.subscribe(subscriber);
     }
 
     public LongPollingTelegramBot(String host, String token, UpdateSubscriber subscriber) {
-        this.host = host;
-        this.token = token;
+        this.tbdTGReactorClient = new TbdAsyncClient(true, host, token);
         this.executorService = Executors.newSingleThreadScheduledExecutor();
         this.subscriber = subscriber;
         this.publisher.subscribe(subscriber);
@@ -64,14 +58,14 @@ public class LongPollingTelegramBot implements TelegramBot {
                         Request<ResponseWrapper<List<Update>>> request;
 
                         if (lastUpdate.get() > 0) {
-                            request = new GetUpdates(this.host, this.token, Optional.of(new GetUpdateBody(
+                            request = new GetUpdates(Optional.of(new GetUpdateBody(
                                     OptionalInt.of(lastUpdate.get()),
                                     OptionalInt.empty(),
                                     OptionalInt.empty(),
                                     List.of(UpdateTypes.MESSAGE, UpdateTypes.CALLBACK_QUERY, UpdateTypes.CHANNEL_POST)
                             )));
                         } else {
-                            request = new GetUpdates(this.host, this.token, Optional.empty());
+                            request = new GetUpdates(Optional.empty());
                         }
 
 //                    TODO: Обработка ошибок

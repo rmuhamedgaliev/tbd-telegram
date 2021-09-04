@@ -1,15 +1,16 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.SetWebHookBody;
 import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.SetWebHookBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
-import java.net.URI;
 import java.util.Map;
 import java.util.Optional;
 
-public class SetWebHook extends BaseRequest implements Request<ResponseWrapper<String>> {
+public class SetWebHook implements Request<ResponseWrapper<String>> {
+
+    private static final String METHOD = "setWebhook";
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
@@ -18,13 +19,12 @@ public class SetWebHook extends BaseRequest implements Request<ResponseWrapper<S
     private final SetWebHookBody body;
 
     public SetWebHook(String host, String token, SetWebHookBody body) {
-        super("setWebhook", host, token);
         this.body = body;
     }
 
     @Override
-    public URI getUri() {
-        return super.buildUri();
+    public String getMethod() {
+        return METHOD;
     }
 
     @Override
