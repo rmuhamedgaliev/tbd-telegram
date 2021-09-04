@@ -1,16 +1,17 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.SendMessageBody;
 import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.SendMessageBody;
 import dev.tobee.telegram.model.SendMessageResponse;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
-import java.net.URI;
 import java.util.Map;
 import java.util.Optional;
 
-public class SendMessage extends BaseRequest implements Request<ResponseWrapper<SendMessageResponse>> {
+public class SendMessage implements Request<ResponseWrapper<SendMessageResponse>> {
+
+    private static final String METHOD = "sendMessage";
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
 
@@ -18,14 +19,13 @@ public class SendMessage extends BaseRequest implements Request<ResponseWrapper<
 
     private final SendMessageBody body;
 
-    public SendMessage(String host, String token, SendMessageBody body) {
-        super("sendMessage", host, token);
+    public SendMessage(SendMessageBody body) {
         this.body = body;
     }
 
     @Override
-    public URI getUri() {
-        return super.buildUri();
+    public String getMethod() {
+        return METHOD;
     }
 
     @Override

@@ -3,8 +3,9 @@ package dev.tobee.telegram;
 import dev.tobee.telegram.client.TbdAsyncClient;
 import dev.tobee.telegram.model.GetMeResponse;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.Update;
+import dev.tobee.telegram.model.UpdateTypes;
 import dev.tobee.telegram.request.GetMe;
+import dev.tobee.telegram.request.GetUpdateBody;
 import dev.tobee.telegram.request.GetUpdates;
 import dev.tobee.telegram.request.Request;
 import org.junit.jupiter.api.Assertions;
@@ -15,8 +16,10 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
+import java.net.URI;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 import java.util.concurrent.CompletableFuture;
 
 @ExtendWith(MockitoExtension.class)
@@ -36,11 +39,7 @@ class TbdAsyncClientTest {
                 .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<GetMeResponse>(true,
                         Optional.empty(), Optional.empty(), Optional.empty())));
 
-        Request<ResponseWrapper<GetMeResponse>> request = new GetMe(host, token);
-
-        var response = client.getRequest(request);
-
-        Assertions.assertTrue(response.join().ok());
+        testRequestMethods(new GetMe(), "getMe", "GetMeResponse");
     }
 
     @Test
@@ -51,10 +50,28 @@ class TbdAsyncClientTest {
                 .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<GetUpdates>(true,
                         Optional.empty(), Optional.empty(), Optional.empty())));
 
-        Request<ResponseWrapper<List<Update>>> request = new GetUpdates(host, token, Optional.empty());
+        testRequestMethods(new GetUpdates(Optional.empty()), "getUpdates", "Update");
+    }
 
+    @Test
+    @DisplayName("Test get update valid URL")
+    void getValidURLForgetUpdates() {
+
+        var request = new GetUpdates(Optional.of(new GetUpdateBody(OptionalInt.of(100), OptionalInt.of(5),
+                OptionalInt.of(100), List.of(UpdateTypes.MESSAGE, UpdateTypes.CALLBACK_QUERY, UpdateTypes.CHANNEL_POST))));
+
+        URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
+
+        Assertions.assertNotNull(uri.getHost());
+        Assertions.assertNotNull(uri.getQuery());
+    }
+
+    public <T> void testRequestMethods(Request<ResponseWrapper<T>> request, String method, String responseType) {
         var response = client.getRequest(request);
 
+        Assertions.assertTrue(request.body().isEmpty());
+        Assertions.assertEquals(method, request.getMethod());
+        Assertions.assertTrue(request.getResponseType().getType().getTypeName().contains(responseType));
         Assertions.assertTrue(response.join().ok());
     }
 }

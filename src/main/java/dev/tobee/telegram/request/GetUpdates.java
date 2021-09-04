@@ -5,57 +5,50 @@ import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.model.Update;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
-import java.net.URI;
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-public class GetUpdates implements Request<ResponseWrapper<List<Update>>>{
+public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
 
+    private static final String METHOD = "getUpdates";
+
+    private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {};
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
-
-    private static final String METHOD = "/getUpdates";
-
-    private static final TypeReference<ResponseWrapper<List<Update>>> reference =
-            new TypeReference<>() {};
-
-    private final String host;
-
-    private final String token;
 
     private final Optional<GetUpdateBody> body;
 
-    public GetUpdates(String host, String token, Optional<GetUpdateBody> body) {
-        this.host = host;
-        this.token = token;
+    public GetUpdates(Optional<GetUpdateBody> body) {
         this.body = body;
     }
 
     @Override
-    public URI getUri() {
+    public String getMethod() {
 
-        String url = host + "/" + token + METHOD;
+        String method = METHOD;
 
         if (body().isPresent()) {
-            url = url + "?";
 
-            for (Map.Entry<Object, Object> entry: body().get().entrySet()) {
+            StringBuilder methodBuilder = new StringBuilder(method + "?");
+            for (Map.Entry<Object, Object> entry : body().get().entrySet()) {
                 try {
-                    url += URLEncoder.encode((String) entry.getKey(), StandardCharsets.UTF_8.toString()) + "="
-                            + URLEncoder.encode("" + entry.getValue(), StandardCharsets.UTF_8.toString()) + "&";
+                    methodBuilder
+                            .append(URLEncoder.encode((String) entry.getKey(), StandardCharsets.UTF_8.toString())).append("=")
+                            .append(URLEncoder.encode("" + entry.getValue(), StandardCharsets.UTF_8.toString())).append("&");
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    throw new IllegalArgumentException("Error on generate query param for request: " + method, e);
                 }
             }
+            method = methodBuilder.toString();
 
-            url = url.substring(0, url.lastIndexOf('&'));
+            method = method.substring(0, method.lastIndexOf('&'));
         }
 
-
-        return URI.create(url);
+        return method;
     }
+
 
     @Override
     public TypeReference<ResponseWrapper<List<Update>>> getResponseType() {
