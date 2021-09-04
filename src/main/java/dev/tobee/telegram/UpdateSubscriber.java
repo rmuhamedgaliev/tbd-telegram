@@ -1,37 +1,36 @@
 package dev.tobee.telegram;
 
 import dev.tobee.telegram.model.Update;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.concurrent.Flow;
 
 public class UpdateSubscriber implements Flow.Subscriber<Update> {
+    private static final Logger LOGGER = LoggerFactory.getLogger(UpdateSubscriber.class);
 
     private Flow.Subscription subscription;
 
     @Override
     public void onSubscribe(Flow.Subscription subscription) {
-        System.out.println("Subscribed");
+        LOGGER.info("New subscription to UpdateSubscriber ");
         this.subscription = subscription;
-        this.subscription.request(1); //requesting data from publisher
-        System.out.println("onSubscribe requested 1 item");
+        this.subscription.request(1);
     }
 
     @Override
     public void onNext(Update item) {
-        System.out.println("Processing Employee " + item.updateId());
-
-        System.out.println(item.message().get().text().get());
+        LOGGER.debug("Received new update with id {}", item.updateId().orElseThrow());
         this.subscription.request(1);
     }
 
     @Override
     public void onError(Throwable e) {
-        System.out.println("Some error happened");
-        e.printStackTrace();
+        LOGGER.error("Error on processing update ", e);
     }
 
     @Override
     public void onComplete() {
-        System.out.println("All Processing Done");
+        LOGGER.info("Complete processing");
     }
 }

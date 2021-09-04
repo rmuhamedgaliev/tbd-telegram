@@ -11,5 +11,5 @@ public interface Request<T> {
 
     TypeReference<T> getResponseType();
 
-    Optional<Map<Object, Object>> body();
+    Optional<Map<Object, Object>> getBody();
 }
