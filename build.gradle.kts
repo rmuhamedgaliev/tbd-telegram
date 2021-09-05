@@ -1,4 +1,4 @@
-//val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
 
 plugins {
     `java-library`
@@ -11,11 +11,11 @@ plugins {
     id("org.shipkit.shipkit-changelog") version "1.1.15"
     id("org.shipkit.shipkit-github-release") version "1.1.15"
     id("org.shipkit.shipkit-auto-version") version "1.1.19"
-//    id("com.palantir.git-version") version "0.12.3"
+    id("com.palantir.git-version") version "0.12.3"
 }
 
 group = "dev.tobee"
-version = "0.0.1"
+version = "0.0.2"
 
 repositories {
     mavenCentral()
@@ -29,10 +29,11 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${Versions.jacksonVersion}")
     implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:${Versions.jacksonVersion}")
 
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:2.8.1")
-    implementation("org.slf4j:slf4j-api:1.7.10")
-    implementation("org.apache.logging.log4j:log4j-core:2.8.1")
-    implementation("org.apache.logging.log4j:log4j-api:2.8.1")
+    implementation("org.apache.commons:commons-text:${Versions.commonsVersion}")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:${Versions.log4jVersion}")
+    implementation("org.apache.logging.log4j:log4j-core:${Versions.log4jVersion}")
+    implementation("org.apache.logging.log4j:log4j-api:${Versions.log4jVersion}")
+    implementation("org.slf4j:slf4j-api:${Versions.slf4jApiVersion}")
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.junitVersion}")
@@ -40,8 +41,8 @@ dependencies {
     testImplementation("org.mockito:mockito-core:${Versions.mockitoVersion}")
     testImplementation("org.mockito:mockito-junit-jupiter:${Versions.mockitoVersion}")
 
-    testImplementation("uk.org.webcompere:system-stubs-core:1.2.0")
-    testImplementation("uk.org.webcompere:system-stubs-jupiter:1.2.0")
+    testImplementation("uk.org.webcompere:system-stubs-core:${Versions.systemStubsVersion}")
+    testImplementation("uk.org.webcompere:system-stubs-jupiter:${Versions.systemStubsVersion}")
 }
 
 tasks.test {
@@ -96,7 +97,6 @@ publishing {
     }
     repositories {
         maven {
-            // change URLs to point to your repos, e.g. http://my.org/repo
             val releasesRepoUrl = uri("https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/")
             val snapshotsRepoUrl = uri("https://s01.oss.sonatype.org/content/repositories/snapshots/")
             url = if (version.toString().endsWith("SNAPSHOT")) snapshotsRepoUrl else releasesRepoUrl
@@ -153,10 +153,10 @@ tasks.test {
     }
 }
 
-//tasks.githubRelease {
-//    dependsOn(tasks.generateChangelog)
-//    repository = "rmuhamedgaliev/tbd-telegram"
-//    changelog = tasks.generateChangelog.get().outputFile
-//    githubToken = System.getenv("GITHUB_PACKAGE_TOKEN")
-//    newTagRevision = versionDetails().gitHashFull
-//}
+tasks.githubRelease {
+    dependsOn(tasks.generateChangelog)
+    repository = "rmuhamedgaliev/tbd-telegram"
+    changelog = tasks.generateChangelog.get().outputFile
+    githubToken = System.getenv("GITHUB_PACKAGE_TOKEN")
+    newTagRevision = versionDetails().gitHashFull
+}
