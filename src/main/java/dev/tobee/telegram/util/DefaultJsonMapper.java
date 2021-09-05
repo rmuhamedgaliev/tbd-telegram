@@ -31,6 +31,14 @@ public class DefaultJsonMapper {
         return mapper;
     }
 
+    public <T> String convertToString(T t) {
+        try {
+            return mapper.writeValueAsString(t);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     public <T> T parseResponse(String response, TypeReference<T> reference) {
         try {
             return mapper.readValue(response, reference);
