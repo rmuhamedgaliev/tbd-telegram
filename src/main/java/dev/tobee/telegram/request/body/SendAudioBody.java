@@ -1,4 +1,4 @@
-package dev.tobee.telegram.request;
+package dev.tobee.telegram.request.body;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.MessageEntity;

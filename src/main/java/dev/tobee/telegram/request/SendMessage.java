@@ -12,8 +12,7 @@ import java.util.Optional;
 
 public class SendMessage implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "sendMessage";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
-    };
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
     private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
     private final SendMessageBody body;
