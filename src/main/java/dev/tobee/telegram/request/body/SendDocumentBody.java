@@ -9,11 +9,14 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
-public record SendPhotoBody(
+public record SendDocumentBody(
         @JsonProperty("chat_id") int chatId,
-        @JsonProperty("photo") Path photo,
+        @JsonProperty("document") Path audio,
+        @JsonProperty("thumb") Optional<Path> thumb,
+        @JsonProperty("caption") Optional<String> caption,
         @JsonProperty("parse_mode") Optional<ParseMode> parseMode,
-        @JsonProperty("caption_entities") List<MessageEntity> captionEntities,
+        @JsonProperty("caption_entities") List<MessageEntity> entities,
+        @JsonProperty("disable_content_type_detection") Optional<Boolean> disableContentTypeDetection,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
         @JsonProperty("reply_to_message_id") Optional<Integer> replyToMessageId,
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
