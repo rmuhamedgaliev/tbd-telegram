@@ -3,7 +3,7 @@ package dev.tobee.telegram.request;
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.Message;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.request.body.SendVideoBody;
+import dev.tobee.telegram.request.body.SendAudioBody;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
@@ -12,9 +12,9 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
-public class SendAudio implements Request<ResponseWrapper<Message>> {
+public class SendVideo implements Request<ResponseWrapper<Message>> {
 
-    private static final String METHOD = "sendAudio";
+    private static final String METHOD = "sendVideo";
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
     private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
@@ -22,9 +22,9 @@ public class SendAudio implements Request<ResponseWrapper<Message>> {
     private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
     };
 
-    private final SendVideoBody body;
+    private final SendAudioBody body;
 
-    public SendAudio(SendVideoBody body) {
+    public SendVideo(SendAudioBody body) {
         this.body = body;
     }
 
