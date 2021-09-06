@@ -24,7 +24,7 @@ Add Maven dependency
 Or in gradle 
 
 ```kotlin
-implementation("dev.tobee:tbd-telegram-sdk:0.0.1")
+implementation("dev.tobee:tbd-telegram-sdk:0.0.3")
 ```
 
 License
