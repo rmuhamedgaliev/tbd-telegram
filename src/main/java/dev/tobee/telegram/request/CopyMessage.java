@@ -1,22 +1,22 @@
 package dev.tobee.telegram.request;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.Message;
+import dev.tobee.telegram.model.MessageId;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.request.body.ForwardMessageBody;
+import dev.tobee.telegram.request.body.CopyMessageBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 import java.util.Map;
 import java.util.Optional;
 
-public class ForwardMessage implements Request<ResponseWrapper<Message>> {
-    private static final String METHOD = "forwardMessage";
+public class CopyMessage implements Request<ResponseWrapper<MessageId>> {
+    private static final String METHOD = "copyMessage";
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<MessageId>> reference = new TypeReference<>() {};
 
-    private final ForwardMessageBody body;
+    private final CopyMessageBody body;
 
-    public ForwardMessage(ForwardMessageBody body) {
+    public CopyMessage(CopyMessageBody body) {
         this.body = body;
     }
 
@@ -26,7 +26,7 @@ public class ForwardMessage implements Request<ResponseWrapper<Message>> {
     }
 
     @Override
-    public TypeReference<ResponseWrapper<Message>> getResponseType() {
+    public TypeReference<ResponseWrapper<MessageId>> getResponseType() {
         return reference;
     }
 
