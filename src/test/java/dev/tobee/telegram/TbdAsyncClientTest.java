@@ -49,7 +49,7 @@ class TbdAsyncClientTest {
                 .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<User>(true,
                         Optional.empty(), Optional.empty(), Optional.empty())));
 
-        testRequestGetMethods(new GetMe(), "getMe", "GetMeResponse");
+        testRequestGetMethods(new GetMe(), "getMe", "User");
     }
 
     @Test
@@ -102,7 +102,7 @@ class TbdAsyncClientTest {
                                 Optional.empty(),
                                 Optional.empty(),
                                 Optional.empty()
-                        )), "sendMessage", "SendMessageResponse");
+                        )), "sendMessage", "Message");
     }
 
     @Test
@@ -130,7 +130,7 @@ class TbdAsyncClientTest {
                                 Optional.empty(),
                                 Optional.empty(),
                                 Optional.empty()
-                        )), "sendPhoto", "SendPhotoResponse");
+                        )), "sendPhoto", "Message");
     }
 
     @Test
