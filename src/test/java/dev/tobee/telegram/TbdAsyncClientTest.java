@@ -1,14 +1,13 @@
 package dev.tobee.telegram;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
-import dev.tobee.telegram.model.GetMeResponse;
+import dev.tobee.telegram.model.Message;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.SendMessageResponse;
-import dev.tobee.telegram.model.SendPhotoResponse;
 import dev.tobee.telegram.model.UpdateTypes;
+import dev.tobee.telegram.model.User;
 import dev.tobee.telegram.request.GetMe;
 import dev.tobee.telegram.request.GetUpdates;
 import dev.tobee.telegram.request.Request;
@@ -47,7 +46,7 @@ class TbdAsyncClientTest {
     @DisplayName("Test success getMe action")
     void getMeSuccess() {
         Mockito.when(client.getRequest(ArgumentMatchers.any()))
-                .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<GetMeResponse>(true,
+                .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<User>(true,
                         Optional.empty(), Optional.empty(), Optional.empty())));
 
         testRequestGetMethods(new GetMe(), "getMe", "GetMeResponse");
@@ -81,7 +80,7 @@ class TbdAsyncClientTest {
     @DisplayName("Test valid send message")
     void sendMessageValid() {
         Mockito.when(client.postRequest(ArgumentMatchers.any()))
-                .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<SendMessageResponse>(true,
+                .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<Message>(true,
                         Optional.empty(), Optional.empty(), Optional.empty())));
 
         testRequestPostMethods(
@@ -110,7 +109,7 @@ class TbdAsyncClientTest {
     @DisplayName("Test valid send message")
     void sendPhotoValid() {
         Mockito.when(client.postRequest(ArgumentMatchers.any()))
-                .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<SendPhotoResponse>(true,
+                .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<Message>(true,
                         Optional.empty(), Optional.empty(), Optional.empty())));
 
         testRequestPostMethods(

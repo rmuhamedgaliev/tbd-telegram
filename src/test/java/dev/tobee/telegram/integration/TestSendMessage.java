@@ -6,11 +6,15 @@ import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyKeyboardMarkup;
+import dev.tobee.telegram.request.GetMe;
 import dev.tobee.telegram.request.SendMessage;
+import dev.tobee.telegram.request.SendPhoto;
 import dev.tobee.telegram.request.body.SendMessageBody;
+import dev.tobee.telegram.request.body.SendPhotoBody;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
+import java.io.File;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +59,48 @@ public class TestSendMessage {
                 ));
 
         var response = client.postRequest(sendMessage).join();
+
+        System.out.println(response);
+    }
+
+    @Test
+    public void sendPhotoTest() {
+        var sendMessage = new SendPhoto(
+                new SendPhotoBody(
+                        chatId,
+                        new File("data/1x1.png").toPath(),
+                        Optional.of(ParseMode.HTML),
+                        List.of(new MessageEntity(
+                                MessageEntityType.BOLD,
+                                100,
+                                100,
+                                Optional.of("https://deathqj00yf.mr"),
+                                Optional.empty(),
+                                Optional.empty()
+                        )),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.empty(),
+                        Optional.of(new ReplyKeyboardMarkup(
+                                List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
+                                        Optional.of(Boolean.TRUE), Optional.empty()))),
+                                Optional.of(Boolean.TRUE),
+                                Optional.of(Boolean.TRUE),
+                                Optional.of("Hello"),
+                                Optional.of(Boolean.TRUE)
+                        ))
+                ));
+
+        var response = client.postRequest(sendMessage).join();
+
+        System.out.println(response);
+    }
+
+    @Test
+    public void getMeTest() {
+        var request = new GetMe();
+
+        var response = client.getRequest(request).join();
 
         System.out.println(response);
     }
