@@ -127,7 +127,7 @@ sonarqube {
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.core.codeCoveragePlugin", "jacoco")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
-        property("sonar.exclusions", "src/main/java/dev/tobee/telegram/model")
+        property("sonar.exclusions", "src/main/java/dev/tobee/telegram/model/**/*.java")
     }
 }
 
