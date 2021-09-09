@@ -15,7 +15,7 @@ plugins {
 }
 
 group = "dev.tobee"
-version = "0.0.3"
+version = "0.0.4"
 
 repositories {
     mavenCentral()
@@ -71,8 +71,8 @@ publishing {
 
             pom {
                 name.set("tbd-telegram-sdk")
-                description.set("TBD Telegram SDK - a simple Java Telegram BOT Api client. It have small footprint and use Java 11 async HTTP client \n" +
-                        "with latest Java syntax.")
+                description.set("TBD Telegram SDK - a simple Java Telegram BOT Api client. It have small footprint and " +
+                        "use Java 11 async HTTP client with latest Java syntax.")
                 url.set("https://tobee.dev")
                 licenses {
                     license {
@@ -127,7 +127,7 @@ sonarqube {
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.core.codeCoveragePlugin", "jacoco")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
-        property("sonar.exclusions", "src/main/java/dev/tobee/telegram/model/**/*.java")
+        property("sonar.exclusions", "src/main/java/dev/tobee/telegram/model/*.java")
     }
 }
 

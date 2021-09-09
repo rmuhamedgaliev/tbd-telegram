@@ -3,7 +3,7 @@ package dev.tobee.telegram.request;
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.Message;
 import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.request.body.SendAudioBody;
+import dev.tobee.telegram.request.body.SendVoiceBody;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
@@ -12,9 +12,9 @@ import java.nio.file.Paths;
 import java.util.Map;
 import java.util.Optional;
 
-public class SendAudio implements Request<ResponseWrapper<Message>> {
+public class SendVoice implements Request<ResponseWrapper<Message>> {
 
-    private static final String METHOD = "sendAudio";
+    private static final String METHOD = "sendVoice";
 
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
     private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
@@ -22,9 +22,9 @@ public class SendAudio implements Request<ResponseWrapper<Message>> {
     private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
     };
 
-    private final SendAudioBody body;
+    private final SendVoiceBody body;
 
-    public SendAudio(SendAudioBody body) {
+    public SendVoice(SendVoiceBody body) {
         this.body = body;
     }
 
@@ -42,7 +42,7 @@ public class SendAudio implements Request<ResponseWrapper<Message>> {
     public Optional<Map<Object, Object>> getBody() {
         Map<Object, Object> bodyMap = mapper.convertToMap(body);
 
-        String photoFieldName = "audio ";
+        String photoFieldName = "voice";
 
         if (bodyMap.containsKey(photoFieldName) && bodyMap.get(photoFieldName) instanceof String) {
             bodyMap.put(photoFieldName, Paths.get(URI.create(String.valueOf(bodyMap.get(photoFieldName)))));
