@@ -76,8 +76,8 @@ publishing {
                 url.set("https://tobee.dev")
                 licenses {
                     license {
-                        name.set("The Apache License, Version 2.0")
-                        url.set("http://www.apache.org/licenses/LICENSE-2.0.txt")
+                        name.set("MIT License")
+                        url.set("https://github.com/rmuhamedgaliev/tbd-telegram/blob/master/LICENSE")
                     }
                 }
                 developers {
@@ -127,7 +127,7 @@ sonarqube {
         property("sonar.host.url", "https://sonarcloud.io")
         property("sonar.core.codeCoveragePlugin", "jacoco")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
-
+        property("sonar.exclusions", "src/main/java/dev/tobee/telegram/model")
     }
 }
 
