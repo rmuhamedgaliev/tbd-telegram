@@ -1,37 +1,32 @@
-## Welcome to GitHub Pages
+# 🛩 TBD Telegram SDK
 
-You can use the [editor on GitHub](https://github.com/rmuhamedgaliev/tbd-telegram/edit/master/docs/index.md) to maintain and preview the content for your website in Markdown files.
+![Maven Central](https://img.shields.io/maven-central/v/dev.tobee/tbd-telegram-sdk?style=flat-square)
+[![Build Status](https://cloud.drone.io/api/badges/rmuhamedgaliev/tbd-telegram/status.svg?ref=refs/heads/master)](https://cloud.drone.io/rmuhamedgaliev/tbd-telegram)
+[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rmuhamedgaliev_tbd-telegram&metric=alert_status)](https://sonarcloud.io/dashboard?id=rmuhamedgaliev_tbd-telegram)
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+## Description
 
-### Markdown
+TBD Telegram SDK - a simple Java [Telegram BOT Api](https://core.telegram.org/bots/api) client. It have small footprint and use Java 11 async HTTP client 
+with latest Java syntax.
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+## Instalation
 
-```markdown
-Syntax highlighted code block
+Add Maven dependency
 
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```xml
+<dependency>
+    <groupId>dev.tobee</groupId>
+    <artifactId>tbd-telegram-sdk</artifactId>
+    <version>0.0.1</version>
+</dependency>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Or in gradle 
 
-### Jekyll Themes
+```kotlin
+implementation("dev.tobee:tbd-telegram-sdk:0.0.1")
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/rmuhamedgaliev/tbd-telegram/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+## License
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+This project is licensed under the [MIT License](../LICENSE).
