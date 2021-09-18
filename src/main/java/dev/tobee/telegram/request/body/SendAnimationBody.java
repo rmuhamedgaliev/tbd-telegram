@@ -1,6 +1,7 @@
 package dev.tobee.telegram.request.body;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyMarkup;
@@ -12,7 +13,7 @@ import java.util.OptionalInt;
 
 public record SendAnimationBody(
         @JsonProperty("chat_id") int chatId,
-        @JsonProperty("animation") Path animation,
+        @JsonProperty("animation") InputFile animation,
         @JsonProperty("duration") OptionalInt duration,
         @JsonProperty("width") OptionalInt width,
         @JsonProperty("height") OptionalInt height,

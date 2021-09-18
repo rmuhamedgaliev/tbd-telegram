@@ -1,6 +1,7 @@
 package dev.tobee.telegram.integration;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.KeyboardButton;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
@@ -15,6 +16,10 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,11 +69,18 @@ public class TestSendMessage {
     }
 
     @Test
-    public void sendPhotoTest() {
+    public void sendPhotoTest() throws IOException {
+
+        Path path = new File("data/1x1.png").toPath();
+
         var sendMessage = new SendPhoto(
                 new SendPhotoBody(
                         chatId,
-                        new File("data/1x1.png").toPath(),
+                        new InputFile(
+                                path.getFileName().toString(),
+                                Files.probeContentType(path),
+                                new FileInputStream(path.toFile()).readAllBytes()
+                        ),
                         Optional.of(ParseMode.HTML),
                         List.of(new MessageEntity(
                                 MessageEntityType.BOLD,
