@@ -1,6 +1,7 @@
 package dev.tobee.telegram.request.body;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyMarkup;
@@ -11,7 +12,7 @@ import java.util.Optional;
 
 public record SendDocumentBody(
         @JsonProperty("chat_id") int chatId,
-        @JsonProperty("document") Path audio,
+        @JsonProperty("document") InputFile audio,
         @JsonProperty("thumb") Optional<Path> thumb,
         @JsonProperty("caption") Optional<String> caption,
         @JsonProperty("parse_mode") Optional<ParseMode> parseMode,

@@ -1,6 +1,7 @@
 package dev.tobee.telegram.request.body;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.ReplyMarkup;
 
 import java.nio.file.Path;
@@ -9,7 +10,7 @@ import java.util.OptionalInt;
 
 public record SendVideoNoteBody(
         @JsonProperty("chat_id") int chatId,
-        @JsonProperty("video_note") Path audio,
+        @JsonProperty("video_note") InputFile audio,
         @JsonProperty("duration") OptionalInt duration,
         @JsonProperty("length") OptionalInt length,
         @JsonProperty("thumb") Optional<Path> thumb,

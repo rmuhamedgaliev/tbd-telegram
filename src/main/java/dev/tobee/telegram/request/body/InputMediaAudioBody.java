@@ -1,0 +1,22 @@
+package dev.tobee.telegram.request.body;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.MessageEntity;
+import dev.tobee.telegram.model.ParseMode;
+
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Optional;
+
+public record InputMediaAudioBody(
+        @JsonProperty("type") String type,
+        @JsonProperty("media") String media,
+        @JsonProperty("thumb") Optional<Path> thumb,
+        @JsonProperty("caption") Optional<String> caption,
+        @JsonProperty("parse_mode") Optional<ParseMode> parseMode,
+        @JsonProperty("caption_entities") List<MessageEntity> entities,
+        @JsonProperty("duration") int duration,
+        @JsonProperty("performer") Optional<String> performer,
+        @JsonProperty("title") Optional<String> title
+) {
+}

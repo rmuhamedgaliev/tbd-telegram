@@ -1,18 +1,16 @@
 package dev.tobee.telegram.client;
 
+import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Map;
@@ -81,33 +79,28 @@ public class TbdAsyncClient {
 
     private HttpRequest.BodyPublisher prepareMultipartData(Map<Object, Object> data, String boundary) {
         var byteArrays = new ArrayList<byte[]>();
-        try {
-            byte[] separator = ("--" + boundary
-                    + "\r\nContent-Disposition: form-data; name=")
-                    .getBytes(StandardCharsets.UTF_8);
-            for (Map.Entry<Object, Object> entry : data.entrySet()) {
-                if (entry.getValue() != null) {
-                    byteArrays.add(separator);
+        byte[] separator = ("--" + boundary
+                + "\r\nContent-Disposition: form-data; name=")
+                .getBytes(StandardCharsets.UTF_8);
+        for (Map.Entry<Object, Object> entry : data.entrySet()) {
+            if (entry.getValue() != null) {
+                byteArrays.add(separator);
 
-                    if (entry.getValue() instanceof Path path) {
-                        String mimeType = Files.probeContentType(path);
-                        byteArrays.add(("\"" + entry.getKey() + "\"; filename=\""
-                                + path.getFileName() + "\"\r\nContent-Type: " + mimeType
-                                + "\r\n\r\n").getBytes(StandardCharsets.UTF_8));
-                        byteArrays.add(Files.readAllBytes(path));
-                        byteArrays.add("\r\n".getBytes(StandardCharsets.UTF_8));
-                    } else {
+                if (entry.getValue() instanceof InputFile file) {
+                    byteArrays.add(("\"" + entry.getKey() + "\"; filename=\""
+                            + file.fileName() + "\"\r\nContent-Type: " + file.mimeType()
+                            + "\r\n\r\n").getBytes(StandardCharsets.UTF_8));
+                    byteArrays.add(file.content());
+                    byteArrays.add("\r\n".getBytes(StandardCharsets.UTF_8));
+                } else {
 
-                        byteArrays.add(
-                                ("\"" + entry.getKey() + "\"\r\n\r\n" + entry.getValue()
-                                        + "\r\n").getBytes(StandardCharsets.UTF_8));
-                    }
+                    byteArrays.add(
+                            ("\"" + entry.getKey() + "\"\r\n\r\n" + entry.getValue()
+                                    + "\r\n").getBytes(StandardCharsets.UTF_8));
                 }
             }
-            byteArrays.add(("--" + boundary + "--").getBytes(StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            throw new IllegalStateException("Error on generate multipart object", e);
         }
+        byteArrays.add(("--" + boundary + "--").getBytes(StandardCharsets.UTF_8));
 
         if (this.isDebugEnabled) {
             printDebugMultipartData(byteArrays);

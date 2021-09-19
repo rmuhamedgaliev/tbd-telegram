@@ -1,6 +1,7 @@
 package dev.tobee.telegram;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.Message;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
@@ -26,7 +27,6 @@ import org.mockito.ArgumentMatchers;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
-import java.io.File;
 import java.net.URI;
 import java.util.List;
 import java.util.Optional;
@@ -116,7 +116,7 @@ class TbdAsyncClientTest {
                 new SendPhoto(
                         new SendPhotoBody(
                                 144097396,
-                                new File("data/1x1.png").toPath(),
+                                Mockito.mock(InputFile.class),
                                 Optional.of(ParseMode.MARKDOWN_V2),
                                 List.of(new MessageEntity(
                                         MessageEntityType.BOLD,
