@@ -8,8 +8,10 @@ import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyKeyboardMarkup;
 import dev.tobee.telegram.request.GetMe;
+import dev.tobee.telegram.request.SendLocation;
 import dev.tobee.telegram.request.SendMessage;
 import dev.tobee.telegram.request.SendPhoto;
+import dev.tobee.telegram.request.body.SendLocationBody;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.body.SendPhotoBody;
 import org.junit.jupiter.api.Test;
@@ -22,6 +24,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 @EnabledIfEnvironmentVariable(named = "integration", matches = "true")
 public class TestSendMessage {
@@ -104,6 +107,28 @@ public class TestSendMessage {
                 ));
 
         var response = client.postRequest(sendMessage).join();
+
+        System.out.println(response);
+    }
+
+    @Test
+    public void sendLocationTest() {
+        var request = new SendLocation(new SendLocationBody(
+                chatId,
+                56.636525f,
+                47.890116f,
+                100f,
+                OptionalInt.of(86400),
+                OptionalInt.of(360),
+                OptionalInt.of(500),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty()
+
+        ));
+
+        var response = client.postRequest(request).join();
 
         System.out.println(response);
     }
