@@ -1,6 +1,8 @@
 package dev.tobee.telegram.integration;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.model.ChatAction;
+import dev.tobee.telegram.model.DiceEmoji;
 import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.KeyboardButton;
 import dev.tobee.telegram.model.MessageEntity;
@@ -8,9 +10,13 @@ import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyKeyboardMarkup;
 import dev.tobee.telegram.request.GetMe;
+import dev.tobee.telegram.request.SendChatAction;
+import dev.tobee.telegram.request.SendChatActionBody;
+import dev.tobee.telegram.request.SendDice;
 import dev.tobee.telegram.request.SendLocation;
 import dev.tobee.telegram.request.SendMessage;
 import dev.tobee.telegram.request.SendPhoto;
+import dev.tobee.telegram.request.body.SendDiceBody;
 import dev.tobee.telegram.request.body.SendLocationBody;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.body.SendPhotoBody;
@@ -126,6 +132,34 @@ public class TestSendMessage {
                 Optional.empty(),
                 Optional.empty()
 
+        ));
+
+        var response = client.postRequest(request).join();
+
+        System.out.println(response);
+    }
+
+    @Test
+    public void sendDiceTest() {
+        var request = new SendDice(new SendDiceBody(
+                chatId,
+                Optional.of(DiceEmoji.DIRECT_HIT),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty()
+        ));
+
+        var response = client.postRequest(request).join();
+
+        System.out.println(response);
+    }
+
+    @Test
+    public void sendChatActionTest() {
+        var request = new SendChatAction(new SendChatActionBody(
+                chatId,
+                ChatAction.TYPING
         ));
 
         var response = client.postRequest(request).join();
