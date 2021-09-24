@@ -1,6 +1,7 @@
 package dev.tobee.telegram.integration;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.model.ChatAction;
 import dev.tobee.telegram.model.DiceEmoji;
 import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.KeyboardButton;
@@ -9,6 +10,8 @@ import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyKeyboardMarkup;
 import dev.tobee.telegram.request.GetMe;
+import dev.tobee.telegram.request.SendChatAction;
+import dev.tobee.telegram.request.SendChatActionBody;
 import dev.tobee.telegram.request.SendDice;
 import dev.tobee.telegram.request.SendLocation;
 import dev.tobee.telegram.request.SendMessage;
@@ -145,6 +148,18 @@ public class TestSendMessage {
                 Optional.empty(),
                 Optional.empty(),
                 Optional.empty()
+        ));
+
+        var response = client.postRequest(request).join();
+
+        System.out.println(response);
+    }
+
+    @Test
+    public void sendChatActionTest() {
+        var request = new SendChatAction(new SendChatActionBody(
+                chatId,
+                ChatAction.TYPING
         ));
 
         var response = client.postRequest(request).join();
