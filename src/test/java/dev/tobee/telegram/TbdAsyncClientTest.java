@@ -1,7 +1,6 @@
 package dev.tobee.telegram;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
-import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.Message;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
@@ -13,11 +12,9 @@ import dev.tobee.telegram.request.GetMe;
 import dev.tobee.telegram.request.GetUpdates;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.SendMessage;
-import dev.tobee.telegram.request.SendPhoto;
 import dev.tobee.telegram.request.SetWebHook;
 import dev.tobee.telegram.request.body.GetUpdateBody;
 import dev.tobee.telegram.request.body.SendMessageBody;
-import dev.tobee.telegram.request.body.SendPhotoBody;
 import dev.tobee.telegram.request.body.SetWebHookBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
@@ -103,34 +100,6 @@ class TbdAsyncClientTest {
                                 Optional.empty(),
                                 Optional.empty()
                         )), "sendMessage", "Message");
-    }
-
-    @Test
-    @DisplayName("Test valid send message")
-    void sendPhotoValid() {
-        Mockito.when(client.postRequest(ArgumentMatchers.any()))
-                .thenReturn(CompletableFuture.completedFuture(new ResponseWrapper<Message>(true,
-                        Optional.empty(), Optional.empty(), Optional.empty())));
-
-        testRequestPostMethods(
-                new SendPhoto(
-                        new SendPhotoBody(
-                                144097396,
-                                Mockito.mock(InputFile.class),
-                                Optional.of(ParseMode.MARKDOWN_V2),
-                                List.of(new MessageEntity(
-                                        MessageEntityType.BOLD,
-                                        100,
-                                        100,
-                                        Optional.of("https://deathqj00yf.mr"),
-                                        Optional.empty(),
-                                        Optional.empty()
-                                )),
-                                Optional.empty(),
-                                Optional.empty(),
-                                Optional.empty(),
-                                Optional.empty()
-                        )), "sendPhoto", "Message");
     }
 
     @Test
