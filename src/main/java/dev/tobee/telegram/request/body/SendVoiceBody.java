@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public record SendVoiceBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("voice") InputFile audio,
         @JsonProperty("caption") Optional<String> caption,
         @JsonProperty("parse_mode") Optional<ParseMode> parseMode,

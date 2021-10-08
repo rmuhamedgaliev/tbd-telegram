@@ -7,7 +7,7 @@ import dev.tobee.telegram.model.ReplyMarkup;
 import java.util.Optional;
 
 public record SendDiceBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("emoji") Optional<DiceEmoji> emoji,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
         @JsonProperty("reply_to_message_id") Optional<Integer> replyToMessageId,

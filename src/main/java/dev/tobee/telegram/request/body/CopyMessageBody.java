@@ -10,7 +10,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 public record CopyMessageBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("from_chat_id") int fromChatId,
         @JsonProperty("message_id") int messageId,
         @JsonProperty("caption") Optional<String> caption,

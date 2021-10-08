@@ -6,7 +6,7 @@ import dev.tobee.telegram.model.ReplyMarkup;
 import java.util.Optional;
 
 public record SendContactBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("phone_number") String phoneNumber,
         @JsonProperty("first_name") String firstName,
         @JsonProperty("last_name") Optional<String> lastName,

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public record SendMessageBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("text") String text,
         @JsonProperty("parse_mode") Optional<ParseMode> parseMode,
         @JsonProperty("entities") List<MessageEntity> entities,

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 public record SendPhotoBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("photo") InputFile photo,
         @JsonProperty("parse_mode") Optional<ParseMode> parseMode,
         @JsonProperty("caption_entities") List<MessageEntity> captionEntities,

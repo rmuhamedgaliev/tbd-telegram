@@ -10,6 +10,8 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.model.BotCommand;
+import dev.tobee.telegram.model.BotCommandScopeDefault;
 import dev.tobee.telegram.model.ChatAction;
 import dev.tobee.telegram.model.DiceEmoji;
 import dev.tobee.telegram.model.InputFile;
@@ -18,7 +20,6 @@ import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyKeyboardMarkup;
-import dev.tobee.telegram.request.ExportChatInviteLink;
 import dev.tobee.telegram.request.GetMe;
 import dev.tobee.telegram.request.SendChatAction;
 import dev.tobee.telegram.request.SendChatActionBody;
@@ -26,11 +27,12 @@ import dev.tobee.telegram.request.SendDice;
 import dev.tobee.telegram.request.SendLocation;
 import dev.tobee.telegram.request.SendMessage;
 import dev.tobee.telegram.request.SendPhoto;
-import dev.tobee.telegram.request.body.ExportChatInviteLinkBody;
+import dev.tobee.telegram.request.SetMyCommands;
 import dev.tobee.telegram.request.body.SendDiceBody;
 import dev.tobee.telegram.request.body.SendLocationBody;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.body.SendPhotoBody;
+import dev.tobee.telegram.request.body.SetMyCommandsBody;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
@@ -171,8 +173,10 @@ public class TestSendMessage {
 
     @Test
     public void exportInviteChatActionTest() {
-        var request = new ExportChatInviteLink(new ExportChatInviteLinkBody(
-                chatId
+        var request = new SetMyCommands(new SetMyCommandsBody(
+                List.of(new BotCommand("login", "Login abc")),
+                Optional.of(new BotCommandScopeDefault()),
+                Optional.empty()
         ));
 
         var response = client.postRequest(request).join();

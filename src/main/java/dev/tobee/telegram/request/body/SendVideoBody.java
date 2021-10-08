@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 public record SendVideoBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("video") InputFile audio,
         @JsonProperty("duration") OptionalInt duration,
         @JsonProperty("width") OptionalInt width,
