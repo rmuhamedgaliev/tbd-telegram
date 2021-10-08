@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Optional;
 
 public record SendDocumentBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("document") InputFile audio,
         @JsonProperty("thumb") Optional<Path> thumb,
         @JsonProperty("caption") Optional<String> caption,

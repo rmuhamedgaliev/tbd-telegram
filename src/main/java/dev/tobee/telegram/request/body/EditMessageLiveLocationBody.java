@@ -8,7 +8,7 @@ import java.util.OptionalInt;
 import java.util.OptionalLong;
 
 public record EditMessageLiveLocationBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("message_id") OptionalLong messageId,
         @JsonProperty("inline_message_id") OptionalLong inlineMessageId,
         @JsonProperty("latitude") float latitude,

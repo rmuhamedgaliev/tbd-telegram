@@ -6,7 +6,7 @@ import dev.tobee.telegram.model.ReplyMarkup;
 import java.util.Optional;
 
 public record SendVenueBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("latitude") float latitude,
         @JsonProperty("longitude") float longitude,
         @JsonProperty("title") String title,

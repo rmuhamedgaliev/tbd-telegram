@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 public record SendAnimationBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("animation") InputFile animation,
         @JsonProperty("duration") OptionalInt duration,
         @JsonProperty("width") OptionalInt width,

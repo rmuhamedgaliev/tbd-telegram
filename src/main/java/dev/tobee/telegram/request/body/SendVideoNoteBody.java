@@ -9,7 +9,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 public record SendVideoNoteBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("video_note") InputFile audio,
         @JsonProperty("duration") OptionalInt duration,
         @JsonProperty("length") OptionalInt length,

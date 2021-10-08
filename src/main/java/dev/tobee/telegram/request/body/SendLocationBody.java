@@ -7,7 +7,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 public record SendLocationBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("latitude") float latitude,
         @JsonProperty("longitude") float longitude,
         @JsonProperty("horizontal_accuracy") float horizontalAccuracy,

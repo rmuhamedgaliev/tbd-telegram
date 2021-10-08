@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 public record SendPollBody(
-        @JsonProperty("chat_id") int chatId,
+        @JsonProperty("chat_id") long chatId,
         @JsonProperty("question") String question,
         @JsonProperty("options") List<String> options,
         @JsonProperty("is_anonymous") Optional<Boolean> isAnonymous,

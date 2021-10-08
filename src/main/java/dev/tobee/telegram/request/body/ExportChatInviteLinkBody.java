@@ -3,6 +3,6 @@ package dev.tobee.telegram.request.body;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record ExportChatInviteLinkBody(
-        @JsonProperty("chat_id") int chatId
+        @JsonProperty("chat_id") long chatId
 ) {
 }
