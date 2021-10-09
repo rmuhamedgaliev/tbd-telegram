@@ -1,18 +1,19 @@
 package dev.tobee.telegram.request.body;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyMarkup;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-
 public record CopyMessageBody(
         @JsonProperty("chat_id") long chatId,
         @JsonProperty("from_chat_id") int fromChatId,
-        @JsonProperty("message_id") int messageId,
+        @JsonProperty("message_id") OptionalLong messageId,
         @JsonProperty("caption") Optional<String> caption,
         @JsonProperty("parse_mode") Optional<ParseMode> parseMode,
         @JsonProperty("caption_entities") List<MessageEntity> captionEntities,

@@ -1,12 +1,13 @@
 package dev.tobee.telegram.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalLong;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record Message(
-        @JsonProperty("message_id") Integer messageId,
+        @JsonProperty("message_id") OptionalLong messageId,
         @JsonProperty("from") Optional<User> user,
         @JsonProperty("sender_chat") Optional<Chat> senderChat,
         @JsonProperty("date") int date,
