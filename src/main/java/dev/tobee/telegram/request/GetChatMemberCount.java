@@ -10,7 +10,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetChatMemberCount implements Request<ResponseWrapper<Long>> {
     private static final String METHOD = "getChatMemberCount";
-    private static final TypeReference<ResponseWrapper<Long>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Long>> reference = new TypeReference<>() {
+    };
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
     private final GetChatMemberCountBody body;
 

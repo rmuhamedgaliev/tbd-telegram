@@ -1,10 +1,10 @@
 package dev.tobee.telegram.request.body;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.DiceEmoji;
 import dev.tobee.telegram.model.ReplyMarkup;
-
-import java.util.Optional;
 
 public record SendDiceBody(
         @JsonProperty("chat_id") long chatId,

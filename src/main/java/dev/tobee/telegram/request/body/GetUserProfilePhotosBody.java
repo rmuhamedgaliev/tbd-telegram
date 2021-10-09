@@ -1,8 +1,8 @@
 package dev.tobee.telegram.request.body;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.OptionalInt;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record GetUserProfilePhotosBody(
         @JsonProperty("user_id") int userId,

@@ -6,14 +6,13 @@ import java.util.Optional;
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.request.body.DeleteChatStickerSetBody;
-import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class DeleteChatStickerSet implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "deleteChatStickerSet";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
-    private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
     private final DeleteChatStickerSetBody body;
 
     public DeleteChatStickerSet(DeleteChatStickerSetBody body) {

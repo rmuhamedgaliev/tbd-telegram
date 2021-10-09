@@ -7,5 +7,5 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public record UnpinChatMessageBody(
         @JsonProperty("chat_id") long chatId,
         @JsonProperty("message_id") OptionalLong messageId
-        ) {
+) {
 }

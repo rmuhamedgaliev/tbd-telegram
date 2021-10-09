@@ -10,7 +10,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class UnpinAllChatMessages implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "unpinAllChatMessages";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
     private final UnpinAllChatMessagesBody body;
 

@@ -1,8 +1,8 @@
 package dev.tobee.telegram.request.body;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record UnBanChatMemberBody(
         @JsonProperty("chat_id") long chatId,

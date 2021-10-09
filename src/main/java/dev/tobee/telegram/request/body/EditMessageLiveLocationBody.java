@@ -1,11 +1,11 @@
 package dev.tobee.telegram.request.body;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.ReplyMarkup;
-
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.ReplyMarkup;
 
 public record EditMessageLiveLocationBody(
         @JsonProperty("chat_id") long chatId,

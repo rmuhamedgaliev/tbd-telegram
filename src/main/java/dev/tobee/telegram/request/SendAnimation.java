@@ -1,5 +1,10 @@
 package dev.tobee.telegram.request;
 
+import java.net.URI;
+import java.nio.file.Paths;
+import java.util.Map;
+import java.util.Optional;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.Message;
 import dev.tobee.telegram.model.ResponseWrapper;
@@ -7,21 +12,13 @@ import dev.tobee.telegram.request.body.SendAnimationBody;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
-import java.net.URI;
-import java.nio.file.Paths;
-import java.util.Map;
-import java.util.Optional;
-
 public class SendAnimation implements Request<ResponseWrapper<Message>> {
 
     private static final String METHOD = "sendAnimation";
-
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
-    private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
-
     private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
     };
-
+    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
     private final SendAnimationBody body;
 
     public SendAnimation(SendAnimationBody body) {

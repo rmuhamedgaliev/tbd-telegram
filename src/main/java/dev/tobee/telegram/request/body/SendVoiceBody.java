@@ -1,13 +1,13 @@
 package dev.tobee.telegram.request.body;
 
+import java.util.List;
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyMarkup;
-
-import java.util.List;
-import java.util.Optional;
 
 public record SendVoiceBody(
         @JsonProperty("chat_id") long chatId,

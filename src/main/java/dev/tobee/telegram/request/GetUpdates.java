@@ -1,16 +1,16 @@
 package dev.tobee.telegram.request;
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.Update;
-import dev.tobee.telegram.request.body.GetUpdateBody;
-import dev.tobee.telegram.util.DefaultObjectMapper;
-
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.Update;
+import dev.tobee.telegram.request.body.GetUpdateBody;
+import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
 

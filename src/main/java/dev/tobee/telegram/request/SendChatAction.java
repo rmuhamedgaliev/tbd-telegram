@@ -1,11 +1,11 @@
 package dev.tobee.telegram.request;
 
+import java.util.Map;
+import java.util.Optional;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
-
-import java.util.Map;
-import java.util.Optional;
 
 public class SendChatAction implements Request<ResponseWrapper<Boolean>> {
 

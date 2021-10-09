@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetChatAdministrators implements Request<ResponseWrapper<List<ChatMember>>> {
     private static final String METHOD = "getChatAdministrators";
-    private static final TypeReference<ResponseWrapper<List<ChatMember>>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<List<ChatMember>>> reference = new TypeReference<>() {
+    };
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
     private final GetChatAdministratorsBody body;
 

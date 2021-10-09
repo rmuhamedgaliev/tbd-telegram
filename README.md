@@ -25,7 +25,7 @@ Add Maven dependency
 <dependency>
     <groupId>dev.tobee</groupId>
     <artifactId>tbd-telegram-sdk</artifactId>
-    <version>0.0.3</version>
+    <version>0.1.0</version>
 </dependency>
 ```
 

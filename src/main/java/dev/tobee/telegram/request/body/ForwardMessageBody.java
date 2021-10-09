@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public record ForwardMessageBody(
         @JsonProperty("chat_id") long chatId,
         @JsonProperty("from_chat_id") int fromChatId,
-        @JsonProperty("disable_notification")Optional<Boolean> disableNotification,
+        @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
         @JsonProperty("message_id") OptionalLong messageId
 ) {
 }

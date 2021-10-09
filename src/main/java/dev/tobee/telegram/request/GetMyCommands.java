@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetMyCommands implements Request<ResponseWrapper<List<BotCommand>>> {
     private static final String METHOD = "setMyCommands";
-    private static final TypeReference<ResponseWrapper<List<BotCommand>>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<List<BotCommand>>> reference = new TypeReference<>() {
+    };
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();
     private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
     private final GetMyCommandsBody body;

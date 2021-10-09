@@ -14,7 +14,7 @@ public enum DiceEmoji {
     @JsonProperty("🎳")
     BOWLING("🎳");
 
-    public String emoji;
+    public final String emoji;
 
     DiceEmoji(String emoji) {
         this.emoji = emoji;

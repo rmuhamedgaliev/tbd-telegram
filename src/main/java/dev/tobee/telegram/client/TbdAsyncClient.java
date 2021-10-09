@@ -1,11 +1,5 @@
 package dev.tobee.telegram.client;
 
-import dev.tobee.telegram.model.InputFile;
-import dev.tobee.telegram.request.Request;
-import dev.tobee.telegram.util.DefaultJsonMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -18,24 +12,18 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-public class TbdAsyncClient {
+import dev.tobee.telegram.model.InputFile;
+import dev.tobee.telegram.request.Request;
+import dev.tobee.telegram.util.DefaultJsonMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) {
     private static final Logger LOGGER = LoggerFactory.getLogger(TbdAsyncClient.class);
 
     private static final DefaultJsonMapper mapper = new DefaultJsonMapper();
 
     private static final String DEFAULT_MIME_TYPE = "application/json";
-
-    private final boolean isDebugEnabled;
-
-    private final String host;
-
-    private final String token;
-
-    public TbdAsyncClient(boolean isDebugEnabled, String host, String token) {
-        this.isDebugEnabled = isDebugEnabled;
-        this.host = host;
-        this.token = token;
-    }
 
     public <T> CompletableFuture<T> getRequest(Request<T> request) {
 
@@ -72,7 +60,7 @@ public class TbdAsyncClient {
                                 .build(),
                         HttpResponse.BodyHandlers.ofString()
                 )
-                .thenApplyAsync(this::logingResponse)
+                .thenApplyAsync(this::logResponse)
                 .thenApply(HttpResponse::body)
                 .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
     }
@@ -123,7 +111,7 @@ public class TbdAsyncClient {
         LOGGER.debug("Multipart request data \n{}", data);
     }
 
-    private HttpResponse<String> logingResponse(HttpResponse<String> response) {
+    private HttpResponse<String> logResponse(HttpResponse<String> response) {
 
         if (LOGGER.isDebugEnabled() && Objects.nonNull(response.body())) {
             LOGGER.debug("Response {}", response.body());

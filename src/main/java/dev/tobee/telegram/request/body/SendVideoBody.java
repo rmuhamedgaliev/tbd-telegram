@@ -1,14 +1,14 @@
 package dev.tobee.telegram.request.body;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.InputFile;
 import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyMarkup;
-
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
 
 public record SendVideoBody(
         @JsonProperty("chat_id") long chatId,

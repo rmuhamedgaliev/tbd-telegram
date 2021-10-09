@@ -21,5 +21,5 @@ public record CopyMessageBody(
         @JsonProperty("reply_to_message_id") OptionalInt replyToMessageId,
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
         @JsonProperty("reply_markup") Optional<ReplyMarkup> replyMarkup
-        ) {
+) {
 }

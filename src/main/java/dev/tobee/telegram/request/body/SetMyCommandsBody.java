@@ -11,5 +11,5 @@ public record SetMyCommandsBody(
         @JsonProperty("commands") List<BotCommand> commands,
         @JsonProperty("scope") Optional<BotCommandScope> scope,
         @JsonProperty("language_code") Optional<String> languageCode
-        ) {
+) {
 }
