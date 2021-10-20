@@ -1,4 +1,4 @@
-val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
+//val versionDetails: groovy.lang.Closure<com.palantir.gradle.gitversion.VersionDetails> by extra
 
 plugins {
     `java-library`
@@ -11,7 +11,7 @@ plugins {
     id("org.shipkit.shipkit-changelog") version "1.1.15"
     id("org.shipkit.shipkit-github-release") version "1.1.15"
     id("org.shipkit.shipkit-auto-version") version "1.1.19"
-    id("com.palantir.git-version") version "0.12.3"
+//    id("com.palantir.git-version") version "0.12.3"
 }
 
 group = "dev.tobee"
@@ -158,5 +158,5 @@ tasks.githubRelease {
     repository = "rmuhamedgaliev/tbd-telegram"
     changelog = tasks.generateChangelog.get().outputFile
     githubToken = System.getenv("GITHUB_PACKAGE_TOKEN")
-    newTagRevision = versionDetails().gitHashFull
+//    newTagRevision = versionDetails().gitHashFull
 }
