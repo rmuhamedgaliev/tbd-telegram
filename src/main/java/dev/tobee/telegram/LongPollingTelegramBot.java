@@ -16,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Flow;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.SubmissionPublisher;
 import java.util.concurrent.TimeUnit;
@@ -34,14 +35,20 @@ public class LongPollingTelegramBot implements TelegramBot {
 
     private final SubmissionPublisher<Update> publisher = new SubmissionPublisher<>();
 
+    public LongPollingTelegramBot(TbdAsyncClient tbdTGReactorClient, Flow.Subscriber<Update> subscriber) {
+        this.tbdTGReactorClient = tbdTGReactorClient;
+        this.executorService = Executors.newSingleThreadScheduledExecutor();
+        this.publisher.subscribe(subscriber);
+    }
+
     public LongPollingTelegramBot(String host, String token, ScheduledExecutorService executorService,
-                                  UpdateSubscriber subscriber) {
+                                  Flow.Subscriber<Update> subscriber) {
         this.tbdTGReactorClient = new TbdAsyncClient(true, host, token);
         this.executorService = executorService;
         this.publisher.subscribe(subscriber);
     }
 
-    public LongPollingTelegramBot(String host, String token, UpdateSubscriber subscriber) {
+    public LongPollingTelegramBot(String host, String token, Flow.Subscriber<Update> subscriber) {
         this.tbdTGReactorClient = new TbdAsyncClient(true, host, token);
         this.executorService = Executors.newSingleThreadScheduledExecutor();
         this.publisher.subscribe(subscriber);
@@ -82,7 +89,7 @@ public class LongPollingTelegramBot implements TelegramBot {
                 },
                 initialDelay.orElse(0),
                 period.orElse(getDefaultPeriodInMilliseconds()),
-                TimeUnit.MILLISECONDS
+                TimeUnit.SECONDS
         );
     }
 
@@ -113,9 +120,14 @@ public class LongPollingTelegramBot implements TelegramBot {
     private int getDefaultPeriodInMilliseconds() {
         SecureRandom random = new SecureRandom();
 
-        int min = 500;
-        int max = 1000;
+        int min = 2;
+        int max = 5;
 
         return random.nextInt(max) + min;
+    }
+
+    @Override
+    public TbdAsyncClient getClient() {
+        return tbdTGReactorClient;
     }
 }
