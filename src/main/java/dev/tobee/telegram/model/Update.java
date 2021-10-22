@@ -3,10 +3,10 @@ package dev.tobee.telegram.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 public record Update(
-        @JsonProperty("update_id") OptionalInt updateId,
+        @JsonProperty("update_id") OptionalLong updateId,
         @JsonProperty("message") Optional<Message> message,
         @JsonProperty("edited_message") Optional<Message> editedMessage,
         @JsonProperty("channel_post") Optional<Message> channelPost,

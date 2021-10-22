@@ -15,12 +15,13 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Flow;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.SubmissionPublisher;
 import java.util.concurrent.TimeUnit;
-import java.util.concurrent.atomic.AtomicInteger;
+import java.util.concurrent.atomic.AtomicLong;
 
 public class LongPollingTelegramBot implements TelegramBot {
     private static final Logger LOGGER = LoggerFactory.getLogger(LongPollingTelegramBot.class);
@@ -57,7 +58,7 @@ public class LongPollingTelegramBot implements TelegramBot {
     @Override
     public void subscribeToUpdate() {
 
-        AtomicInteger lastUpdate = new AtomicInteger();
+        AtomicLong lastUpdate = new AtomicLong();
 
         executorService.scheduleAtFixedRate(() -> {
                     try {
@@ -65,7 +66,7 @@ public class LongPollingTelegramBot implements TelegramBot {
 
                         if (lastUpdate.get() > 0) {
                             request = new GetUpdates(Optional.of(new GetUpdateBody(
-                                    OptionalInt.of(lastUpdate.get()),
+                                    OptionalLong.of(lastUpdate.get()),
                                     OptionalInt.empty(),
                                     OptionalInt.empty(),
                                     List.of(UpdateTypes.MESSAGE, UpdateTypes.CALLBACK_QUERY, UpdateTypes.CHANNEL_POST)
@@ -102,16 +103,9 @@ public class LongPollingTelegramBot implements TelegramBot {
         return lastUpdateObj;
     }
 
-    private void handleLastUpdateId(Optional<Update> update, AtomicInteger lastUpdate) {
+    private void handleLastUpdateId(Optional<Update> update, AtomicLong lastUpdate) {
         if (update.isPresent()) {
-
-            if (lastUpdate.get() == update.get().updateId().orElse(0)) {
-                lastUpdate.incrementAndGet();
-            }
-
-            if (lastUpdate.get() < update.get().updateId().orElse(0)) {
-                update.get().updateId().ifPresent(lastUpdate::set);
-            }
+            lastUpdate.set(update.get().updateId().orElse(0) + 1);
         } else {
             lastUpdate.set(0);
         }
