@@ -1,5 +1,11 @@
 package dev.tobee.telegram.client;
 
+import dev.tobee.telegram.model.InputFile;
+import dev.tobee.telegram.request.Request;
+import dev.tobee.telegram.util.DefaultJsonMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -12,17 +18,12 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import dev.tobee.telegram.model.InputFile;
-import dev.tobee.telegram.request.Request;
-import dev.tobee.telegram.util.DefaultJsonMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) {
     private static final Logger LOGGER = LoggerFactory.getLogger(TbdAsyncClient.class);
 
     private static final DefaultJsonMapper mapper = new DefaultJsonMapper();
 
+    private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(5);
     private static final String DEFAULT_MIME_TYPE = "application/json";
 
     public <T> CompletableFuture<T> getRequest(Request<T> request) {
@@ -35,7 +36,7 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
                         HttpRequest.newBuilder()
                                 .header("Content-Type", DEFAULT_MIME_TYPE)
                                 .headers("Accept", DEFAULT_MIME_TYPE)
-                                .timeout(Duration.ofSeconds(5))
+                                .timeout(DEFAULT_TIMEOUT)
                                 .uri(uri)
                                 .build(),
                         HttpResponse.BodyHandlers.ofString()
@@ -55,7 +56,7 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
                                 .header("Content-Type", "multipart/form-data; charset=utf-8; " +
                                         "boundary=" + boundary)
                                 .uri(uri)
-                                .timeout(Duration.ofSeconds(1))
+                                .timeout(DEFAULT_TIMEOUT)
                                 .POST(prepareMultipartData(request.getBody().orElseThrow(), boundary))
                                 .build(),
                         HttpResponse.BodyHandlers.ofString()

@@ -1,9 +1,5 @@
 package dev.tobee.telegram.request;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.BotCommand;
 import dev.tobee.telegram.model.ResponseWrapper;
@@ -11,8 +7,12 @@ import dev.tobee.telegram.request.body.GetMyCommandsBody;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
+
 public class GetMyCommands implements Request<ResponseWrapper<List<BotCommand>>> {
-    private static final String METHOD = "setMyCommands";
+    private static final String METHOD = "getMyCommands";
     private static final TypeReference<ResponseWrapper<List<BotCommand>>> reference = new TypeReference<>() {
     };
     private final DefaultObjectMapper mapper = new DefaultObjectMapper();

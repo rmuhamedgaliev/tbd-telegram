@@ -36,10 +36,10 @@ public class LongPollingTelegramBot implements TelegramBot {
 
     private final SubmissionPublisher<Update> publisher = new SubmissionPublisher<>();
 
-    public LongPollingTelegramBot(TbdAsyncClient tbdTGReactorClient, Flow.Subscriber<Update> subscriber) {
+    public LongPollingTelegramBot(TbdAsyncClient tbdTGReactorClient, List< Flow.Subscriber< Update >> subscribers) {
         this.tbdTGReactorClient = tbdTGReactorClient;
         this.executorService = Executors.newSingleThreadScheduledExecutor();
-        this.publisher.subscribe(subscriber);
+        subscribers.forEach(this.publisher::subscribe);
     }
 
     public LongPollingTelegramBot(String host, String token, ScheduledExecutorService executorService,
