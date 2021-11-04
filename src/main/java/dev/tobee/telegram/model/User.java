@@ -5,7 +5,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import java.util.Optional;
 
 public record User(
-        @JsonProperty("id") Integer id,
+        @JsonProperty("id") Long id,
         @JsonProperty("is_bot") Boolean isBot,
         @JsonProperty("first_name") String firstName,
         @JsonProperty("last_name") Optional<String> lastName,
