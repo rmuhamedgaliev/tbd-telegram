@@ -41,6 +41,7 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
                                 .build(),
                         HttpResponse.BodyHandlers.ofString()
                 )
+                .thenApplyAsync(this::logResponse)
                 .thenApply(HttpResponse::body)
                 .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
     }
