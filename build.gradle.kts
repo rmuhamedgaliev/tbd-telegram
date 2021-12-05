@@ -16,7 +16,7 @@ repositories {
 }
 
 object Versions {
-    const val jacksonVersion = "2.12.5"
+    const val jacksonVersion = "2.13.0"
     const val commonsVersion = "1.9"
     const val log4jVersion = "2.14.1"
     const val slf4jApiVersion = "1.7.32"
@@ -42,10 +42,8 @@ dependencies {
 
     testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.junitVersion}")
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.junitVersion}")
-
     testImplementation("org.mockito:mockito-core:${Versions.mockitoVersion}")
     testImplementation("org.mockito:mockito-junit-jupiter:${Versions.mockitoVersion}")
-
     testImplementation("uk.org.webcompere:system-stubs-core:${Versions.systemStubsVersion}")
     testImplementation("uk.org.webcompere:system-stubs-jupiter:${Versions.systemStubsVersion}")
 }
