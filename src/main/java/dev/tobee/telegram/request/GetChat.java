@@ -11,9 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetChat implements Request<ResponseWrapper<Chat>> {
     private static final String METHOD = "getChat";
-    private static final TypeReference<ResponseWrapper<Chat>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<Chat>> reference = new TypeReference<>() {};
+
     private final GetChatBody body;
 
     public GetChat(GetChatBody body) {
@@ -32,7 +31,7 @@ public class GetChat implements Request<ResponseWrapper<Chat>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

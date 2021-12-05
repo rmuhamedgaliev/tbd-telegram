@@ -11,9 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class CopyMessage implements Request<ResponseWrapper<MessageId>> {
     private static final String METHOD = "copyMessage";
-    private static final TypeReference<ResponseWrapper<MessageId>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<MessageId>> reference = new TypeReference<>() {};
+
     private final CopyMessageBody body;
 
     public CopyMessage(CopyMessageBody body) {
@@ -32,6 +31,6 @@ public class CopyMessage implements Request<ResponseWrapper<MessageId>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        return Optional.of(mapper.convertToMap(body));
+        return Optional.of(DefaultObjectMapper.convertToMap(body));
     }
 }

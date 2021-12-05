@@ -10,9 +10,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SetChatAdministratorCustomTitle implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "setChatAdministratorCustomTitle";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+
     private final SetChatAdministratorCustomTitleBody body;
 
     public SetChatAdministratorCustomTitle(SetChatAdministratorCustomTitleBody body) {
@@ -31,7 +30,7 @@ public class SetChatAdministratorCustomTitle implements Request<ResponseWrapper<
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

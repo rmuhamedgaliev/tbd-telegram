@@ -12,7 +12,7 @@ public class UnpinAllChatMessages implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "unpinAllChatMessages";
     private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
     };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+
     private final UnpinAllChatMessagesBody body;
 
     public UnpinAllChatMessages(UnpinAllChatMessagesBody body) {
@@ -31,7 +31,7 @@ public class UnpinAllChatMessages implements Request<ResponseWrapper<Boolean>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

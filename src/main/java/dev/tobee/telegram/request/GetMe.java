@@ -8,11 +8,8 @@ import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.model.User;
 
 public class GetMe implements Request<ResponseWrapper<User>> {
-
     private static final String METHOD = "getMe";
-
-    private static final TypeReference<ResponseWrapper<User>> reference = new TypeReference<>() {
-    };
+    private static final TypeReference<ResponseWrapper<User>> reference = new TypeReference<>() {};
 
     @Override
     public String getMethod() {

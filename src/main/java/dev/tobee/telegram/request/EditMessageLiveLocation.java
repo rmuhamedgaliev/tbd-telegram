@@ -13,10 +13,7 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 public class EditMessageLiveLocation implements Request<ResponseWrapper<Message>> {
 
     private static final String METHOD = "editMessageLiveLocation";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
-    private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
     private final EditMessageLiveLocationBody body;
 
     public EditMessageLiveLocation(EditMessageLiveLocationBody body) {
@@ -35,14 +32,8 @@ public class EditMessageLiveLocation implements Request<ResponseWrapper<Message>
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
-
-        String replyMarkupFieldName = "reply_markup";
-
-        if (bodyMap.containsKey(replyMarkupFieldName)) {
-            bodyMap.put(replyMarkupFieldName, jsonMapper.convertToString(body.replyMarkup()));
-        }
-
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
+        DefaultJsonMapper.convertMapValueToStringJson(bodyMap, "reply_markup", body.replyMarkup());
         return Optional.of(bodyMap);
     }
 

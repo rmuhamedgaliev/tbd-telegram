@@ -13,12 +13,8 @@ import dev.tobee.telegram.request.body.GetUpdateBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
-
     private static final String METHOD = "getUpdates";
-
-    private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {};
 
     private final Optional<GetUpdateBody> queryParams;
 
@@ -28,13 +24,9 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
 
     @Override
     public String getMethod() {
-
         String method = METHOD;
-
         Optional<Map<Object, Object>> body = getBody();
-
         if (body.isPresent()) {
-
             StringBuilder methodBuilder = new StringBuilder(method + "?");
             for (Map.Entry<Object, Object> entry : body.get().entrySet()) {
                 try {
@@ -46,13 +38,10 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
                 }
             }
             method = methodBuilder.toString();
-
             method = method.substring(0, method.lastIndexOf('&'));
         }
-
         return method;
     }
-
 
     @Override
     public TypeReference<ResponseWrapper<List<Update>>> getResponseType() {
@@ -61,6 +50,6 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        return queryParams.map(mapper::convertToMap);
+        return queryParams.map(DefaultObjectMapper::convertToMap);
     }
 }

@@ -10,11 +10,9 @@ import dev.tobee.telegram.request.body.GetUserProfilePhotosBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetUserProfilePhotos implements Request<ResponseWrapper<UserProfilePhotos>> {
-
     private static final String METHOD = "sendLocation";
-    private static final TypeReference<ResponseWrapper<UserProfilePhotos>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<UserProfilePhotos>> reference = new TypeReference<>() {};
+
     private final GetUserProfilePhotosBody body;
 
     public GetUserProfilePhotos(GetUserProfilePhotosBody body) {
@@ -33,8 +31,7 @@ public class GetUserProfilePhotos implements Request<ResponseWrapper<UserProfile
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
-
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

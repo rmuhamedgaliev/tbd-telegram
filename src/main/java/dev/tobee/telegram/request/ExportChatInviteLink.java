@@ -10,9 +10,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class ExportChatInviteLink implements Request<ResponseWrapper<String>> {
     private static final String METHOD = "exportChatInviteLink";
-    private static final TypeReference<ResponseWrapper<String>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<String>> reference = new TypeReference<>() {};
+
     private final ExportChatInviteLinkBody body;
 
     public ExportChatInviteLink(ExportChatInviteLinkBody body) {
@@ -31,7 +30,7 @@ public class ExportChatInviteLink implements Request<ResponseWrapper<String>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

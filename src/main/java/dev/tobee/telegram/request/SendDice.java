@@ -11,12 +11,8 @@ import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SendDice implements Request<ResponseWrapper<Message>> {
-
     private static final String METHOD = "sendDice";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
-    private final DefaultJsonMapper jsonMapper = new DefaultJsonMapper();
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
     private final SendDiceBody body;
 
     public SendDice(SendDiceBody body) {
@@ -35,14 +31,8 @@ public class SendDice implements Request<ResponseWrapper<Message>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
-
-        String replyMarkupFieldName = "reply_markup";
-
-        if (bodyMap.containsKey(replyMarkupFieldName)) {
-            bodyMap.put(replyMarkupFieldName, jsonMapper.convertToString(body.replyMarkup()));
-        }
-
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
+        DefaultJsonMapper.convertMapValueToStringJson(bodyMap, "reply_markup", body.replyMarkup());
         return Optional.of(bodyMap);
     }
 }

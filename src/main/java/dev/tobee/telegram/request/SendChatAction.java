@@ -5,14 +5,13 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.request.body.SendChatActionBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SendChatAction implements Request<ResponseWrapper<Boolean>> {
-
     private static final String METHOD = "sendChatAction";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+
     private final SendChatActionBody body;
 
     public SendChatAction(SendChatActionBody body) {
@@ -31,7 +30,7 @@ public class SendChatAction implements Request<ResponseWrapper<Boolean>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

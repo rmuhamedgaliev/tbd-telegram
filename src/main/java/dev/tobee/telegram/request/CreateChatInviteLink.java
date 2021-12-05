@@ -10,9 +10,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class CreateChatInviteLink implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "createChatInviteLink";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+
     private final CreateChatInviteLinkBody body;
 
     public CreateChatInviteLink(CreateChatInviteLinkBody body) {
@@ -31,7 +30,7 @@ public class CreateChatInviteLink implements Request<ResponseWrapper<Boolean>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

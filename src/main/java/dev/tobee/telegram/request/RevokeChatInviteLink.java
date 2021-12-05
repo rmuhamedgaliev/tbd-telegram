@@ -11,9 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class RevokeChatInviteLink implements Request<ResponseWrapper<ChatInviteLink>> {
     private static final String METHOD = "revokeChatInviteLink";
-    private static final TypeReference<ResponseWrapper<ChatInviteLink>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<ChatInviteLink>> reference = new TypeReference<>() {};
+
     private final RevokeChatInviteLinkBody body;
 
     public RevokeChatInviteLink(RevokeChatInviteLinkBody body) {
@@ -32,7 +31,7 @@ public class RevokeChatInviteLink implements Request<ResponseWrapper<ChatInviteL
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

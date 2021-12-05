@@ -14,7 +14,7 @@ public class GetChatAdministrators implements Request<ResponseWrapper<List<ChatM
     private static final String METHOD = "getChatAdministrators";
     private static final TypeReference<ResponseWrapper<List<ChatMember>>> reference = new TypeReference<>() {
     };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+
     private final GetChatAdministratorsBody body;
 
     public GetChatAdministrators(GetChatAdministratorsBody body) {
@@ -33,7 +33,7 @@ public class GetChatAdministrators implements Request<ResponseWrapper<List<ChatM
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

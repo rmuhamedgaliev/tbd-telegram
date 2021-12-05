@@ -10,9 +10,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SetChatDescription implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "setChatDescription";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+
     private final SetChatDescriptionBody body;
 
     public SetChatDescription(SetChatDescriptionBody body) {
@@ -31,7 +30,7 @@ public class SetChatDescription implements Request<ResponseWrapper<Boolean>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

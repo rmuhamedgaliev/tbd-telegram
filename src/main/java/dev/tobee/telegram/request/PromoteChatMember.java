@@ -9,11 +9,9 @@ import dev.tobee.telegram.request.body.PromoteChatMemberBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class PromoteChatMember implements Request<ResponseWrapper<Boolean>> {
-
     private static final String METHOD = "promoteChatMember";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+
     private final PromoteChatMemberBody body;
 
     public PromoteChatMember(PromoteChatMemberBody body) {
@@ -32,7 +30,7 @@ public class PromoteChatMember implements Request<ResponseWrapper<Boolean>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

@@ -11,9 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetFile implements Request<ResponseWrapper<File>> {
     private static final String METHOD = "getFile";
-    private static final TypeReference<ResponseWrapper<File>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<File>> reference = new TypeReference<>() {};
+
     private final GetFileBody body;
 
     public GetFile(GetFileBody body) {
@@ -32,7 +31,7 @@ public class GetFile implements Request<ResponseWrapper<File>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        Map<Object, Object> bodyMap = mapper.convertToMap(body);
+        Map<Object, Object> bodyMap = DefaultObjectMapper.convertToMap(body);
         return Optional.of(bodyMap);
     }
 }

@@ -9,11 +9,9 @@ import dev.tobee.telegram.request.body.SetWebHookBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SetWebHook implements Request<ResponseWrapper<Boolean>> {
-
     private static final String METHOD = "setWebhook";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
-    };
-    private final DefaultObjectMapper mapper = new DefaultObjectMapper();
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+
     private final SetWebHookBody body;
 
     public SetWebHook(SetWebHookBody body) {
@@ -32,6 +30,6 @@ public class SetWebHook implements Request<ResponseWrapper<Boolean>> {
 
     @Override
     public Optional<Map<Object, Object>> getBody() {
-        return Optional.ofNullable(mapper.convertToMap(body));
+        return Optional.ofNullable(DefaultObjectMapper.convertToMap(body));
     }
 }
