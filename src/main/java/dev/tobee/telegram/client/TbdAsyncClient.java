@@ -1,11 +1,5 @@
 package dev.tobee.telegram.client;
 
-import dev.tobee.telegram.model.InputFile;
-import dev.tobee.telegram.request.Request;
-import dev.tobee.telegram.util.DefaultJsonMapper;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -13,10 +7,18 @@ import java.net.http.HttpResponse;
 import java.nio.charset.StandardCharsets;
 import java.time.Duration;
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
+
+import dev.tobee.telegram.model.FileEntity;
+import dev.tobee.telegram.request.Request;
+import dev.tobee.telegram.util.DefaultJsonMapper;
+import dev.tobee.telegram.util.DefaultObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) {
     private static final Logger LOGGER = LoggerFactory.getLogger(TbdAsyncClient.class);
@@ -76,11 +78,12 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
             if (entry.getValue() != null) {
                 byteArrays.add(separator);
 
-                if (entry.getValue() instanceof InputFile file) {
+                if (entry.getValue() instanceof LinkedHashMap && ((LinkedHashMap<?, ?>) entry.getValue()).containsKey("file_name")) {
+                    var file = DefaultObjectMapper.getMapper().convertValue(entry.getValue(), FileEntity.class);
                     byteArrays.add(("\"" + entry.getKey() + "\"; filename=\""
-                            + file.fileName() + "\"\r\nContent-Type: " + file.mimeType()
+                            + file.getFileName() + "\"\r\nContent-Type: " + file.getMimeType()
                             + "\r\n\r\n").getBytes(StandardCharsets.UTF_8));
-                    byteArrays.add(file.content());
+                    byteArrays.add(file.getContent());
                     byteArrays.add("\r\n".getBytes(StandardCharsets.UTF_8));
                 } else {
 

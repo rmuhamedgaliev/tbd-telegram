@@ -24,6 +24,10 @@ public class DefaultObjectMapper {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
     }
 
+    public static ObjectMapper getMapper() {
+        return mapper;
+    }
+
     public static <T> Map<Object, Object> convertToMap(T t) {
         TypeReference<Map<Object, Object>> reference = new TypeReference<>() {};
         return mapper.convertValue(t, reference);

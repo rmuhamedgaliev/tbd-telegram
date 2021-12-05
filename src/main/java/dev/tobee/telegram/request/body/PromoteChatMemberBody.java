@@ -6,7 +6,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record PromoteChatMemberBody(
         @JsonProperty("chat_id") long chatId,
-        @JsonProperty("user_id") int userId,
+        @JsonProperty("user_id") long userId,
         @JsonProperty("is_anonymous") Optional<Boolean> is_anonymous,
         @JsonProperty("can_manage_chat") Optional<Boolean> canManageChat,
         @JsonProperty("can_post_messages") Optional<Boolean> canPostMessages,

@@ -20,13 +20,13 @@ import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyKeyboardMarkup;
-import dev.tobee.telegram.request.GetMe;
-import dev.tobee.telegram.request.SendChatAction;
+import dev.tobee.telegram.request.user.GetMe;
+import dev.tobee.telegram.request.sendobject.SendChatAction;
 import dev.tobee.telegram.request.body.SendChatActionBody;
-import dev.tobee.telegram.request.SendDice;
-import dev.tobee.telegram.request.SendLocation;
-import dev.tobee.telegram.request.SendMessage;
-import dev.tobee.telegram.request.SendPhoto;
+import dev.tobee.telegram.request.sendobject.SendDice;
+import dev.tobee.telegram.request.sendobject.SendLocation;
+import dev.tobee.telegram.request.message.SendMessage;
+import dev.tobee.telegram.request.sendobject.SendPhoto;
 import dev.tobee.telegram.request.comands.SetMyCommands;
 import dev.tobee.telegram.request.body.SendDiceBody;
 import dev.tobee.telegram.request.body.SendLocationBody;
@@ -65,7 +65,7 @@ class TestSendMessage {
                         )),
                         Optional.empty(),
                         Optional.empty(),
-                        Optional.empty(),
+                        OptionalInt.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
                                 List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
@@ -99,12 +99,12 @@ class TestSendMessage {
                                 MessageEntityType.BOLD,
                                 100,
                                 100,
-                                Optional.of("https://deathqj00yf.mr"),
+                                Optional.empty(),
                                 Optional.empty(),
                                 Optional.empty()
                         )),
                         Optional.empty(),
-                        Optional.empty(),
+                        OptionalInt.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
                                 List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
@@ -131,7 +131,7 @@ class TestSendMessage {
                 OptionalInt.of(360),
                 OptionalInt.of(500),
                 Optional.empty(),
-                Optional.empty(),
+                OptionalInt.empty(),
                 Optional.empty(),
                 Optional.empty()
 
@@ -147,7 +147,7 @@ class TestSendMessage {
                 chatId,
                 Optional.of(DiceEmoji.DIRECT_HIT),
                 Optional.empty(),
-                Optional.empty(),
+                OptionalInt.empty(),
                 Optional.empty(),
                 Optional.empty()
         ));

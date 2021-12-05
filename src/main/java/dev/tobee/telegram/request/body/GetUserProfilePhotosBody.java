@@ -5,7 +5,7 @@ import java.util.OptionalInt;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record GetUserProfilePhotosBody(
-        @JsonProperty("user_id") int userId,
+        @JsonProperty("user_id") long userId,
         @JsonProperty("offset") OptionalInt offset,
         @JsonProperty("limit") OptionalInt limit
 ) {
