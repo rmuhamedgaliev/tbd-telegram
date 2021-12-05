@@ -32,7 +32,7 @@ Add Maven dependency
 Or in gradle 
 
 ```kotlin
-implementation("dev.tobee:tbd-telegram-sdk:0.0.3")
+implementation("dev.tobee:tbd-telegram-sdk:0.1.5")
 ```
 
 ## Usage
