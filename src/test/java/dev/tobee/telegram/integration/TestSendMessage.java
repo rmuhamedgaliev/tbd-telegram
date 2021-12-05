@@ -20,24 +20,25 @@ import dev.tobee.telegram.model.MessageEntity;
 import dev.tobee.telegram.model.MessageEntityType;
 import dev.tobee.telegram.model.ParseMode;
 import dev.tobee.telegram.model.ReplyKeyboardMarkup;
-import dev.tobee.telegram.request.GetMe;
-import dev.tobee.telegram.request.SendChatAction;
-import dev.tobee.telegram.request.SendChatActionBody;
-import dev.tobee.telegram.request.SendDice;
-import dev.tobee.telegram.request.SendLocation;
-import dev.tobee.telegram.request.SendMessage;
-import dev.tobee.telegram.request.SendPhoto;
-import dev.tobee.telegram.request.SetMyCommands;
+import dev.tobee.telegram.request.user.GetMe;
+import dev.tobee.telegram.request.sendobject.SendChatAction;
+import dev.tobee.telegram.request.body.SendChatActionBody;
+import dev.tobee.telegram.request.sendobject.SendDice;
+import dev.tobee.telegram.request.sendobject.SendLocation;
+import dev.tobee.telegram.request.message.SendMessage;
+import dev.tobee.telegram.request.sendobject.SendPhoto;
+import dev.tobee.telegram.request.comands.SetMyCommands;
 import dev.tobee.telegram.request.body.SendDiceBody;
 import dev.tobee.telegram.request.body.SendLocationBody;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.body.SendPhotoBody;
 import dev.tobee.telegram.request.body.SetMyCommandsBody;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 
 @EnabledIfEnvironmentVariable(named = "integration", matches = "true")
-public class TestSendMessage {
+class TestSendMessage {
 
     private final String host = "https://api.telegram.org";
 
@@ -48,7 +49,7 @@ public class TestSendMessage {
     private final TbdAsyncClient client = new TbdAsyncClient(true, host, token);
 
     @Test
-    public void sendMessageTest() {
+    void sendMessageTest() {
         var sendMessage = new SendMessage(
                 new SendMessageBody(
                         chatId,
@@ -64,7 +65,7 @@ public class TestSendMessage {
                         )),
                         Optional.empty(),
                         Optional.empty(),
-                        Optional.empty(),
+                        OptionalInt.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
                                 List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
@@ -77,12 +78,11 @@ public class TestSendMessage {
                 ));
 
         var response = client.postRequest(sendMessage).join();
-
-        System.out.println(response);
+        Assertions.assertNotNull(response);
     }
 
     @Test
-    public void sendPhotoTest() throws IOException {
+    void sendPhotoTest() throws IOException {
 
         Path path = new File("data/1x1.png").toPath();
 
@@ -99,12 +99,12 @@ public class TestSendMessage {
                                 MessageEntityType.BOLD,
                                 100,
                                 100,
-                                Optional.of("https://deathqj00yf.mr"),
+                                Optional.empty(),
                                 Optional.empty(),
                                 Optional.empty()
                         )),
                         Optional.empty(),
-                        Optional.empty(),
+                        OptionalInt.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
                                 List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
@@ -117,12 +117,11 @@ public class TestSendMessage {
                 ));
 
         var response = client.postRequest(sendMessage).join();
-
-        System.out.println(response);
+        Assertions.assertNotNull(response);
     }
 
     @Test
-    public void sendLocationTest() {
+    void sendLocationTest() {
         var request = new SendLocation(new SendLocationBody(
                 chatId,
                 56.636525f,
@@ -132,47 +131,43 @@ public class TestSendMessage {
                 OptionalInt.of(360),
                 OptionalInt.of(500),
                 Optional.empty(),
-                Optional.empty(),
+                OptionalInt.empty(),
                 Optional.empty(),
                 Optional.empty()
 
         ));
 
         var response = client.postRequest(request).join();
-
-        System.out.println(response);
+        Assertions.assertNotNull(response);
     }
 
     @Test
-    public void sendDiceTest() {
+    void sendDiceTest() {
         var request = new SendDice(new SendDiceBody(
                 chatId,
                 Optional.of(DiceEmoji.DIRECT_HIT),
                 Optional.empty(),
-                Optional.empty(),
+                OptionalInt.empty(),
                 Optional.empty(),
                 Optional.empty()
         ));
 
         var response = client.postRequest(request).join();
-
-        System.out.println(response);
+        Assertions.assertNotNull(response);
     }
 
     @Test
-    public void sendChatActionTest() {
+    void sendChatActionTest() {
         var request = new SendChatAction(new SendChatActionBody(
                 chatId,
                 ChatAction.TYPING
         ));
-
         var response = client.postRequest(request).join();
-
-        System.out.println(response);
+        Assertions.assertNotNull(response);
     }
 
     @Test
-    public void exportInviteChatActionTest() {
+    void exportInviteChatActionTest() {
         var request = new SetMyCommands(new SetMyCommandsBody(
                 List.of(new BotCommand("login", "Login abc")),
                 Optional.of(new BotCommandScopeDefault()),
@@ -180,16 +175,13 @@ public class TestSendMessage {
         ));
 
         var response = client.postRequest(request).join();
-
-        System.out.println(response);
+        Assertions.assertNotNull(response);
     }
 
     @Test
-    public void getMeTest() {
+    void getMeTest() {
         var request = new GetMe();
-
         var response = client.getRequest(request).join();
-
-        System.out.println(response);
+        Assertions.assertNotNull(response);
     }
 }

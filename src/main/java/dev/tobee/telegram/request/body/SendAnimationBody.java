@@ -23,7 +23,7 @@ public record SendAnimationBody(
         @JsonProperty("caption_entities") List<MessageEntity> entities,
         @JsonProperty("supports_streaming") Optional<Boolean> supportsStreaming,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
-        @JsonProperty("reply_to_message_id") Optional<Integer> replyToMessageId,
+        @JsonProperty("reply_to_message_id") OptionalInt replyToMessageId,
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
         @JsonProperty("reply_markup") Optional<ReplyMarkup> replyMarkup
 ) {

@@ -7,7 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record BanChatMemberBody(
         @JsonProperty("chat_id") long chatId,
-        @JsonProperty("user_id") int userId,
+        @JsonProperty("user_id") long userId,
         @JsonProperty("until_date") OptionalLong untilDate,
         @JsonProperty("revoke_messages") Optional<Boolean> revokeMessages
 ) {

@@ -4,7 +4,7 @@ import dev.tobee.telegram.client.TbdAsyncClient;
 import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.model.Update;
 import dev.tobee.telegram.model.UpdateTypes;
-import dev.tobee.telegram.request.GetUpdates;
+import dev.tobee.telegram.request.chat.GetUpdates;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.body.GetUpdateBody;
 import org.slf4j.Logger;

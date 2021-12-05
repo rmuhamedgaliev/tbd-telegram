@@ -7,7 +7,7 @@ import dev.tobee.telegram.model.ChatPermissions;
 
 public record RestrictChatMemberBody(
         @JsonProperty("chat_id") long chatId,
-        @JsonProperty("user_id") int userId,
+        @JsonProperty("user_id") long userId,
         @JsonProperty("permissions") ChatPermissions permissions,
         @JsonProperty("until_date") OptionalLong untilDate
 ) {

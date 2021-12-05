@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "dev.tobee"
-version = "0.1.1"
+version = "0.1.5"
 
 repositories {
     mavenCentral()
@@ -133,6 +133,7 @@ sonarqube {
         property("sonar.core.codeCoveragePlugin", "jacoco")
         property("sonar.coverage.jacoco.xmlReportPaths", "build/reports/jacoco/test/jacocoTestReport.xml")
         property("sonar.exclusions", "src/main/java/dev/tobee/telegram/model/*.java")
+        property("sonar.cpd.exclusions", "src/main/java/dev/tobee/telegram/request/**/*.java")
     }
 }
 

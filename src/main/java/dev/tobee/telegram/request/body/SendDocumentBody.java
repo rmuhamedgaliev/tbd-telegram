@@ -3,6 +3,7 @@ package dev.tobee.telegram.request.body;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalInt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.InputFile;
@@ -19,7 +20,7 @@ public record SendDocumentBody(
         @JsonProperty("caption_entities") List<MessageEntity> entities,
         @JsonProperty("disable_content_type_detection") Optional<Boolean> disableContentTypeDetection,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
-        @JsonProperty("reply_to_message_id") Optional<Integer> replyToMessageId,
+        @JsonProperty("reply_to_message_id") OptionalInt replyToMessageId,
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
         @JsonProperty("reply_markup") Optional<ReplyMarkup> replyMarkup
 ) {
