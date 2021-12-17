@@ -22,5 +22,7 @@ public enum ChatAction {
     @JsonProperty("record_video_note")
     RECORD_VIDEO_NOTE,
     @JsonProperty("upload_video_note")
-    UPLOAD_VIDEO_NOTE
+    UPLOAD_VIDEO_NOTE,
+    @JsonProperty("choose_sticker")
+    CHOOSE_STICKER
 }

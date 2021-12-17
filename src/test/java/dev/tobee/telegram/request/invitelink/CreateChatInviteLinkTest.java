@@ -1,5 +1,6 @@
 package dev.tobee.telegram.request.invitelink;
 
+import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
 
@@ -14,7 +15,7 @@ class CreateChatInviteLinkTest {
     @Test
     void checkValidRequest() {
         CreateChatInviteLink createChatInviteLink = new CreateChatInviteLink(
-                new CreateChatInviteLinkBody(159L, OptionalLong.empty(), OptionalInt.empty())
+                new CreateChatInviteLinkBody(159L, Optional.empty(), OptionalLong.empty(), OptionalInt.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(createChatInviteLink.getResponseType().getType().getTypeName(),
