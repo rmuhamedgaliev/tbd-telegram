@@ -1,5 +1,6 @@
 package dev.tobee.telegram.request.invitelink;
 
+import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
 
@@ -14,7 +15,7 @@ class EditChatInviteLinkTest {
     @Test
     void checkValidRequest() {
         EditChatInviteLink editChatInviteLink = new EditChatInviteLink(
-                new EditChatInviteLinkBody(159L, "https://beguncx.tvx", OptionalLong.empty(), OptionalInt.empty())
+                new EditChatInviteLinkBody(159L, "https://beguncx.tvx", Optional.empty(), OptionalLong.empty(), OptionalInt.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(editChatInviteLink.getResponseType().getType().getTypeName(),

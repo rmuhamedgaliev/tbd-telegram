@@ -4,12 +4,11 @@ import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record ChatMemberUpdated(
+public record ChatJoinRequest(
         @JsonProperty("chat") Chat chat,
-        @JsonProperty("from") User user,
+        @JsonProperty("from") User from,
         @JsonProperty("date") long date,
-        @JsonProperty("old_chat_member") ChatMember oldChatMember,
-        @JsonProperty("new_chat_member") ChatMember newChatMember,
+        @JsonProperty("bio") Optional<String> bio,
         @JsonProperty("invite_link") Optional<ChatInviteLink> inviteLink
 ) {
 }
