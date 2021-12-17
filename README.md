@@ -25,14 +25,14 @@ Add Maven dependency
 <dependency>
     <groupId>dev.tobee</groupId>
     <artifactId>tbd-telegram-sdk</artifactId>
-    <version>0.1.5</version>
+    <version>0.1.7</version>
 </dependency>
 ```
 
 Or in gradle 
 
 ```kotlin
-implementation("dev.tobee:tbd-telegram-sdk:0.1.5")
+implementation("dev.tobee:tbd-telegram-sdk:0.1.7")
 ```
 
 ## Usage
