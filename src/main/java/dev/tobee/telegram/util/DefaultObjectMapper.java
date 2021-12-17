@@ -17,7 +17,8 @@ public class DefaultObjectMapper {
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {
-        mapper.registerModule(new Jdk8Module().configureAbsentsAsNulls(true));
+        mapper.registerModule(new Jdk8Module());
+        mapper.setDefaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.CUSTOM, JsonInclude.Include.CUSTOM));
         mapper.registerModule(new ParameterNamesModule());
         mapper.registerModule(new JavaTimeModule());
         mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);

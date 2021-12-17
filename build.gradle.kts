@@ -34,8 +34,9 @@ dependencies {
     implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:${Versions.jacksonVersion}")
 
     implementation("org.apache.commons:commons-text:${Versions.commonsVersion}")
-    implementation("org.apache.logging.log4j:log4j-slf4j-impl:${Versions.log4jVersion}")
+
     implementation("org.apache.logging.log4j:log4j-core:${Versions.log4jVersion}")
+    implementation("org.apache.logging.log4j:log4j-slf4j-impl:${Versions.log4jVersion}")
     implementation("org.apache.logging.log4j:log4j-api:${Versions.log4jVersion}")
     implementation("org.slf4j:slf4j-api:${Versions.slf4jApiVersion}")
 

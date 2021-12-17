@@ -16,7 +16,8 @@ public class DefaultJsonMapper {
 
     private static final JsonMapper mapper = JsonMapper.builder()
             .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-            .addModule(new Jdk8Module().configureAbsentsAsNulls(true))
+            .addModule(new Jdk8Module())
+            .defaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.CUSTOM, JsonInclude.Include.CUSTOM))
             .addModule(new ParameterNamesModule())
             .enable(SerializationFeature.INDENT_OUTPUT)
             .serializationInclusion(JsonInclude.Include.NON_NULL)

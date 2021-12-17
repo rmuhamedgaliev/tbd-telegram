@@ -21,7 +21,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) {
-    private static final Logger LOGGER = LoggerFactory.getLogger(TbdAsyncClient.class);
+    private static final Logger logger = LoggerFactory.getLogger(TbdAsyncClient.class);
 
     private static final DefaultJsonMapper mapper = new DefaultJsonMapper();
 
@@ -29,11 +29,8 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
     private static final String DEFAULT_MIME_TYPE = "application/json";
 
     public <T> CompletableFuture<T> getRequest(Request<T> request) {
-
         URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
-
-        LOGGER.debug("Request to {}", uri);
-
+        logger.debug("Request to {}", uri);
         return HttpClient.newHttpClient().sendAsync(
                         HttpRequest.newBuilder()
                                 .header("Content-Type", DEFAULT_MIME_TYPE)
@@ -49,15 +46,11 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
     }
 
     public <T> CompletableFuture<T> postRequest(Request<T> request) {
-
         String boundary = UUID.randomUUID().toString();
-
         URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
-
         return HttpClient.newHttpClient().sendAsync(
                         HttpRequest.newBuilder()
-                                .header("Content-Type", "multipart/form-data; charset=utf-8; " +
-                                        "boundary=" + boundary)
+                                .header("Content-Type", "multipart/form-data; charset=utf-8; boundary=" + boundary)
                                 .uri(uri)
                                 .timeout(DEFAULT_TIMEOUT)
                                 .POST(prepareMultipartData(request.getBody().orElseThrow(), boundary))
@@ -71,13 +64,10 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
 
     private HttpRequest.BodyPublisher prepareMultipartData(Map<Object, Object> data, String boundary) {
         var byteArrays = new ArrayList<byte[]>();
-        byte[] separator = ("--" + boundary
-                + "\r\nContent-Disposition: form-data; name=")
-                .getBytes(StandardCharsets.UTF_8);
+        byte[] separator = ("--" + boundary + "\r\nContent-Disposition: form-data; name=").getBytes(StandardCharsets.UTF_8);
         for (Map.Entry<Object, Object> entry : data.entrySet()) {
             if (entry.getValue() != null) {
                 byteArrays.add(separator);
-
                 if (entry.getValue() instanceof LinkedHashMap && ((LinkedHashMap<?, ?>) entry.getValue()).containsKey("file_name")) {
                     var file = DefaultObjectMapper.getMapper().convertValue(entry.getValue(), FileEntity.class);
                     byteArrays.add(("\"" + entry.getKey() + "\"; filename=\""
@@ -86,19 +76,14 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
                     byteArrays.add(file.getContent());
                     byteArrays.add("\r\n".getBytes(StandardCharsets.UTF_8));
                 } else {
-
-                    byteArrays.add(
-                            ("\"" + entry.getKey() + "\"\r\n\r\n" + entry.getValue()
-                                    + "\r\n").getBytes(StandardCharsets.UTF_8));
+                    byteArrays.add(("\"" + entry.getKey() + "\"\r\n\r\n" + entry.getValue() + "\r\n").getBytes(StandardCharsets.UTF_8));
                 }
             }
         }
         byteArrays.add(("--" + boundary + "--").getBytes(StandardCharsets.UTF_8));
-
         if (this.isDebugEnabled) {
             printDebugMultipartData(byteArrays);
         }
-
         return HttpRequest.BodyPublishers.ofByteArrays(byteArrays);
     }
 
@@ -110,16 +95,13 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
             System.arraycopy(bin, 0, all, pos, length);
             pos += length;
         }
-
         String data = new String(all);
-
-        LOGGER.debug("Multipart request data \n{}", data);
+        logger.debug("Multipart request data \n{}", data);
     }
 
     private HttpResponse<String> logResponse(HttpResponse<String> response) {
-
-        if (LOGGER.isDebugEnabled() && Objects.nonNull(response.body())) {
-            LOGGER.debug("Response {}", response.body());
+        if (logger.isDebugEnabled() && Objects.nonNull(response.body())) {
+            logger.debug("Response {}", response.body());
         }
         return response;
     }
