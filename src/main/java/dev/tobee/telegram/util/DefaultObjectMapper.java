@@ -18,11 +18,10 @@ public class DefaultObjectMapper {
 
     static {
         mapper.registerModule(new Jdk8Module());
-        mapper.setDefaultPropertyInclusion(JsonInclude.Value.construct(JsonInclude.Include.CUSTOM, JsonInclude.Include.CUSTOM));
         mapper.registerModule(new ParameterNamesModule());
         mapper.registerModule(new JavaTimeModule());
         mapper.setPropertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE);
-        mapper.setSerializationInclusion(JsonInclude.Include.NON_NULL);
+        mapper.setSerializationInclusion(JsonInclude.Include.NON_ABSENT);
     }
 
     public static ObjectMapper getMapper() {
