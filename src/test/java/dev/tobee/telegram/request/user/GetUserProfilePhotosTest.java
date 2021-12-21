@@ -3,8 +3,8 @@ package dev.tobee.telegram.request.user;
 import java.util.OptionalInt;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.UserProfilePhotos;
+import dev.tobee.telegram.model.message.ResponseWrapper;
+import dev.tobee.telegram.model.message.UserProfilePhotos;
 import dev.tobee.telegram.request.body.GetUserProfilePhotosBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

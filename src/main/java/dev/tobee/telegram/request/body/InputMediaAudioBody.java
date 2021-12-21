@@ -1,12 +1,12 @@
 package dev.tobee.telegram.request.body;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.MessageEntity;
+import dev.tobee.telegram.model.message.ParseMode;
+
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.MessageEntity;
-import dev.tobee.telegram.model.ParseMode;
 
 public record InputMediaAudioBody(
         @JsonProperty("type") String type,

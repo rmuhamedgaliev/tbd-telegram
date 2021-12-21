@@ -6,7 +6,7 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.UpdateTypes;
+import dev.tobee.telegram.model.message.UpdateTypes;
 
 public record SetWebHookBody(
         @JsonProperty("url") String url,

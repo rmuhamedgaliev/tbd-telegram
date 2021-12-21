@@ -1,8 +1,8 @@
 package dev.tobee.telegram.request.chat;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.Chat;
-import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.chat.Chat;
+import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.body.GetChatBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

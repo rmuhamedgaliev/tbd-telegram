@@ -1,7 +1,7 @@
 package dev.tobee.telegram.request.user;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.message.ResponseWrapper;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

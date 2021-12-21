@@ -1,7 +1,7 @@
 package dev.tobee.telegram.request.chatmember;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.body.GetChatMemberCountBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

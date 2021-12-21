@@ -5,7 +5,7 @@ import java.util.OptionalInt;
 import java.util.OptionalLong;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.ReplyMarkup;
+import dev.tobee.telegram.model.message.ReplyMarkup;
 
 public record EditMessageLiveLocationBody(
         @JsonProperty("chat_id") long chatId,

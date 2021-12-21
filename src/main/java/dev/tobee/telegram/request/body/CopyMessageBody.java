@@ -5,9 +5,9 @@ import java.util.Optional;
 import java.util.OptionalLong;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.MessageEntity;
-import dev.tobee.telegram.model.ParseMode;
-import dev.tobee.telegram.model.ReplyMarkup;
+import dev.tobee.telegram.model.message.MessageEntity;
+import dev.tobee.telegram.model.message.ParseMode;
+import dev.tobee.telegram.model.message.ReplyMarkup;
 
 public record CopyMessageBody(
         @JsonProperty("chat_id") long chatId,

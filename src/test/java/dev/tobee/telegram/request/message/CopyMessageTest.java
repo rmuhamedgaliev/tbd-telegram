@@ -5,8 +5,8 @@ import java.util.Optional;
 import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.MessageId;
-import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.message.MessageId;
+import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.body.CopyMessageBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

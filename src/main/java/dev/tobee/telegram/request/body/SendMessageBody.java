@@ -1,14 +1,13 @@
 package dev.tobee.telegram.request.body;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.MessageEntity;
+import dev.tobee.telegram.model.message.ParseMode;
+import dev.tobee.telegram.model.message.ReplyMarkup;
+
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.MessageEntity;
-import dev.tobee.telegram.model.ParseMode;
-import dev.tobee.telegram.model.ReplyMarkup;
-import org.apache.commons.text.StringEscapeUtils;
 
 public record SendMessageBody(
         @JsonProperty("chat_id") long chatId,
@@ -21,9 +20,4 @@ public record SendMessageBody(
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
         @JsonProperty("reply_markup") Optional<ReplyMarkup> replyMarkup
 ) {
-
-    @Override
-    public String text() {
-        return StringEscapeUtils.escapeJava(text);
-    }
 }

@@ -5,11 +5,11 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.InputFile;
-import dev.tobee.telegram.model.MessageEntity;
-import dev.tobee.telegram.model.ParseMode;
-import dev.tobee.telegram.model.PhotoSize;
-import dev.tobee.telegram.model.ReplyMarkup;
+import dev.tobee.telegram.model.media.InputFile;
+import dev.tobee.telegram.model.message.MessageEntity;
+import dev.tobee.telegram.model.message.ParseMode;
+import dev.tobee.telegram.model.media.PhotoSize;
+import dev.tobee.telegram.model.message.ReplyMarkup;
 
 public record SendAudioBody(
         @JsonProperty("chat_id") long chatId,

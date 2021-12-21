@@ -4,8 +4,8 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.DiceEmoji;
-import dev.tobee.telegram.model.ReplyMarkup;
+import dev.tobee.telegram.model.media.DiceEmoji;
+import dev.tobee.telegram.model.message.ReplyMarkup;
 
 public record SendDiceBody(
         @JsonProperty("chat_id") long chatId,

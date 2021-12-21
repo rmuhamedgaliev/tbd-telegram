@@ -13,7 +13,7 @@ import java.util.Objects;
 import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
-import dev.tobee.telegram.model.FileEntity;
+import dev.tobee.telegram.model.media.FileEntity;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
