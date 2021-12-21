@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetFile implements Request<ResponseWrapper<File>> {
     private static final String METHOD = "getFile";
-    private static final TypeReference<ResponseWrapper<File>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<File>> reference = new TypeReference<>() {
+    };
 
     private final GetFileBody body;
 

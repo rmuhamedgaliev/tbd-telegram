@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class CopyMessage implements Request<ResponseWrapper<MessageId>> {
     private static final String METHOD = "copyMessage";
-    private static final TypeReference<ResponseWrapper<MessageId>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<MessageId>> reference = new TypeReference<>() {
+    };
 
     private final CopyMessageBody body;
 

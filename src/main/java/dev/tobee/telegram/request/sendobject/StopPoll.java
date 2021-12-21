@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class StopPoll implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "stopPoll";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final StopPollBody body;
 
     public StopPoll(StopPollBody body) {

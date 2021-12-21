@@ -16,11 +16,13 @@ class EditMessageLiveLocationTest {
     @Test
     void checkValidRequest() {
         EditMessageLiveLocation editMessageLiveLocation = new EditMessageLiveLocation(
-                new EditMessageLiveLocationBody(159L, OptionalLong.empty(), OptionalLong.empty(), 0.02008684613f, 0.02008684613f, 0.5f, OptionalInt.empty(), OptionalInt.empty(), Optional.empty())
+                new EditMessageLiveLocationBody(159L, OptionalLong.empty(), OptionalLong.empty(), 0.02008684613f,
+                        0.02008684613f, 0.5f, OptionalInt.empty(), OptionalInt.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(editMessageLiveLocation.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Message>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Message>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("editMessageLiveLocation", editMessageLiveLocation.getMethod());
         Assertions.assertTrue(editMessageLiveLocation.getBody().isPresent());
     }

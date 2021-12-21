@@ -15,7 +15,8 @@ class DeleteChatStickerSetTest {
         );
 
         Assertions.assertEquals(deleteChatStickerSet.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("deleteChatStickerSet", deleteChatStickerSet.getMethod());
         Assertions.assertTrue(deleteChatStickerSet.getBody().isPresent());
     }

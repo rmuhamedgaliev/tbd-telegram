@@ -10,7 +10,8 @@ import dev.tobee.telegram.request.Request;
 public class LogOut implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "logOut";
 
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
 
     @Override
     public String getMethod() {

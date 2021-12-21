@@ -18,7 +18,8 @@ class GetChatAdministratorsTest {
         );
 
         Assertions.assertEquals(getChatAdministrators.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<List<ChatMember>>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<List<ChatMember>>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("getChatAdministrators", getChatAdministrators.getMethod());
         Assertions.assertTrue(getChatAdministrators.getBody().isPresent());
     }

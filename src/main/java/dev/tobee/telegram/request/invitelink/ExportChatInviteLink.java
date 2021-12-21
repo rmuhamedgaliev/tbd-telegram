@@ -11,7 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class ExportChatInviteLink implements Request<ResponseWrapper<String>> {
     private static final String METHOD = "exportChatInviteLink";
-    private static final TypeReference<ResponseWrapper<String>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<String>> reference = new TypeReference<>() {
+    };
 
     private final ExportChatInviteLinkBody body;
 

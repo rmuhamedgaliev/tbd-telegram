@@ -28,7 +28,9 @@ class SetMyCommandsTest {
                 )
         );
 
-        Assertions.assertEquals(getMyCommands.getResponseType().getType().getTypeName(), (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+        Assertions.assertEquals(getMyCommands.getResponseType().getType().getTypeName(),
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+        }).getType().getTypeName());
         Assertions.assertEquals("setMyCommands", getMyCommands.getMethod());
         Assertions.assertTrue(getMyCommands.getBody().isPresent());
         Assertions.assertTrue(getMyCommands.getBody().get().containsKey("scope"));

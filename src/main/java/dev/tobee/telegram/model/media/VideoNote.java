@@ -1,8 +1,8 @@
 package dev.tobee.telegram.model.media;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.OptionalInt;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record VideoNote(
         @JsonProperty("file_id") String fileId,

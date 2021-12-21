@@ -15,7 +15,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
     private static final String METHOD = "getUpdates";
-    private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<List<Update>>> reference = new TypeReference<>() {
+    };
 
     private final Optional<GetUpdateBody> queryParams;
 

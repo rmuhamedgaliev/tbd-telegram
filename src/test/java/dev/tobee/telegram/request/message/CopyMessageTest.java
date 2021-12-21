@@ -16,11 +16,13 @@ class CopyMessageTest {
     @Test
     void checkValidRequest() {
         CopyMessage copyMessage = new CopyMessage(
-                new CopyMessageBody(159L, 159L, 159L, Optional.empty(), Optional.empty(), List.of(), Optional.empty(), OptionalLong.empty(), Optional.empty(), Optional.empty())
+                new CopyMessageBody(159L, 159L, 159L, Optional.empty(), Optional.empty(), List.of(), Optional.empty()
+                        , OptionalLong.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(copyMessage.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<MessageId>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<MessageId>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("copyMessage", copyMessage.getMethod());
         Assertions.assertTrue(copyMessage.getBody().isPresent());
     }

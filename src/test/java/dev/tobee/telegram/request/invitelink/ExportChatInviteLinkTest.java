@@ -15,7 +15,8 @@ class ExportChatInviteLinkTest {
         );
 
         Assertions.assertEquals(exportChatInviteLink.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<String>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<String>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("exportChatInviteLink", exportChatInviteLink.getMethod());
         Assertions.assertTrue(exportChatInviteLink.getBody().isPresent());
     }

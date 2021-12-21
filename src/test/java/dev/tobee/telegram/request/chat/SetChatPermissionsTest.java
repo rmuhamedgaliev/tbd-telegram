@@ -14,11 +14,14 @@ class SetChatPermissionsTest {
     @Test
     void checkValidRequest() {
         SetChatPermissions setChatPermissions = new SetChatPermissions(
-                new SetChatPermissionsBody(159L, new ChatPermissions(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()))
+                new SetChatPermissionsBody(159L, new ChatPermissions(Optional.empty(), Optional.empty(),
+                        Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
+                        Optional.empty()))
         );
 
         Assertions.assertEquals(setChatPermissions.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("setChatPermissions", setChatPermissions.getMethod());
         Assertions.assertTrue(setChatPermissions.getBody().isPresent());
     }

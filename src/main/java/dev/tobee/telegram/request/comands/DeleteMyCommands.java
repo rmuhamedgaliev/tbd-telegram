@@ -25,7 +25,8 @@ public class DeleteMyCommands implements Request<ResponseWrapper<Boolean>> {
 
     @Override
     public TypeReference<ResponseWrapper<Boolean>> getResponseType() {
-        return new TypeReference<>() {};
+        return new TypeReference<>() {
+        };
     }
 
     @Override

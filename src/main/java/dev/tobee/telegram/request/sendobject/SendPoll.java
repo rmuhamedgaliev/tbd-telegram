@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SendPoll implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "sendPoll";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final SendPollBody body;
 
     public SendPoll(SendPollBody body) {

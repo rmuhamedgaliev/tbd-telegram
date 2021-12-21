@@ -1,8 +1,8 @@
 package dev.tobee.telegram.model.message;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record ForceReply(
         @JsonProperty("force_reply") Boolean forceReply,

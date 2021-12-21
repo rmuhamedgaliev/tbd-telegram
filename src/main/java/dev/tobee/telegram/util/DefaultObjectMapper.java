@@ -12,8 +12,6 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
 public class DefaultObjectMapper {
 
-    private DefaultObjectMapper() {}
-
     private static final ObjectMapper mapper = new ObjectMapper();
 
     static {
@@ -24,12 +22,16 @@ public class DefaultObjectMapper {
         mapper.setSerializationInclusion(JsonInclude.Include.NON_ABSENT);
     }
 
+    private DefaultObjectMapper() {
+    }
+
     public static ObjectMapper getMapper() {
         return mapper;
     }
 
     public static <T> Map<Object, Object> convertToMap(T t) {
-        TypeReference<Map<Object, Object>> reference = new TypeReference<>() {};
+        TypeReference<Map<Object, Object>> reference = new TypeReference<>() {
+        };
         return mapper.convertValue(t, reference);
     }
 }

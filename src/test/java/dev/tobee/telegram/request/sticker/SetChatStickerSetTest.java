@@ -15,7 +15,8 @@ class SetChatStickerSetTest {
         );
 
         Assertions.assertEquals(setChatStickerSet.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("setChatStickerSet", setChatStickerSet.getMethod());
         Assertions.assertTrue(setChatStickerSet.getBody().isPresent());
     }

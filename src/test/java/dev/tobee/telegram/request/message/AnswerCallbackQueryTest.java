@@ -14,11 +14,13 @@ class AnswerCallbackQueryTest {
     @Test
     void checkValidRequest() {
         AnswerCallbackQuery answerCallbackQuery = new AnswerCallbackQuery(
-                new AnswerCallbackQueryBody("layer", Optional.empty(), Optional.empty(), Optional.empty(), OptionalLong.empty())
+                new AnswerCallbackQueryBody("layer", Optional.empty(), Optional.empty(), Optional.empty(),
+                        OptionalLong.empty())
         );
 
         Assertions.assertEquals(answerCallbackQuery.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("answerCallbackQuery", answerCallbackQuery.getMethod());
         Assertions.assertTrue(answerCallbackQuery.getBody().isPresent());
     }

@@ -1,10 +1,10 @@
 package dev.tobee.telegram.model.encrypt;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.media.PassportFile;
-
 import java.util.List;
 import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.media.PassportFile;
 
 public record EncryptedPassportElement(
         @JsonProperty("type") EncryptedCredentialsType type,

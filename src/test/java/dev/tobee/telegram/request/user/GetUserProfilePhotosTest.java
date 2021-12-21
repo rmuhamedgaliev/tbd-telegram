@@ -18,7 +18,8 @@ class GetUserProfilePhotosTest {
         );
 
         Assertions.assertEquals(getUserProfilePhotos.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<UserProfilePhotos>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<UserProfilePhotos>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("getUserProfilePhotos", getUserProfilePhotos.getMethod());
         Assertions.assertTrue(getUserProfilePhotos.getBody().isPresent());
     }

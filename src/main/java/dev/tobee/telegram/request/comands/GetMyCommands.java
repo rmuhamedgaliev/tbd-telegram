@@ -27,7 +27,8 @@ public class GetMyCommands implements Request<ResponseWrapper<List<BotCommand>>>
 
     @Override
     public TypeReference<ResponseWrapper<List<BotCommand>>> getResponseType() {
-        return new TypeReference<>() {};
+        return new TypeReference<>() {
+        };
     }
 
     @Override

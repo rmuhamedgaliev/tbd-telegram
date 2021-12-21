@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class ForwardMessage implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "forwardMessage";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
 
     private final ForwardMessageBody body;
 

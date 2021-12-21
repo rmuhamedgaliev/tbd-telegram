@@ -15,7 +15,8 @@ class ApproveChatJoinRequestTest {
         );
 
         Assertions.assertEquals(approveChatJoinRequest.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("approveChatJoinRequest", approveChatJoinRequest.getMethod());
         Assertions.assertTrue(approveChatJoinRequest.getBody().isPresent());
     }

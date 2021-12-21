@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetChat implements Request<ResponseWrapper<Chat>> {
     private static final String METHOD = "getChat";
-    private static final TypeReference<ResponseWrapper<Chat>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Chat>> reference = new TypeReference<>() {
+    };
 
     private final GetChatBody body;
 

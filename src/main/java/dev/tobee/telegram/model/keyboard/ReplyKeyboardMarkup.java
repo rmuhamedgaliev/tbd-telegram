@@ -1,10 +1,10 @@
 package dev.tobee.telegram.model.keyboard;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.message.ReplyMarkup;
-
 import java.util.List;
 import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.ReplyMarkup;
 
 public record ReplyKeyboardMarkup(
         @JsonProperty("keyboard") List<List<KeyboardButton>> keyboard,

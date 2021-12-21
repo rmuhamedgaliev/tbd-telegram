@@ -1,9 +1,9 @@
 package dev.tobee.telegram.model.message;
 
+import java.util.Optional;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.media.Location;
-
-import java.util.Optional;
 
 public record ChosenInlineResult(
         @JsonProperty("result_id") String resultId,

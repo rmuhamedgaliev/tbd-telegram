@@ -16,7 +16,8 @@ class GetFileTest {
         );
 
         Assertions.assertEquals(getFile.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<File>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<File>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("getFile", getFile.getMethod());
         Assertions.assertTrue(getFile.getBody().isPresent());
     }

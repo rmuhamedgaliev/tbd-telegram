@@ -19,7 +19,8 @@ class ForwardMessageTest {
         );
 
         Assertions.assertEquals(forwardMessage.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Message>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Message>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("forwardMessage", forwardMessage.getMethod());
         Assertions.assertTrue(forwardMessage.getBody().isPresent());
     }

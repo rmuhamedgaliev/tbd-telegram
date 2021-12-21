@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SendDice implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "sendDice";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final SendDiceBody body;
 
     public SendDice(SendDiceBody body) {

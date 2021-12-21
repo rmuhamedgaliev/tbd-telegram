@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SendVideo implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "sendVideo";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final SendVideoBody body;
 
     public SendVideo(SendVideoBody body) {

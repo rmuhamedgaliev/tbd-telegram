@@ -13,7 +13,8 @@ class GetMeTest {
         GetMe getMe = new GetMe();
 
         Assertions.assertEquals(getMe.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<User>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<User>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("getMe", getMe.getMethod());
         Assertions.assertTrue(getMe.getBody().isEmpty());
     }

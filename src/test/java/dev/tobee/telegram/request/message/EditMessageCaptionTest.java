@@ -15,11 +15,13 @@ class EditMessageCaptionTest {
     @Test
     void checkValidRequest() {
         EditMessageCaption editMessageCaption = new EditMessageCaption(
-                new EditMessageCaptionBody(159L, OptionalLong.of(159L), Optional.empty(), Optional.empty(), Optional.empty(), Collections.emptyList(), Optional.empty())
+                new EditMessageCaptionBody(159L, OptionalLong.of(159L), Optional.empty(), Optional.empty(),
+                        Optional.empty(), Collections.emptyList(), Optional.empty())
         );
 
         Assertions.assertEquals(editMessageCaption.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("editMessageCaption", editMessageCaption.getMethod());
         Assertions.assertTrue(editMessageCaption.getBody().isPresent());
     }

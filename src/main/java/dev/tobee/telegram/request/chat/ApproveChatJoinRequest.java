@@ -11,7 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class ApproveChatJoinRequest implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "approveChatJoinRequest";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
 
     private final ApproveChatJoinRequestBody body;
 

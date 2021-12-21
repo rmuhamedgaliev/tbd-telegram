@@ -29,7 +29,8 @@ class GetUpdatesTest {
         );
 
         Assertions.assertEquals(getUpdates.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<List<Update>>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<List<Update>>>() {
+                }).getType().getTypeName());
         Assertions.assertTrue(getUpdates.getMethod().contains("getUpdates"));
         Assertions.assertTrue(getUpdates.getBody().isPresent());
     }

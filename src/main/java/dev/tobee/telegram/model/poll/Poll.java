@@ -1,10 +1,10 @@
 package dev.tobee.telegram.model.poll;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.message.MessageEntity;
-
 import java.util.List;
 import java.util.OptionalInt;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.MessageEntity;
 
 public record Poll(
         @JsonProperty("id") String id,

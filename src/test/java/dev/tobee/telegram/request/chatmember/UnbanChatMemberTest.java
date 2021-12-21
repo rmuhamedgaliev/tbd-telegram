@@ -17,7 +17,8 @@ class UnbanChatMemberTest {
         );
 
         Assertions.assertEquals(unbanChatMember.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("unbanChatMember", unbanChatMember.getMethod());
         Assertions.assertTrue(unbanChatMember.getBody().isPresent());
     }

@@ -15,7 +15,8 @@ class GetChatMemberCountTest {
         );
 
         Assertions.assertEquals(getChatMemberCount.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Long>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Long>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("getChatMemberCount", getChatMemberCount.getMethod());
         Assertions.assertTrue(getChatMemberCount.getBody().isPresent());
     }

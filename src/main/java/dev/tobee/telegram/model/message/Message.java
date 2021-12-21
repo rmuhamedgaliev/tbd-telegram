@@ -6,6 +6,8 @@ import java.util.OptionalInt;
 import java.util.OptionalLong;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.chat.Chat;
+import dev.tobee.telegram.model.keyboard.InlineKeyboardMarkup;
 import dev.tobee.telegram.model.media.Animation;
 import dev.tobee.telegram.model.media.Audio;
 import dev.tobee.telegram.model.media.Contact;
@@ -16,19 +18,17 @@ import dev.tobee.telegram.model.media.Invoice;
 import dev.tobee.telegram.model.media.Location;
 import dev.tobee.telegram.model.media.PassportData;
 import dev.tobee.telegram.model.media.PhotoSize;
-import dev.tobee.telegram.model.poll.Poll;
 import dev.tobee.telegram.model.media.ProximityAlertTriggered;
 import dev.tobee.telegram.model.media.Sticker;
 import dev.tobee.telegram.model.media.SuccessfulPayment;
 import dev.tobee.telegram.model.media.Video;
 import dev.tobee.telegram.model.media.VideoNote;
+import dev.tobee.telegram.model.poll.Poll;
 import dev.tobee.telegram.model.voice.Voice;
 import dev.tobee.telegram.model.voice.VoiceChatEnded;
 import dev.tobee.telegram.model.voice.VoiceChatParticipantsInvited;
 import dev.tobee.telegram.model.voice.VoiceChatScheduled;
 import dev.tobee.telegram.model.voice.VoiceChatStarted;
-import dev.tobee.telegram.model.chat.Chat;
-import dev.tobee.telegram.model.keyboard.InlineKeyboardMarkup;
 
 public record Message(
         @JsonProperty("message_id") OptionalLong messageId,

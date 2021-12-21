@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class RevokeChatInviteLink implements Request<ResponseWrapper<ChatInviteLink>> {
     private static final String METHOD = "revokeChatInviteLink";
-    private static final TypeReference<ResponseWrapper<ChatInviteLink>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<ChatInviteLink>> reference = new TypeReference<>() {
+    };
 
     private final RevokeChatInviteLinkBody body;
 

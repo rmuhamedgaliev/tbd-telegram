@@ -17,7 +17,8 @@ class DeleteMessageTest {
         );
 
         Assertions.assertEquals(deleteMessage.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("deleteMessage", deleteMessage.getMethod());
         Assertions.assertTrue(deleteMessage.getBody().isPresent());
     }

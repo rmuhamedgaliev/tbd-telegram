@@ -15,11 +15,13 @@ class SendContactTest {
     @Test
     void checkValidRequest() {
         SendContact sendContact = new SendContact(
-                new SendContactBody(159L, "eval", "First", Optional.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty())
+                new SendContactBody(159L, "eval", "First", Optional.empty(), Optional.empty(), Optional.empty(),
+                        OptionalInt.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(sendContact.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Message>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Message>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("sendContact", sendContact.getMethod());
         Assertions.assertTrue(sendContact.getBody().isPresent());
     }

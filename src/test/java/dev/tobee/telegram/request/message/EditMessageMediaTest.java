@@ -18,7 +18,8 @@ class EditMessageMediaTest {
         );
 
         Assertions.assertEquals(editMessageMedia.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("editMessageMedia", editMessageMedia.getMethod());
         Assertions.assertTrue(editMessageMedia.getBody().isPresent());
     }

@@ -15,7 +15,8 @@ class DeleteChatPhotoTest {
         );
 
         Assertions.assertEquals(deleteChatPhoto.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("deleteChatPhoto", deleteChatPhoto.getMethod());
         Assertions.assertTrue(deleteChatPhoto.getBody().isPresent());
     }

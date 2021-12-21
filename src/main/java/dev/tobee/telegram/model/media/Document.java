@@ -1,9 +1,9 @@
 package dev.tobee.telegram.model.media;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 import java.util.Optional;
 import java.util.OptionalInt;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record Document(
         @JsonProperty("file_id") String file_id,

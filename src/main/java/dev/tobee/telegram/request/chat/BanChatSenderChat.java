@@ -11,7 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class BanChatSenderChat implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "banChatSenderChat";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
 
     private final BanChatSenderChatBody body;
 

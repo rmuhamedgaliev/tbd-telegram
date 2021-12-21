@@ -30,7 +30,8 @@ class SetChatPhotoTest {
         );
 
         Assertions.assertEquals(setChatPhoto.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("setChatPhoto", setChatPhoto.getMethod());
         Assertions.assertTrue(setChatPhoto.getBody().isPresent());
     }

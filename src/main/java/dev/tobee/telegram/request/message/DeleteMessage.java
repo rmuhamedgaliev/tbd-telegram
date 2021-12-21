@@ -11,7 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class DeleteMessage implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "deleteMessage";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
     private final DeleteMessageBody body;
 
     public DeleteMessage(DeleteMessageBody body) {

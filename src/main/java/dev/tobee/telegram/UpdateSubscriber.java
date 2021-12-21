@@ -1,10 +1,10 @@
 package dev.tobee.telegram;
 
+import java.util.concurrent.Flow;
+
 import dev.tobee.telegram.model.message.Update;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.concurrent.Flow;
 
 public class UpdateSubscriber implements Flow.Subscriber<Update> {
     private static final Logger LOGGER = LoggerFactory.getLogger(UpdateSubscriber.class);

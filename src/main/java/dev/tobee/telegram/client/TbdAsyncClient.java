@@ -64,7 +64,8 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
 
     private HttpRequest.BodyPublisher prepareMultipartData(Map<Object, Object> data, String boundary) {
         var byteArrays = new ArrayList<byte[]>();
-        byte[] separator = ("--" + boundary + "\r\nContent-Disposition: form-data; name=").getBytes(StandardCharsets.UTF_8);
+        byte[] separator =
+                ("--" + boundary + "\r\nContent-Disposition: form-data; name=").getBytes(StandardCharsets.UTF_8);
         for (Map.Entry<Object, Object> entry : data.entrySet()) {
             if (entry.getValue() != null) {
                 byteArrays.add(separator);

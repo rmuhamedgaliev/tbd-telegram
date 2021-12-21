@@ -17,7 +17,8 @@ class PinChatMessageTest {
         );
 
         Assertions.assertEquals(pinChatMessage.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("pinChatMessage", pinChatMessage.getMethod());
         Assertions.assertTrue(pinChatMessage.getBody().isPresent());
     }

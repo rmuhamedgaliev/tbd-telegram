@@ -15,11 +15,13 @@ class CreateChatInviteLinkTest {
     @Test
     void checkValidRequest() {
         CreateChatInviteLink createChatInviteLink = new CreateChatInviteLink(
-                new CreateChatInviteLinkBody(159L, Optional.empty(), OptionalLong.empty(), OptionalInt.empty(), Optional.empty())
+                new CreateChatInviteLinkBody(159L, Optional.empty(), OptionalLong.empty(), OptionalInt.empty(),
+                        Optional.empty())
         );
 
         Assertions.assertEquals(createChatInviteLink.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("createChatInviteLink", createChatInviteLink.getMethod());
         Assertions.assertTrue(createChatInviteLink.getBody().isPresent());
     }

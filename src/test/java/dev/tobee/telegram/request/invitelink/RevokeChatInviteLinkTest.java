@@ -16,7 +16,8 @@ class RevokeChatInviteLinkTest {
         );
 
         Assertions.assertEquals(revokeChatInviteLink.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<ChatInviteLink>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<ChatInviteLink>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("revokeChatInviteLink", revokeChatInviteLink.getMethod());
         Assertions.assertTrue(revokeChatInviteLink.getBody().isPresent());
     }

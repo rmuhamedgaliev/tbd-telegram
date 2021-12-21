@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class StopMessageLiveLocation implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "stopMessageLiveLocation";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final StopMessageLiveLocationBody body;
 
     public StopMessageLiveLocation(StopMessageLiveLocationBody body) {

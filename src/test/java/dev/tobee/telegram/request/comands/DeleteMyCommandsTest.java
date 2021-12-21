@@ -1,17 +1,14 @@
 package dev.tobee.telegram.request.comands;
 
-import java.util.List;
 import java.util.Optional;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.bot.BotCommand;
-import dev.tobee.telegram.model.bot.BotCommandScopeDefault;
 import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.body.DeleteMyCommandsBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class DeleteMyCommandsTest{
+class DeleteMyCommandsTest {
 
     @Test
     void checkValidRequest() {
@@ -23,7 +20,8 @@ class DeleteMyCommandsTest{
         );
 
         Assertions.assertEquals(deleteMyCommands.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("deleteMyCommands", deleteMyCommands.getMethod());
         Assertions.assertTrue(deleteMyCommands.getBody().isPresent());
     }

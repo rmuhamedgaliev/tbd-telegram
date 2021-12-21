@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SendAudio implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "sendAudio";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final SendAudioBody body;
 
     public SendAudio(SendAudioBody body) {

@@ -11,7 +11,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class DeclineChatJoinRequest implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "declineChatJoinRequest";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
 
     private final DeclineChatJoinRequestBody body;
 

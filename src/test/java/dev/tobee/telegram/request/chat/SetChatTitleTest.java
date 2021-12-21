@@ -15,7 +15,8 @@ class SetChatTitleTest {
         );
 
         Assertions.assertEquals(setChatTitle.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("setChatTitle", setChatTitle.getMethod());
         Assertions.assertTrue(setChatTitle.getBody().isPresent());
     }

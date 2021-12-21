@@ -23,7 +23,8 @@ class GetMyCommandsTest {
         );
 
         Assertions.assertEquals(getMyCommands.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<List<BotCommand>>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<List<BotCommand>>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("getMyCommands", getMyCommands.getMethod());
         Assertions.assertTrue(getMyCommands.getBody().isPresent());
         Assertions.assertTrue(getMyCommands.getBody().get().containsKey("scope"));

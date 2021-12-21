@@ -19,7 +19,8 @@ class StopMessageLiveLocationTest {
         );
 
         Assertions.assertEquals(stopMessageLiveLocation.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Message>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Message>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("stopMessageLiveLocation", stopMessageLiveLocation.getMethod());
         Assertions.assertTrue(stopMessageLiveLocation.getBody().isPresent());
     }

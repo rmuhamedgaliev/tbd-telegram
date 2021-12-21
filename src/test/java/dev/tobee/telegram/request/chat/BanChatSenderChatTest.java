@@ -14,7 +14,8 @@ class BanChatSenderChatTest {
         );
 
         Assertions.assertEquals(banChatSenderChat.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("banChatSenderChat", banChatSenderChat.getMethod());
         Assertions.assertTrue(banChatSenderChat.getBody().isPresent());
     }

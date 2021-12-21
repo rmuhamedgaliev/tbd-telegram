@@ -15,7 +15,8 @@ class SetChatAdministratorCustomTitleTest {
         );
 
         Assertions.assertEquals(setChatAdministratorCustomTitle.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("setChatAdministratorCustomTitle", setChatAdministratorCustomTitle.getMethod());
         Assertions.assertTrue(setChatAdministratorCustomTitle.getBody().isPresent());
     }

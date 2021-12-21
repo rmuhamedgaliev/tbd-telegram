@@ -15,11 +15,14 @@ class RestrictChatMemberTest {
     @Test
     void checkValidRequest() {
         RestrictChatMember restrictChatMember = new RestrictChatMember(
-                new RestrictChatMemberBody(159L, 159L, new ChatPermissions(Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty()), OptionalLong.empty())
+                new RestrictChatMemberBody(159L, 159L, new ChatPermissions(Optional.empty(), Optional.empty(),
+                        Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
+                        Optional.empty()), OptionalLong.empty())
         );
 
         Assertions.assertEquals(restrictChatMember.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("restrictChatMember", restrictChatMember.getMethod());
         Assertions.assertTrue(restrictChatMember.getBody().isPresent());
     }

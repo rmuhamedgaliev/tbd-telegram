@@ -1,5 +1,8 @@
 package dev.tobee.telegram.model.message;
 
+import java.util.Optional;
+import java.util.OptionalLong;
+
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.chat.ChatJoinRequest;
 import dev.tobee.telegram.model.chat.ChatMemberUpdated;
@@ -7,9 +10,6 @@ import dev.tobee.telegram.model.media.PreCheckoutQuery;
 import dev.tobee.telegram.model.media.ShippingQuery;
 import dev.tobee.telegram.model.poll.Poll;
 import dev.tobee.telegram.model.poll.PollAnswer;
-
-import java.util.Optional;
-import java.util.OptionalLong;
 
 public record Update(
         @JsonProperty("update_id") OptionalLong updateId,

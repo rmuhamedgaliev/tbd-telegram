@@ -1,15 +1,5 @@
 package dev.tobee.telegram;
 
-import dev.tobee.telegram.client.TbdAsyncClient;
-import dev.tobee.telegram.model.message.ResponseWrapper;
-import dev.tobee.telegram.model.message.Update;
-import dev.tobee.telegram.model.message.UpdateTypes;
-import dev.tobee.telegram.request.Request;
-import dev.tobee.telegram.request.body.GetUpdateBody;
-import dev.tobee.telegram.request.chat.GetUpdates;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -22,6 +12,16 @@ import java.util.concurrent.SubmissionPublisher;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
+import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.model.message.ResponseWrapper;
+import dev.tobee.telegram.model.message.Update;
+import dev.tobee.telegram.model.message.UpdateTypes;
+import dev.tobee.telegram.request.Request;
+import dev.tobee.telegram.request.body.GetUpdateBody;
+import dev.tobee.telegram.request.chat.GetUpdates;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 public class LongPollingTelegramBot implements TelegramBot {
     private static final Logger logger = LoggerFactory.getLogger(LongPollingTelegramBot.class);
     private final ScheduledExecutorService executorService;
@@ -30,7 +30,7 @@ public class LongPollingTelegramBot implements TelegramBot {
     private final TbdAsyncClient tbdTGReactorClient;
     private final SubmissionPublisher<Update> publisher = new SubmissionPublisher<>();
 
-    public LongPollingTelegramBot(TbdAsyncClient tbdTGReactorClient, List< Flow.Subscriber< Update >> subscribers) {
+    public LongPollingTelegramBot(TbdAsyncClient tbdTGReactorClient, List<Flow.Subscriber<Update>> subscribers) {
         this.tbdTGReactorClient = tbdTGReactorClient;
         this.executorService = Executors.newSingleThreadScheduledExecutor();
         subscribers.forEach(this.publisher::subscribe);

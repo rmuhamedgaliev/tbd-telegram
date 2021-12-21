@@ -17,7 +17,8 @@ class UnpinChatMessageTest {
         );
 
         Assertions.assertEquals(unpinChatMessage.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("unpinChatMessage", unpinChatMessage.getMethod());
         Assertions.assertTrue(unpinChatMessage.getBody().isPresent());
     }

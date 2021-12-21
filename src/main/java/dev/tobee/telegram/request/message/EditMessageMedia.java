@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class EditMessageMedia implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "editMessageMedia";
-    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Boolean>> reference = new TypeReference<>() {
+    };
     private final EditMessageMediaBody body;
 
     public EditMessageMedia(EditMessageMediaBody body) {

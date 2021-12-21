@@ -1,5 +1,8 @@
 package dev.tobee.telegram.request.message;
 
+import java.util.Map;
+import java.util.Optional;
+
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.message.Message;
 import dev.tobee.telegram.model.message.ResponseWrapper;
@@ -8,12 +11,10 @@ import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
 
-import java.util.Map;
-import java.util.Optional;
-
 public class SendMessage implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "sendMessage";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final SendMessageBody body;
 
     public SendMessage(SendMessageBody body) {

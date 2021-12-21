@@ -12,7 +12,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class GetUserProfilePhotos implements Request<ResponseWrapper<UserProfilePhotos>> {
     private static final String METHOD = "getUserProfilePhotos";
-    private static final TypeReference<ResponseWrapper<UserProfilePhotos>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<UserProfilePhotos>> reference = new TypeReference<>() {
+    };
 
     private final GetUserProfilePhotosBody body;
 

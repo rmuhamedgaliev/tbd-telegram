@@ -15,7 +15,8 @@ class LeaveChatTest {
         );
 
         Assertions.assertEquals(leaveChat.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("leaveChat", leaveChat.getMethod());
         Assertions.assertTrue(leaveChat.getBody().isPresent());
     }

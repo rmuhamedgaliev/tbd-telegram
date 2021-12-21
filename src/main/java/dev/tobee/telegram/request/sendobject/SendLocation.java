@@ -13,7 +13,8 @@ import dev.tobee.telegram.util.DefaultObjectMapper;
 
 public class SendLocation implements Request<ResponseWrapper<Message>> {
     private static final String METHOD = "sendLocation";
-    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {};
+    private static final TypeReference<ResponseWrapper<Message>> reference = new TypeReference<>() {
+    };
     private final SendLocationBody body;
 
     public SendLocation(SendLocationBody body) {

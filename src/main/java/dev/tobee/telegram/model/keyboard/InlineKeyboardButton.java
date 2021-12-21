@@ -1,10 +1,9 @@
 package dev.tobee.telegram.model.keyboard;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.media.CallbackGame;
-import dev.tobee.telegram.model.message.LoginUrl;
-
 import java.util.Optional;
+
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.LoginUrl;
 
 public record InlineKeyboardButton(
         @JsonProperty("text") String text,
@@ -13,8 +12,6 @@ public record InlineKeyboardButton(
         @JsonProperty("callback_data") Optional<String> callbackData,
         @JsonProperty("switch_inline_query") Optional<String> switchInlineQuery,
         @JsonProperty("switch_inline_query_current_chat") Optional<String> switchInlineQueryCurrentChat,
-        @JsonProperty("callback_game") Optional<CallbackGame> callbackGame,
         @JsonProperty("pay") Optional<Boolean> pay
-
 ) {
 }

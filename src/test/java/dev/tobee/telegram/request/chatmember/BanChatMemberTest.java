@@ -18,7 +18,8 @@ class BanChatMemberTest {
         );
 
         Assertions.assertEquals(banChatMember.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("banChatMember", banChatMember.getMethod());
         Assertions.assertTrue(banChatMember.getBody().isPresent());
     }

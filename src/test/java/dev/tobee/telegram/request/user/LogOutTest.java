@@ -12,7 +12,8 @@ class LogOutTest {
         LogOut logOut = new LogOut();
 
         Assertions.assertEquals(logOut.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("logOut", logOut.getMethod());
         Assertions.assertTrue(logOut.getBody().isEmpty());
     }

@@ -29,7 +29,8 @@ class SetWebHookTest {
         );
 
         SetWebHook setWebHook = new SetWebHook(
-                new SetWebHookBody("https://volunteerstamlwm.ar", Optional.empty(), Optional.empty(), OptionalInt.empty(), List.of(), Optional.empty())
+                new SetWebHookBody("https://volunteerstamlwm.ar", Optional.empty(), Optional.empty(),
+                        OptionalInt.empty(), List.of(), Optional.empty())
         );
 
         Assertions.assertEquals(setWebHook.getResponseType().getType().getTypeName(),

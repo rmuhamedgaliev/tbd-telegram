@@ -18,7 +18,8 @@ class EditMessageReplyMarkupTest {
         );
 
         Assertions.assertEquals(editMessageReplyMarkup.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("editMessageReplyMarkup", editMessageReplyMarkup.getMethod());
         Assertions.assertTrue(editMessageReplyMarkup.getBody().isPresent());
     }

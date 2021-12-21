@@ -20,7 +20,7 @@ class SendLocationTest {
 
         Assertions.assertEquals(sendLocation.getResponseType().getType().getTypeName(),
                 (new TypeReference<ResponseWrapper<Message>>() {
-        }).getType().getTypeName());
+                }).getType().getTypeName());
         Assertions.assertEquals("sendLocation", sendLocation.getMethod());
         Assertions.assertTrue(sendLocation.getBody().isPresent());
     }

@@ -16,11 +16,13 @@ class SendMessageTest {
     @Test
     void checkValidRequest() {
         SendMessage sendMessage = new SendMessage(
-                new SendMessageBody(159L, "eval", Optional.empty(), List.of(), Optional.empty(), Optional.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty())
+                new SendMessageBody(159L, "eval", Optional.empty(), List.of(), Optional.empty(), Optional.empty(),
+                        OptionalInt.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(sendMessage.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Message>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Message>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("sendMessage", sendMessage.getMethod());
         Assertions.assertTrue(sendMessage.getBody().isPresent());
     }

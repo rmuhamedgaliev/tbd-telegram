@@ -15,7 +15,8 @@ class DeclineChatJoinRequestTest {
         );
 
         Assertions.assertEquals(declineChatJoinRequest.getResponseType().getType().getTypeName(),
-                (new TypeReference<ResponseWrapper<Boolean>>() {}).getType().getTypeName());
+                (new TypeReference<ResponseWrapper<Boolean>>() {
+                }).getType().getTypeName());
         Assertions.assertEquals("declineChatJoinRequest", declineChatJoinRequest.getMethod());
         Assertions.assertTrue(declineChatJoinRequest.getBody().isPresent());
     }

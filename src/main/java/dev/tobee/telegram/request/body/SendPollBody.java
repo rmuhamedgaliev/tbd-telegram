@@ -7,8 +7,8 @@ import java.util.OptionalInt;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.message.MessageEntity;
 import dev.tobee.telegram.model.message.ParseMode;
-import dev.tobee.telegram.model.poll.PollType;
 import dev.tobee.telegram.model.message.ReplyMarkup;
+import dev.tobee.telegram.model.poll.PollType;
 
 public record SendPollBody(
         @JsonProperty("chat_id") long chatId,
