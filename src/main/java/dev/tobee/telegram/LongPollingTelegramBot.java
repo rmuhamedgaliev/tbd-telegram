@@ -4,13 +4,12 @@ import dev.tobee.telegram.client.TbdAsyncClient;
 import dev.tobee.telegram.model.ResponseWrapper;
 import dev.tobee.telegram.model.Update;
 import dev.tobee.telegram.model.UpdateTypes;
-import dev.tobee.telegram.request.chat.GetUpdates;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.body.GetUpdateBody;
+import dev.tobee.telegram.request.chat.GetUpdates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.security.SecureRandom;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -24,16 +23,11 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class LongPollingTelegramBot implements TelegramBot {
-    private static final Logger LOGGER = LoggerFactory.getLogger(LongPollingTelegramBot.class);
-
+    private static final Logger logger = LoggerFactory.getLogger(LongPollingTelegramBot.class);
     private final ScheduledExecutorService executorService;
-
     private final OptionalInt initialDelay = OptionalInt.empty();
-
     private final OptionalInt period = OptionalInt.empty();
-
     private final TbdAsyncClient tbdTGReactorClient;
-
     private final SubmissionPublisher<Update> publisher = new SubmissionPublisher<>();
 
     public LongPollingTelegramBot(TbdAsyncClient tbdTGReactorClient, List< Flow.Subscriber< Update >> subscribers) {
@@ -57,13 +51,10 @@ public class LongPollingTelegramBot implements TelegramBot {
 
     @Override
     public void subscribeToUpdate() {
-
         AtomicLong lastUpdate = new AtomicLong();
-
         executorService.scheduleAtFixedRate(() -> {
                     try {
                         Request<ResponseWrapper<List<Update>>> request;
-
                         if (lastUpdate.get() > 0) {
                             request = new GetUpdates(Optional.of(new GetUpdateBody(
                                     OptionalLong.of(lastUpdate.get()),
@@ -74,9 +65,6 @@ public class LongPollingTelegramBot implements TelegramBot {
                         } else {
                             request = new GetUpdates(Optional.empty());
                         }
-
-//                    TODO: Обработка ошибок
-
                         tbdTGReactorClient.getRequest(request)
                                 .thenApplyAsync(ResponseWrapper::result)
                                 .thenApplyAsync(result -> {
@@ -84,19 +72,17 @@ public class LongPollingTelegramBot implements TelegramBot {
                                     return getLastUpdateFromResponse(result);
                                 }).thenAcceptAsync(update -> handleLastUpdateId(update, lastUpdate));
                     } catch (Exception e) {
-                        LOGGER.error("Error on receive update", e);
+                        logger.error("Error on receive update", e);
                     }
-
                 },
-                initialDelay.orElse(0),
-                period.orElse(getDefaultPeriodInMilliseconds()),
+                initialDelay.orElse(1),
+                period.orElse(1),
                 TimeUnit.SECONDS
         );
     }
 
     private Optional<Update> getLastUpdateFromResponse(Optional<List<Update>> lastUpdate) {
         Optional<Update> lastUpdateObj = Optional.empty();
-
         if (lastUpdate.isPresent() && !lastUpdate.orElseThrow().isEmpty()) {
             lastUpdateObj = Optional.ofNullable(lastUpdate.get().get(lastUpdate.get().size() - 1));
         }
@@ -109,15 +95,6 @@ public class LongPollingTelegramBot implements TelegramBot {
         } else {
             lastUpdate.set(0);
         }
-    }
-
-    private int getDefaultPeriodInMilliseconds() {
-        SecureRandom random = new SecureRandom();
-
-        int min = 2;
-        int max = 5;
-
-        return random.nextInt(max) + min;
     }
 
     @Override
