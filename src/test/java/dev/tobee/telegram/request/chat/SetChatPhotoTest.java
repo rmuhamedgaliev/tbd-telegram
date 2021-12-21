@@ -7,8 +7,8 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.InputFile;
-import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.media.InputFile;
+import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.body.SetChatPhotoBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

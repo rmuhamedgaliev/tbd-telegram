@@ -7,8 +7,8 @@ import java.util.OptionalInt;
 import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.Update;
+import dev.tobee.telegram.model.message.ResponseWrapper;
+import dev.tobee.telegram.model.message.Update;
 import dev.tobee.telegram.request.body.GetUpdateBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

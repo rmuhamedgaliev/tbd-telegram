@@ -1,6 +1,6 @@
 package dev.tobee.telegram;
 
-import dev.tobee.telegram.model.Update;
+import dev.tobee.telegram.model.message.Update;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 

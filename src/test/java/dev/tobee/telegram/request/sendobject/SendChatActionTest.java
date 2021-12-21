@@ -1,8 +1,8 @@
 package dev.tobee.telegram.request.sendobject;
 
 import com.fasterxml.jackson.core.type.TypeReference;
-import dev.tobee.telegram.model.ChatAction;
-import dev.tobee.telegram.model.ResponseWrapper;
+import dev.tobee.telegram.model.chat.ChatAction;
+import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.body.SendChatActionBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;

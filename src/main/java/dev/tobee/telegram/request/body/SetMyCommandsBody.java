@@ -4,8 +4,8 @@ import java.util.List;
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.BotCommand;
-import dev.tobee.telegram.model.BotCommandScope;
+import dev.tobee.telegram.model.bot.BotCommand;
+import dev.tobee.telegram.model.bot.BotCommandScope;
 
 public record SetMyCommandsBody(
         @JsonProperty("commands") List<BotCommand> commands,

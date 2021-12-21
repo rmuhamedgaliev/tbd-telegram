@@ -9,7 +9,7 @@ plugins {
 }
 
 group = "dev.tobee"
-version = "0.1.7"
+version = "0.1.8"
 
 repositories {
     mavenCentral()
@@ -32,8 +32,6 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jdk8:${Versions.jacksonVersion}")
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310:${Versions.jacksonVersion}")
     implementation("com.fasterxml.jackson.module:jackson-module-parameter-names:${Versions.jacksonVersion}")
-
-    implementation("org.apache.commons:commons-text:${Versions.commonsVersion}")
 
     implementation("org.apache.logging.log4j:log4j-core:${Versions.log4jVersion}")
     implementation("org.apache.logging.log4j:log4j-slf4j-impl:${Versions.log4jVersion}")

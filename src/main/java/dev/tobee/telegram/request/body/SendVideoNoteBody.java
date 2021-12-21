@@ -5,8 +5,8 @@ import java.util.Optional;
 import java.util.OptionalInt;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.InputFile;
-import dev.tobee.telegram.model.ReplyMarkup;
+import dev.tobee.telegram.model.media.InputFile;
+import dev.tobee.telegram.model.message.ReplyMarkup;
 
 public record SendVideoNoteBody(
         @JsonProperty("chat_id") long chatId,

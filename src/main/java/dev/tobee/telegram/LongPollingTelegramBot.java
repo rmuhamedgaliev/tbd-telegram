@@ -1,9 +1,9 @@
 package dev.tobee.telegram;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
-import dev.tobee.telegram.model.ResponseWrapper;
-import dev.tobee.telegram.model.Update;
-import dev.tobee.telegram.model.UpdateTypes;
+import dev.tobee.telegram.model.message.ResponseWrapper;
+import dev.tobee.telegram.model.message.Update;
+import dev.tobee.telegram.model.message.UpdateTypes;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.body.GetUpdateBody;
 import dev.tobee.telegram.request.chat.GetUpdates;
