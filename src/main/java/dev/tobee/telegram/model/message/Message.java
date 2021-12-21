@@ -28,7 +28,6 @@ import dev.tobee.telegram.model.voice.Voice;
 import dev.tobee.telegram.model.voice.VoiceChatEnded;
 import dev.tobee.telegram.model.voice.VoiceChatParticipantsInvited;
 import dev.tobee.telegram.model.voice.VoiceChatScheduled;
-import dev.tobee.telegram.model.voice.VoiceChatStarted;
 
 public record Message(
         @JsonProperty("message_id") OptionalLong messageId,
@@ -83,10 +82,8 @@ public record Message(
         @JsonProperty("passport_data") Optional<PassportData> passportData,
         @JsonProperty("proximity_alert_triggered") Optional<ProximityAlertTriggered> proximityAlertTriggered,
         @JsonProperty("voice_chat_scheduled") Optional<VoiceChatScheduled> voiceChatScheduled,
-        @JsonProperty("voice_chat_started") Optional<VoiceChatStarted> voiceChatStarted,
         @JsonProperty("voice_chat_ended") Optional<VoiceChatEnded> voiceChatEnded,
         @JsonProperty("voice_chat_participants_invited") Optional<VoiceChatParticipantsInvited> voiceChatParticipantsInvited,
         @JsonProperty("reply_markup") Optional<InlineKeyboardMarkup> replyMarkup
-
 ) {
 }
