@@ -6,10 +6,11 @@ plugins {
     jacoco
     signing
     id("org.sonarqube") version "3.3"
+    id("dev.thiagosouto.plugins.bom-plugin") version "0.7.0"
 }
 
 group = "dev.tobee"
-version = "0.1.9"
+version = "0.1.10"
 
 repositories {
     mavenCentral()

@@ -1,5 +1,6 @@
 package dev.tobee.telegram.client;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
@@ -43,6 +44,24 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
                 .thenApplyAsync(this::logResponse)
                 .thenApply(HttpResponse::body)
                 .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
+    }
+
+    public <T> T getRequestSync(Request<T> request) throws IOException, InterruptedException {
+        URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
+        logger.debug("Request to {}", uri);
+
+        var requestObj = HttpRequest.newBuilder()
+                .header("Content-Type", DEFAULT_MIME_TYPE)
+                .headers("Accept", DEFAULT_MIME_TYPE)
+                .timeout(DEFAULT_TIMEOUT)
+                .uri(uri)
+                .build();
+
+        var response = HttpClient.newHttpClient().send(requestObj, HttpResponse.BodyHandlers.ofString());
+
+        logResponse(response);
+
+        return mapper.parseResponse(response.body(), request.getResponseType());
     }
 
     public <T> CompletableFuture<T> postRequest(Request<T> request) {

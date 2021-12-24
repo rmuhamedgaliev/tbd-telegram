@@ -29,6 +29,7 @@ public class LongPollingTelegramBot implements TelegramBot {
     private final OptionalInt period = OptionalInt.empty();
     private final TbdAsyncClient tbdTGReactorClient;
     private final SubmissionPublisher<Update> publisher = new SubmissionPublisher<>();
+    boolean status = true;
 
     public LongPollingTelegramBot(TbdAsyncClient tbdTGReactorClient, List<Flow.Subscriber<Update>> subscribers) {
         this.tbdTGReactorClient = tbdTGReactorClient;
@@ -65,12 +66,11 @@ public class LongPollingTelegramBot implements TelegramBot {
                         } else {
                             request = new GetUpdates(Optional.empty());
                         }
-                        tbdTGReactorClient.getRequest(request)
-                                .thenApplyAsync(ResponseWrapper::result)
-                                .thenApplyAsync(result -> {
-                                    result.stream().flatMap(Collection::stream).forEach(publisher::submit);
-                                    return getLastUpdateFromResponse(result);
-                                }).thenAcceptAsync(update -> handleLastUpdateId(update, lastUpdate));
+
+                        Optional<List<Update>> updates = tbdTGReactorClient.getRequestSync(request).result();
+                        updates.stream().flatMap(Collection::stream).forEach(publisher::submit);
+                        Optional<Update> lastUpdateObj = getLastUpdateFromResponse(updates);
+                        handleLastUpdateId(lastUpdateObj, lastUpdate);
                     } catch (Exception e) {
                         logger.error("Error on receive update", e);
                     }
