@@ -11,6 +11,5 @@ public record MessageEntity(
         @JsonProperty("url") Optional<String> url,
         @JsonProperty("user") Optional<User> user,
         @JsonProperty("language") Optional<String> language
-
 ) {
 }

@@ -18,7 +18,7 @@ class SendPollTest {
         SendPoll sendPoll = new SendPoll(
                 new SendPollBody(159L, "question", List.of(), Optional.empty(), Optional.empty(), Optional.empty(),
                         OptionalInt.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
-                        OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(),
+                        OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
                         OptionalInt.empty(), Optional.empty(), Optional.empty())
         );
 

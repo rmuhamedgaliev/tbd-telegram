@@ -32,7 +32,7 @@ class SendDocumentTest {
         SendDocument sendAnimation = new SendDocument(
                 new SendDocumentBody(159L, inputFile, Optional.empty(),
                         Optional.empty(), Optional.empty(), List.of(),
-                        Optional.empty(), Optional.empty(), OptionalInt.empty(), Optional.empty(),
+                        Optional.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(), Optional.empty(),
                         Optional.empty())
         );
 

@@ -31,7 +31,7 @@ class SendVoiceTest {
 
         SendVoice sendVoice = new SendVoice(
                 new SendVoiceBody(159L, inputFile, Optional.empty(),
-                        Optional.empty(), List.of(), 2, Optional.empty(),
+                        Optional.empty(), List.of(), 2, Optional.empty(), Optional.empty(),
                         OptionalInt.empty(), Optional.empty(), Optional.empty())
         );
 

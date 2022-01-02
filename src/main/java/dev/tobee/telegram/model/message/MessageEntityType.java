@@ -25,6 +25,8 @@ public enum MessageEntityType {
     UNDERLINE,
     @JsonProperty("strikethrough")
     STRIKETHROUGH,
+    @JsonProperty("spoiler")
+    SPOILER,
     @JsonProperty("code")
     CODE,
     @JsonProperty("pre")

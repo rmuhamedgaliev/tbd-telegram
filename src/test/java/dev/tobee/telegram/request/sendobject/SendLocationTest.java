@@ -15,7 +15,8 @@ class SendLocationTest {
     @Test
     void checkValidRequest() {
         SendLocation sendLocation = new SendLocation(new SendLocationBody(159L, 0.4f, 0.4f, 0.4f, OptionalInt.empty()
-                , OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), OptionalInt.empty(), Optional.empty(),
+                , OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                Optional.empty(),
                 Optional.empty()));
 
         Assertions.assertEquals(sendLocation.getResponseType().getType().getTypeName(),

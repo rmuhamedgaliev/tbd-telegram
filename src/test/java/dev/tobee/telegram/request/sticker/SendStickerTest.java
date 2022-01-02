@@ -1,4 +1,4 @@
-package dev.tobee.telegram.request.sendobject;
+package dev.tobee.telegram.request.sticker;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -12,11 +12,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.media.InputFile;
 import dev.tobee.telegram.model.message.Message;
 import dev.tobee.telegram.model.message.ResponseWrapper;
-import dev.tobee.telegram.request.body.SendVideoNoteBody;
+import dev.tobee.telegram.request.body.SendStickerBody;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-class SendVideoNoteTest {
+class SendStickerTest {
 
     @Test
     void checkValidRequest() throws IOException {
@@ -28,16 +28,13 @@ class SendVideoNoteTest {
                 new FileInputStream(path.toFile()).readAllBytes()
         );
 
-        SendVideoNote sendVideoNote = new SendVideoNote(
-                new SendVideoNoteBody(159L, inputFile, OptionalInt.empty(),
-                        OptionalInt.empty(), Optional.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
-                        Optional.empty(), Optional.empty())
-        );
+        SendSticker sendSticker = new SendSticker(new SendStickerBody(159L, inputFile, Optional.empty(),
+                Optional.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty()));
 
-        Assertions.assertEquals(sendVideoNote.getResponseType().getType().getTypeName(),
+        Assertions.assertEquals(sendSticker.getResponseType().getType().getTypeName(),
                 (new TypeReference<ResponseWrapper<Message>>() {
                 }).getType().getTypeName());
-        Assertions.assertEquals("sendVideoNote", sendVideoNote.getMethod());
-        Assertions.assertTrue(sendVideoNote.getBody().isPresent());
+        Assertions.assertEquals("sendSticker", sendSticker.getMethod());
+        Assertions.assertTrue(sendSticker.getBody().isPresent());
     }
 }

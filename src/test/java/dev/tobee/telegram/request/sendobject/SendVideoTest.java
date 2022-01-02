@@ -32,7 +32,8 @@ class SendVideoTest {
         SendVideo sendVideo = new SendVideo(
                 new SendVideoBody(159L, inputFile, OptionalInt.empty(),
                         OptionalInt.empty(), OptionalInt.empty(), inputFile, Optional.empty(),
-                        Optional.empty(), List.of(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                        Optional.empty(), List.of(), Optional.empty(), Optional.empty(), Optional.empty(),
+                        OptionalInt.empty(),
                         Optional.empty(), Optional.empty())
         );
 

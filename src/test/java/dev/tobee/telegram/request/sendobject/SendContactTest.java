@@ -16,6 +16,7 @@ class SendContactTest {
     void checkValidRequest() {
         SendContact sendContact = new SendContact(
                 new SendContactBody(159L, "eval", "First", Optional.empty(), Optional.empty(), Optional.empty(),
+                        Optional.empty(),
                         OptionalInt.empty(), Optional.empty(), Optional.empty())
         );
 
