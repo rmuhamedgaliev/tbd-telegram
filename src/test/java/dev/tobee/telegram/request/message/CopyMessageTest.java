@@ -17,7 +17,7 @@ class CopyMessageTest {
     void checkValidRequest() {
         CopyMessage copyMessage = new CopyMessage(
                 new CopyMessageBody(159L, 159L, 159L, Optional.empty(), Optional.empty(), List.of(), Optional.empty()
-                        , OptionalLong.empty(), Optional.empty(), Optional.empty())
+                        , Optional.empty(), OptionalLong.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(copyMessage.getResponseType().getType().getTypeName(),

@@ -17,7 +17,8 @@ class SendVenueTest {
     void checkValidRequest() throws IOException {
         SendVenue sendVenue = new SendVenue(
                 new SendVenueBody(159L, 0.4f, 0.4f, "title", "address", Optional.empty(), Optional.empty(),
-                        Optional.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(), Optional.empty(),
+                        Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                        Optional.empty(),
                         Optional.empty()));
 
         Assertions.assertEquals(sendVenue.getResponseType().getType().getTypeName(),

@@ -17,6 +17,7 @@ public record SendVenueBody(
         @JsonProperty("google_place_id") Optional<String> googlePlaceId,
         @JsonProperty("google_place_type") Optional<String> googlePlaceType,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
+        @JsonProperty("protect_content") Optional<Boolean> protectContent,
         @JsonProperty("reply_to_message_id") OptionalInt replyToMessageId,
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
         @JsonProperty("reply_markup") Optional<ReplyMarkup> replyMarkup

@@ -31,7 +31,7 @@ class SendPhotoTest {
 
         SendPhoto sendPhoto = new SendPhoto(
                 new SendPhotoBody(159L, inputFile, Optional.empty(),
-                        List.of(), Optional.empty(), OptionalInt.empty(),
+                        List.of(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
                         Optional.empty(), Optional.empty())
         );
 

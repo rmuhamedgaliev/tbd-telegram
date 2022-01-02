@@ -16,7 +16,8 @@ class SendDiceTest {
     @Test
     void checkValidRequest() {
         SendDice sendDice = new SendDice(
-                new SendDiceBody(159L, Optional.of(DiceEmoji.DIRECT_HIT), Optional.empty(), OptionalInt.empty(),
+                new SendDiceBody(159L, Optional.of(DiceEmoji.DIRECT_HIT), Optional.empty(), Optional.empty(),
+                        OptionalInt.empty(),
                         Optional.empty(), Optional.empty())
         );
 

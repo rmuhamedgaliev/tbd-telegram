@@ -17,7 +17,7 @@ class SendMessageTest {
     void checkValidRequest() {
         SendMessage sendMessage = new SendMessage(
                 new SendMessageBody(159L, "eval", Optional.empty(), List.of(), Optional.empty(), Optional.empty(),
-                        OptionalInt.empty(), Optional.empty(), Optional.empty())
+                        Optional.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(sendMessage.getResponseType().getType().getTypeName(),

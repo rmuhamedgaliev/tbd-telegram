@@ -32,7 +32,8 @@ class SendAnimationTest {
         SendAnimation sendAnimation = new SendAnimation(
                 new SendAnimationBody(159L, inputFile, OptionalInt.empty(),
                         OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(),
-                        Optional.empty(), List.of(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                        Optional.empty(), List.of(), Optional.empty(), Optional.empty(), Optional.empty(),
+                        OptionalInt.empty(),
                         Optional.empty(), Optional.empty())
         );
 

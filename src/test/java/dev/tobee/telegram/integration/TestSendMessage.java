@@ -65,6 +65,7 @@ class TestSendMessage {
                         )),
                         Optional.empty(),
                         Optional.empty(),
+                        Optional.empty(),
                         OptionalInt.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
@@ -104,6 +105,7 @@ class TestSendMessage {
                                 Optional.empty()
                         )),
                         Optional.empty(),
+                        Optional.empty(),
                         OptionalInt.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
@@ -131,6 +133,7 @@ class TestSendMessage {
                 OptionalInt.of(360),
                 OptionalInt.of(500),
                 Optional.empty(),
+                Optional.empty(),
                 OptionalInt.empty(),
                 Optional.empty(),
                 Optional.empty()
@@ -146,6 +149,7 @@ class TestSendMessage {
         var request = new SendDice(new SendDiceBody(
                 chatId,
                 Optional.of(DiceEmoji.DIRECT_HIT),
+                Optional.empty(),
                 Optional.empty(),
                 OptionalInt.empty(),
                 Optional.empty(),

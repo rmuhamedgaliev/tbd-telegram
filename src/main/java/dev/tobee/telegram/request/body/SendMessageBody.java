@@ -16,6 +16,7 @@ public record SendMessageBody(
         @JsonProperty("entities") List<MessageEntity> entities,
         @JsonProperty("disable_web_page_preview") Optional<Boolean> disableWebPagePreview,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
+        @JsonProperty("protect_content") Optional<Boolean> protectContent,
         @JsonProperty("reply_to_message_id") OptionalInt replyToMessageId,
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
         @JsonProperty("reply_markup") Optional<ReplyMarkup> replyMarkup

@@ -18,6 +18,7 @@ public record SendVoiceBody(
         @JsonProperty("caption_entities") List<MessageEntity> entities,
         @JsonProperty("duration") int duration,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
+        @JsonProperty("protect_content") Optional<Boolean> protectContent,
         @JsonProperty("reply_to_message_id") OptionalInt replyToMessageId,
         @JsonProperty("allow_sending_without_reply") Optional<Boolean> allowSendingWithoutReply,
         @JsonProperty("reply_markup") Optional<ReplyMarkup> replyMarkup

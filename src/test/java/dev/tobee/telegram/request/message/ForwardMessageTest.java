@@ -15,7 +15,7 @@ class ForwardMessageTest {
     @Test
     void checkValidRequest() {
         ForwardMessage forwardMessage = new ForwardMessage(
-                new ForwardMessageBody(159L, 159L, Optional.empty(), OptionalLong.empty())
+                new ForwardMessageBody(159L, 159L, Optional.empty(), Optional.empty(), OptionalLong.empty())
         );
 
         Assertions.assertEquals(forwardMessage.getResponseType().getType().getTypeName(),
