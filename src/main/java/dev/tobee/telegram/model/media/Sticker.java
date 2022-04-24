@@ -6,11 +6,12 @@ import java.util.OptionalInt;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record Sticker(
-        @JsonProperty("file_id") String file_id,
+        @JsonProperty("fileId") String fileId,
         @JsonProperty("file_unique_id") String fileUniqueId,
         @JsonProperty("width") int width,
         @JsonProperty("height") int height,
         @JsonProperty("is_animated") Boolean isAnimated,
+        @JsonProperty("is_video") Boolean isVideo,
         @JsonProperty("thumb") Optional<PhotoSize> thumb,
         @JsonProperty("emoji") Optional<String> emoji,
         @JsonProperty("set_name") Optional<String> fileName,
