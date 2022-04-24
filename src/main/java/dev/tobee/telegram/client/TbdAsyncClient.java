@@ -30,7 +30,18 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
     private static final String DEFAULT_MIME_TYPE = "application/json";
 
     public <T> CompletableFuture<T> getRequest(Request<T> request) {
-        URI uri = URI.create(host + "/" + token + "/" + request.getMethod());
+        StringBuilder urlBuilder = new StringBuilder(host)
+                .append("/")
+                .append(token)
+                .append("/")
+                .append(request.getMethod());
+        if (!request.getQueryParams().isEmpty()) {
+            urlBuilder.append("?");
+            request.getQueryParams().forEach((key, value) ->
+                    urlBuilder.append("&").append(key).append("=").append(value)
+            );
+        }
+        URI uri = URI.create(urlBuilder.toString());
         logger.debug("Request to {}", uri);
         return HttpClient.newHttpClient().sendAsync(
                         HttpRequest.newBuilder()

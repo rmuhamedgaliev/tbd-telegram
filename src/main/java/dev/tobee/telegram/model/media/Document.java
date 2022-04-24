@@ -6,7 +6,7 @@ import java.util.OptionalInt;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record Document(
-        @JsonProperty("file_id") String file_id,
+        @JsonProperty("fileId") String fileId,
         @JsonProperty("file_unique_id") String fileUniqueId,
         @JsonProperty("thumb") Optional<PhotoSize> thumb,
         @JsonProperty("file_name") Optional<String> fileName,

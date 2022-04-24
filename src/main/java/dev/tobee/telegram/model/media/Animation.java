@@ -6,7 +6,7 @@ import java.util.OptionalInt;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record Animation(
-        @JsonProperty("file_id") String file_id,
+        @JsonProperty("fileId") String fileId,
         @JsonProperty("file_unique_id") String fileUniqueId,
         @JsonProperty("width") int width,
         @JsonProperty("height") int height,

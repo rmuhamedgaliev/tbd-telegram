@@ -9,7 +9,7 @@ import dev.tobee.telegram.model.message.ReplyMarkup;
 
 public record SendStickerBody(
         @JsonProperty("chat_id") long chatId,
-        @JsonProperty("sticker") InputFile animation,
+        @JsonProperty("sticker") InputFile sticker,
         @JsonProperty("disable_notification") Optional<Boolean> disableNotification,
         @JsonProperty("protect_content") Optional<Boolean> protectContent,
         @JsonProperty("reply_to_message_id") OptionalInt replyToMessageId,

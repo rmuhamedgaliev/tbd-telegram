@@ -1,5 +1,6 @@
 package dev.tobee.telegram.request;
 
+import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
 
@@ -12,4 +13,8 @@ public interface Request<T> {
     TypeReference<T> getResponseType();
 
     Optional<Map<Object, Object>> getBody();
+
+    default Map<String, String> getQueryParams() {
+        return Collections.emptyMap();
+    }
 }
