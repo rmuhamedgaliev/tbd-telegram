@@ -10,7 +10,7 @@ plugins {
 }
 
 group = "dev.tobee"
-version = "0.1.11"
+version = "0.1.12"
 
 repositories {
     mavenCentral()
