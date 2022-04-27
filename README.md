@@ -1,7 +1,7 @@
 # 🛩 TBD Telegram SDK
 
 ![Maven Central](https://img.shields.io/maven-central/v/dev.tobee/tbd-telegram-sdk?style=flat-square)
-[![Build Status](https://cloud.drone.io/api/badges/rmuhamedgaliev/tbd-telegram/status.svg?ref=refs/heads/master)](https://cloud.drone.io/rmuhamedgaliev/tbd-telegram)
+![Check PR](https://github.com/rmuhamedgaliev/tbd-telegram/actions/workflows/github-actions-check_pr.yml/badge.svg)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=rmuhamedgaliev_tbd-telegram&metric=alert_status)](https://sonarcloud.io/dashboard?id=rmuhamedgaliev_tbd-telegram)
 
 ## TOC
