@@ -1,0 +1,28 @@
+name: Check PR
+on:
+  pull_request:
+    types:
+      - opened
+      - reopened
+      - synchronize
+jobs:
+  Chek-PR:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up JDK 18
+        uses: actions/setup-java@v3
+        with:
+          java-version: '18'
+          distribution: 'adopt'
+      - name: Setup Gradle
+        uses: gradle/gradle-build-action@v2
+      - name: Execute Gradle build
+        run: ./gradlew build
+      - name: Run tests
+        run: ./gradlew test
+      - name: Run run Sonarqube
+        run: ./gradlew sonarqube
+        env:
+          SONAR_TOKEN: ${{ screts.SONAR_TOKEN }}
