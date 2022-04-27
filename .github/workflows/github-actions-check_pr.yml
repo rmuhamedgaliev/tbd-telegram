@@ -25,4 +25,4 @@ jobs:
       - name: Run run Sonarqube
         run: ./gradlew sonarqube
         env:
-          SONAR_TOKEN: ${{ screts.SONAR_TOKEN }}
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
