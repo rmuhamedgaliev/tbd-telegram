@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.media.InputFile;
@@ -33,7 +34,7 @@ class SendAnimationTest {
                 new SendAnimationBody(159L, inputFile, OptionalInt.empty(),
                         OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(),
                         Optional.empty(), List.of(), Optional.empty(), Optional.empty(), Optional.empty(),
-                        OptionalInt.empty(),
+                        OptionalLong.empty(),
                         Optional.empty(), Optional.empty())
         );
 

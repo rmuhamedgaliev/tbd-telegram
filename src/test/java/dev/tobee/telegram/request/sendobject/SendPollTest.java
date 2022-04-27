@@ -3,6 +3,7 @@ package dev.tobee.telegram.request.sendobject;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.message.Message;
@@ -19,7 +20,7 @@ class SendPollTest {
                 new SendPollBody(159L, "question", List.of(), Optional.empty(), Optional.empty(), Optional.empty(),
                         OptionalInt.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
                         OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(), Optional.empty(),
-                        OptionalInt.empty(), Optional.empty(), Optional.empty())
+                        OptionalLong.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(sendPoll.getResponseType().getType().getTypeName(),

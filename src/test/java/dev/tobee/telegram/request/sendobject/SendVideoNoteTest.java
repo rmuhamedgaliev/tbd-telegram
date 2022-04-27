@@ -7,6 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.media.InputFile;
@@ -30,7 +31,7 @@ class SendVideoNoteTest {
 
         SendVideoNote sendVideoNote = new SendVideoNote(
                 new SendVideoNoteBody(159L, inputFile, OptionalInt.empty(),
-                        OptionalInt.empty(), Optional.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                        OptionalInt.empty(), Optional.empty(), Optional.empty(), Optional.empty(), OptionalLong.empty(),
                         Optional.empty(), Optional.empty())
         );
 

@@ -92,8 +92,6 @@ public class LongPollingTelegramBot implements TelegramBot {
     private void handleLastUpdateId(Optional<Update> update, AtomicLong lastUpdate) {
         if (update.isPresent()) {
             lastUpdate.set(update.get().updateId().orElse(0) + 1);
-        } else {
-            lastUpdate.set(0);
         }
     }
 

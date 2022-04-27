@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import dev.tobee.telegram.client.TbdAsyncClient;
 import dev.tobee.telegram.model.bot.BotCommand;
@@ -66,7 +67,7 @@ class TestSendMessage {
                         Optional.empty(),
                         Optional.empty(),
                         Optional.empty(),
-                        OptionalInt.empty(),
+                        OptionalLong.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
                                 List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
@@ -106,7 +107,7 @@ class TestSendMessage {
                         )),
                         Optional.empty(),
                         Optional.empty(),
-                        OptionalInt.empty(),
+                        OptionalLong.empty(),
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
                                 List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
@@ -134,7 +135,7 @@ class TestSendMessage {
                 OptionalInt.of(500),
                 Optional.empty(),
                 Optional.empty(),
-                OptionalInt.empty(),
+                OptionalLong.empty(),
                 Optional.empty(),
                 Optional.empty()
 
@@ -151,7 +152,7 @@ class TestSendMessage {
                 Optional.of(DiceEmoji.DIRECT_HIT),
                 Optional.empty(),
                 Optional.empty(),
-                OptionalInt.empty(),
+                OptionalLong.empty(),
                 Optional.empty(),
                 Optional.empty()
         ));

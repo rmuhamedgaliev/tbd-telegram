@@ -2,7 +2,7 @@ package dev.tobee.telegram.request.sendobject;
 
 import java.io.IOException;
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.message.Message;
@@ -17,7 +17,7 @@ class SendVenueTest {
     void checkValidRequest() throws IOException {
         SendVenue sendVenue = new SendVenue(
                 new SendVenueBody(159L, 0.4f, 0.4f, "title", "address", Optional.empty(), Optional.empty(),
-                        Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                        Optional.empty(), Optional.empty(), Optional.empty(), Optional.empty(), OptionalLong.empty(),
                         Optional.empty(),
                         Optional.empty()));
 

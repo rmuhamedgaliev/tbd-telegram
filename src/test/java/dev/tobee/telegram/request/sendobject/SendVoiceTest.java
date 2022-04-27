@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.media.InputFile;
@@ -32,7 +32,7 @@ class SendVoiceTest {
         SendVoice sendVoice = new SendVoice(
                 new SendVoiceBody(159L, inputFile, Optional.empty(),
                         Optional.empty(), List.of(), 2, Optional.empty(), Optional.empty(),
-                        OptionalInt.empty(), Optional.empty(), Optional.empty())
+                        OptionalLong.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(sendVoice.getResponseType().getType().getTypeName(),
