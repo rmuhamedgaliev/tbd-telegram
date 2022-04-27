@@ -1,7 +1,7 @@
 package dev.tobee.telegram.request.sendobject;
 
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.message.Message;
@@ -17,7 +17,7 @@ class SendContactTest {
         SendContact sendContact = new SendContact(
                 new SendContactBody(159L, "eval", "First", Optional.empty(), Optional.empty(), Optional.empty(),
                         Optional.empty(),
-                        OptionalInt.empty(), Optional.empty(), Optional.empty())
+                        OptionalLong.empty(), Optional.empty(), Optional.empty())
         );
 
         Assertions.assertEquals(sendContact.getResponseType().getType().getTypeName(),

@@ -7,7 +7,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
-import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.media.InputFile;
@@ -31,7 +31,7 @@ class SendPhotoTest {
 
         SendPhoto sendPhoto = new SendPhoto(
                 new SendPhotoBody(159L, inputFile, Optional.empty(),
-                        List.of(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                        List.of(), Optional.empty(), Optional.empty(), OptionalLong.empty(),
                         Optional.empty(), Optional.empty())
         );
 

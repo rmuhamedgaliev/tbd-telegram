@@ -2,6 +2,7 @@ package dev.tobee.telegram.request.sendobject;
 
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.message.Message;
@@ -15,7 +16,7 @@ class SendLocationTest {
     @Test
     void checkValidRequest() {
         SendLocation sendLocation = new SendLocation(new SendLocationBody(159L, 0.4f, 0.4f, 0.4f, OptionalInt.empty()
-                , OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(), OptionalInt.empty(),
+                , OptionalInt.empty(), OptionalInt.empty(), Optional.empty(), Optional.empty(), OptionalLong.empty(),
                 Optional.empty(),
                 Optional.empty()));
 

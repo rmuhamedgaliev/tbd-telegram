@@ -2,6 +2,7 @@ package dev.tobee.telegram.model.chat;
 
 import java.util.Optional;
 import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.message.Message;
@@ -25,7 +26,7 @@ public record Chat(
         @JsonProperty("has_protected_content") boolean hasProtectedContent,
         @JsonProperty("sticker_set_name") Optional<String> stickerSetName,
         @JsonProperty("can_set_sticker_set") Optional<Boolean> canSetStickerSet,
-        @JsonProperty("linked_chat_id") OptionalInt linkedChatId,
+        @JsonProperty("linked_chat_id") OptionalLong linkedChatId,
         @JsonProperty("location") Optional<ChatLocation> location
 ) {
 }
