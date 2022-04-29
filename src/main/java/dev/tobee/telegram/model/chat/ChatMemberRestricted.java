@@ -1,11 +1,10 @@
-package dev.tobee.telegram.model.media;
+package dev.tobee.telegram.model.chat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.chat.ChatMember;
 import dev.tobee.telegram.model.message.User;
 
 public record ChatMemberRestricted(
-        @JsonProperty("status") String status,
+        @JsonProperty("status") ChatMemberStatus status,
         @JsonProperty("user") User user,
         @JsonProperty("is_member") boolean isMember,
         @JsonProperty("can_change_info") boolean canChangeInfo,
@@ -18,4 +17,9 @@ public record ChatMemberRestricted(
         @JsonProperty("can_add_web_page_previews") boolean canAddWebPagePreviews,
         @JsonProperty("until_date") long untilDate
 ) implements ChatMember {
+
+    @Override
+    public ChatMemberStatus status() {
+        return status;
+    }
 }

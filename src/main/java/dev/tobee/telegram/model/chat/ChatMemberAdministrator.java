@@ -1,13 +1,12 @@
-package dev.tobee.telegram.model.media;
+package dev.tobee.telegram.model.chat;
 
 import java.util.Optional;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.chat.ChatMember;
 import dev.tobee.telegram.model.message.User;
 
 public record ChatMemberAdministrator(
-        @JsonProperty("status") String status,
+        @JsonProperty("status") ChatMemberStatus status,
         @JsonProperty("user") User user,
         @JsonProperty("can_be_edited") boolean canBeEdited,
         @JsonProperty("is_anonymous") boolean isAnonymous,
@@ -23,4 +22,9 @@ public record ChatMemberAdministrator(
         @JsonProperty("can_pin_messages") boolean canPinMessages,
         @JsonProperty("custom_title") Optional<String> customTitle
 ) implements ChatMember {
+
+    @Override
+    public ChatMemberStatus status() {
+        return status;
+    }
 }
