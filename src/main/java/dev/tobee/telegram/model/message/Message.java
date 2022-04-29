@@ -24,10 +24,11 @@ import dev.tobee.telegram.model.media.SuccessfulPayment;
 import dev.tobee.telegram.model.media.Video;
 import dev.tobee.telegram.model.media.VideoNote;
 import dev.tobee.telegram.model.poll.Poll;
+import dev.tobee.telegram.model.video.VideoChatEnded;
+import dev.tobee.telegram.model.video.VideoChatParticipantsInvited;
+import dev.tobee.telegram.model.video.VideoChatScheduled;
+import dev.tobee.telegram.model.video.VideoChatStarted;
 import dev.tobee.telegram.model.voice.Voice;
-import dev.tobee.telegram.model.voice.VoiceChatEnded;
-import dev.tobee.telegram.model.voice.VoiceChatParticipantsInvited;
-import dev.tobee.telegram.model.voice.VoiceChatScheduled;
 
 public record Message(
         @JsonProperty("message_id") OptionalLong messageId,
@@ -81,9 +82,10 @@ public record Message(
         @JsonProperty("connected_website") Optional<String> connectedWebsite,
         @JsonProperty("passport_data") Optional<PassportData> passportData,
         @JsonProperty("proximity_alert_triggered") Optional<ProximityAlertTriggered> proximityAlertTriggered,
-        @JsonProperty("voice_chat_scheduled") Optional<VoiceChatScheduled> voiceChatScheduled,
-        @JsonProperty("voice_chat_ended") Optional<VoiceChatEnded> voiceChatEnded,
-        @JsonProperty("voice_chat_participants_invited") Optional<VoiceChatParticipantsInvited> voiceChatParticipantsInvited,
+        @JsonProperty("video_chat_scheduled") Optional<VideoChatScheduled> voiceChatScheduled,
+        @JsonProperty("video_chat_started") Optional<VideoChatStarted> videoChatStarted,
+        @JsonProperty("video_chat_ended") Optional<VideoChatEnded> videoChatEnded,
+        @JsonProperty("video_chat_participants_invited") Optional<VideoChatParticipantsInvited> videoChatParticipantsInvited,
         @JsonProperty("reply_markup") Optional<InlineKeyboardMarkup> replyMarkup
 ) {
 }
