@@ -24,7 +24,7 @@ import org.slf4j.LoggerFactory;
 public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) {
     private static final Logger logger = LoggerFactory.getLogger(TbdAsyncClient.class);
 
-    private static final DefaultJsonMapper mapper = new DefaultJsonMapper();
+    private static final DefaultJsonMapper MAPPER = new DefaultJsonMapper();
 
     private static final Duration DEFAULT_TIMEOUT = Duration.ofSeconds(5);
     private static final String DEFAULT_MIME_TYPE = "application/json";
@@ -54,7 +54,7 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
                 )
                 .thenApplyAsync(this::logResponse)
                 .thenApply(HttpResponse::body)
-                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
+                .thenApply(body -> MAPPER.parseResponse(body, request.getResponseType()));
     }
 
     public <T> T getRequestSync(Request<T> request) throws IOException, InterruptedException {
@@ -72,7 +72,7 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
 
         logResponse(response);
 
-        return mapper.parseResponse(response.body(), request.getResponseType());
+        return MAPPER.parseResponse(response.body(), request.getResponseType());
     }
 
     public <T> CompletableFuture<T> postRequest(Request<T> request) {
@@ -89,7 +89,7 @@ public record TbdAsyncClient(boolean isDebugEnabled, String host, String token) 
                 )
                 .thenApplyAsync(this::logResponse)
                 .thenApply(HttpResponse::body)
-                .thenApply(body -> mapper.parseResponse(body, request.getResponseType()));
+                .thenApply(body -> MAPPER.parseResponse(body, request.getResponseType()));
     }
 
     private HttpRequest.BodyPublisher prepareMultipartData(Map<Object, Object> data, String boundary) {
