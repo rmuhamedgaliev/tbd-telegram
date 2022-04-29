@@ -12,7 +12,7 @@ public record PromoteChatMemberBody(
         @JsonProperty("can_post_messages") Optional<Boolean> canPostMessages,
         @JsonProperty("can_edit_messages") Optional<Boolean> canEditMessages,
         @JsonProperty("can_delete_messages") Optional<Boolean> canDeleteMessages,
-        @JsonProperty("can_manage_voice_chats") Optional<Boolean> canManageVoiceChats,
+        @JsonProperty("can_manage_video_chats") Optional<Boolean> canManageVoiceChats,
         @JsonProperty("can_restrict_members") Optional<Boolean> canRestrictMembers,
         @JsonProperty("can_promote_members") Optional<Boolean> canPromoteMembers,
         @JsonProperty("can_change_info") Optional<Boolean> canChangeInfo,
