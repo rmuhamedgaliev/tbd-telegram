@@ -12,7 +12,7 @@ public record ChatMemberAdministrator(
         @JsonProperty("is_anonymous") boolean isAnonymous,
         @JsonProperty("can_manage_chat") boolean canManageChat,
         @JsonProperty("can_delete_messages") boolean canDeleteMessages,
-        @JsonProperty("can_manage_voice_chats") boolean canManageVoiceChats,
+        @JsonProperty("can_manage_video_chats") boolean canManageVoiceChats,
         @JsonProperty("can_restrict_members") boolean canRestrictMembers,
         @JsonProperty("can_promote_members") boolean canPromoteMembers,
         @JsonProperty("can_change_info") boolean canChangeInfo,
