@@ -1,8 +1,8 @@
-package dev.tobee.telegram.model.voice;
+package dev.tobee.telegram.model.video;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public record VoiceChatEnded(
+public record VideoChatEnded(
         @JsonProperty("duration") int duration
 ) {
 }
