@@ -111,7 +111,7 @@ class TestSendMessage {
                         Optional.empty(),
                         Optional.of(new ReplyKeyboardMarkup(
                                 List.of(List.of(new KeyboardButton("Hello.", Optional.empty(),
-                                        Optional.of(Boolean.TRUE), Optional.empty()))),
+                                        Optional.of(Boolean.TRUE), Optional.empty(), Optional.empty()))),
                                 Optional.of(Boolean.TRUE),
                                 Optional.of(Boolean.TRUE),
                                 Optional.of("Hello"),
