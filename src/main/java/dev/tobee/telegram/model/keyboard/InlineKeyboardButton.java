@@ -10,6 +10,7 @@ public record InlineKeyboardButton(
         @JsonProperty("url") Optional<String> url,
         @JsonProperty("login_url") Optional<LoginUrl> loginUrl,
         @JsonProperty("callback_data") Optional<String> callbackData,
+        @JsonProperty("web_app") Optional<WebAppInfo> webApp,
         @JsonProperty("switch_inline_query") Optional<String> switchInlineQuery,
         @JsonProperty("switch_inline_query_current_chat") Optional<String> switchInlineQueryCurrentChat,
         @JsonProperty("pay") Optional<Boolean> pay

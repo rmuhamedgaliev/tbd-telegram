@@ -8,6 +8,7 @@ public record KeyboardButton(
         @JsonProperty("text") String text,
         @JsonProperty("request_contact") Optional<Boolean> requestContact,
         @JsonProperty("request_location") Optional<Boolean> requestLocation,
-        @JsonProperty("request_poll") Optional<KeyboardButtonPollType> requestPoll
+        @JsonProperty("request_poll") Optional<KeyboardButtonPollType> requestPoll,
+        @JsonProperty("web_app") Optional<WebAppInfo> webApp
 ) {
 }
