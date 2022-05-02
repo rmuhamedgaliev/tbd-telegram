@@ -1,5 +1,6 @@
 package dev.tobee.telegram;
 
+import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
@@ -61,7 +62,7 @@ public class LongPollingTelegramBot implements TelegramBot {
                                     OptionalLong.of(lastUpdate.get()),
                                     OptionalInt.empty(),
                                     OptionalInt.empty(),
-                                    List.of(UpdateTypes.MESSAGE, UpdateTypes.CALLBACK_QUERY, UpdateTypes.CHANNEL_POST)
+                                    Arrays.asList(UpdateTypes.values())
                             )));
                         } else {
                             request = new GetUpdates(Optional.empty());
@@ -90,9 +91,7 @@ public class LongPollingTelegramBot implements TelegramBot {
     }
 
     private void handleLastUpdateId(Optional<Update> update, AtomicLong lastUpdate) {
-        if (update.isPresent()) {
-            lastUpdate.set(update.get().updateId().orElse(0) + 1);
-        }
+        update.ifPresent(value -> lastUpdate.set(value.updateId() + 1));
     }
 
     @Override

@@ -12,7 +12,6 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 class CopyMessageTest {
-
     @Test
     void checkValidRequest() {
         CopyMessage copyMessage = new CopyMessage(

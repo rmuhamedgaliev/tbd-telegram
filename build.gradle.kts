@@ -1,3 +1,9 @@
+import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
+import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
+
 plugins {
     `java-library`
     `maven-publish`
@@ -14,6 +20,7 @@ version = "0.1.13"
 
 repositories {
     mavenCentral()
+    maven { url=uri("https://mvn.mchv.eu/repository/mchv/") }
 }
 
 object Versions {
@@ -22,8 +29,9 @@ object Versions {
     const val log4jVersion = "2.17.0"
     const val slf4jApiVersion = "1.7.32"
     const val mockitoVersion = "3.12.4"
-    const val junitVersion = "5.7.2"
+    const val junitVersion = "5.8.2"
     const val systemStubsVersion = "1.2.0"
+    const val tdlightVersion = "2.8.1.2"
 }
 
 dependencies {
@@ -39,8 +47,15 @@ dependencies {
     implementation("org.apache.logging.log4j:log4j-api:${Versions.log4jVersion}")
     implementation("org.slf4j:slf4j-api:${Versions.slf4jApiVersion}")
 
-    testImplementation("org.junit.jupiter:junit-jupiter-api:${Versions.junitVersion}")
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:${Versions.junitVersion}")
+    testImplementation(platform("it.tdlight:tdlight-java-bom:${Versions.tdlightVersion}"))
+    testImplementation("it.tdlight:tdlight-java")
+    testImplementation("it.tdlight:tdlight-natives-osx-amd64")
+
+    testImplementation(platform("org.junit:junit-bom:${Versions.junitVersion}"))
+    testImplementation("org.junit.platform:junit-platform-launcher")
+    testImplementation("org.junit.jupiter:junit-jupiter-api")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
+
     testImplementation("org.mockito:mockito-core:${Versions.mockitoVersion}")
     testImplementation("org.mockito:mockito-junit-jupiter:${Versions.mockitoVersion}")
     testImplementation("uk.org.webcompere:system-stubs-core:${Versions.systemStubsVersion}")
@@ -49,7 +64,15 @@ dependencies {
 
 tasks.test {
     useJUnitPlatform()
+    testLogging {
+        events(PASSED, FAILED, STANDARD_ERROR, SKIPPED)
+        exceptionFormat = FULL
+        showExceptions = true
+        showCauses = true
+        showStackTraces = true
+    }
 }
+
 
 java {
     withJavadocJar()

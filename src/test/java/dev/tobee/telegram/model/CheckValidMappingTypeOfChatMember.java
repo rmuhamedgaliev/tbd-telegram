@@ -12,9 +12,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public class CheckValidMappingTypeOfChatMember {
-
     private final static DefaultJsonMapper MAPPER = new DefaultJsonMapper();
-
     @Test
     public void checkValidMappingOfTypeChatMember() {
         try (var jsonValueFileStream = getClass().getClassLoader()

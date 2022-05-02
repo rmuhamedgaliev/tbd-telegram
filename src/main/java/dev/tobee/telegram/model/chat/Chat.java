@@ -8,7 +8,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.message.Message;
 
 public record Chat(
-        @JsonProperty("id") Integer id,
+        @JsonProperty("id") long id,
         @JsonProperty("type") ChatType type,
         @JsonProperty("title") Optional<String> title,
         @JsonProperty("username") Optional<String> username,

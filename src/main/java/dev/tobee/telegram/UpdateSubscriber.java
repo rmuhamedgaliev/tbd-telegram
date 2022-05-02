@@ -20,7 +20,7 @@ public class UpdateSubscriber implements Flow.Subscriber<Update> {
 
     @Override
     public void onNext(Update item) {
-        LOGGER.debug("Received new update with id {}", item.updateId().orElseThrow());
+        LOGGER.debug("Received new update with id {}", item.updateId());
         this.subscription.request(1);
     }
 
