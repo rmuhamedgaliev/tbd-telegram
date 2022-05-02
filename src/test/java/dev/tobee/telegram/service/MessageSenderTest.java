@@ -7,6 +7,7 @@ import dev.tobee.telegram.model.message.MessageEntityType;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import it.tdlight.jni.TdApi;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -169,6 +170,36 @@ public class MessageSenderTest extends BaseRequestsTest {
                 Optional.empty(),
                 Optional.empty(),
                 OptionalLong.empty(),
+                Optional.empty(),
+                Optional.empty()
+        );
+
+        var response = messageService.sendMessage(body).join();
+
+        Assertions.assertTrue(response.ok());
+        Assertions.assertTrue(response.result().isPresent());
+        Assertions.assertTrue(response.result().get().text().isPresent());
+        Assertions.assertEquals(message, response.result().get().text().get());
+    }
+
+    @Disabled
+    @Test
+    public void sendMessageWithReply() {
+        String message = "Offshore organization verzeichnis greek theft forestry logitech.";
+
+        TdLibInitHandler.TD_LIB_INIT.getClient().addUpdateHandler(TdApi.UpdateNewMessage.class, update -> {
+            Assertions.assertTrue(((TdApi.MessageText)update.message.content).text.entities.length > 0);
+        });
+
+        var body = new SendMessageBody(
+                DESTINATION_USER,
+                message,
+                Optional.empty(),
+                Collections.emptyList(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                OptionalLong.of(207618047),
                 Optional.empty(),
                 Optional.empty()
         );
