@@ -38,6 +38,7 @@ class MessageServiceTest extends BaseRequestsTest {
     }
 
     @Test
+    @DisplayName("Test send markdown formatted message")
     public void testSendMarkdownFormattedMessage() {
         String message = "`Offshore` *organization* _verzeichnis_ greek theft forestry logitech.";
 
@@ -57,6 +58,7 @@ class MessageServiceTest extends BaseRequestsTest {
     }
 
     @Test
+    @DisplayName("Test send markdown_v2 formatted message")
     public void testSendMarkdownV2FormattedMessage() {
         String message = "~Offshore~ **organization** __verzeichnis__ ||greek|| theft forestry logitech\\.";
 
@@ -76,6 +78,7 @@ class MessageServiceTest extends BaseRequestsTest {
     }
 
     @Test
+    @DisplayName("Test send html formatted message")
     public void testSendHTMLFormattedMessage() {
         String message = "<s>Offshore</s> <b>organization</b> <i>verzeichnis</i> greek theft forestry logitech.";
 

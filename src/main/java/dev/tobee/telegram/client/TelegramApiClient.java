@@ -148,8 +148,8 @@ public record TelegramApiClient(boolean isDebugEnabled, String host, String toke
         try (FileOutputStream ous = new FileOutputStream(Paths.get(directory.getPath(), method + ".json").toFile())) {
             var mapper = DefaultJsonMapper.getMapper();
             var value = mapper.readValue(responseBody, reference);
-            var respo = mapper.writeValueAsBytes(value);
-            ous.write(respo);
+            var resp = mapper.writeValueAsBytes(value);
+            ous.write(resp);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
