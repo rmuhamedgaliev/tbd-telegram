@@ -1,11 +1,13 @@
 package dev.tobee.telegram;
 
 import dev.tobee.telegram.client.TelegramApiClient;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Optional;
 
+@Tag("integration")
 @EnabledIfEnvironmentVariable(named = "TBD_INTEGRATION_TEST", matches = "true")
 @ExtendWith({TdLibInitHandler.class})
 public class BaseRequestsTest {

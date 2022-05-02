@@ -61,7 +61,9 @@ dependencies {
 }
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags("integration")
+    }
     testLogging {
         events(PASSED, FAILED, STANDARD_ERROR, SKIPPED)
         exceptionFormat = FULL
@@ -73,6 +75,7 @@ tasks.test {
         junitXml.required.set(true)
         html.required.set(true)
     }
+    
 }
 
 
