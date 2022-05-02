@@ -1,4 +1,4 @@
-package dev.tobee.telegram.integration;
+package dev.tobee.telegram;
 
 import java.nio.file.Paths;
 

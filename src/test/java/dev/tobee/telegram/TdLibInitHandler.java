@@ -1,4 +1,4 @@
-package dev.tobee.telegram.integration;
+package dev.tobee.telegram;
 
 import it.tdlight.common.utils.CantLoadLibrary;
 import org.junit.jupiter.api.extension.BeforeAllCallback;
