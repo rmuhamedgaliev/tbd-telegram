@@ -32,7 +32,8 @@ jobs:
         run: ./gradlew test
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v3
-        report_paths: '**/build/test-results/test/TEST-*.xml'
+        with:
+          report_paths: '**/build/test-results/test/TEST-*.xml'
       - name: Run run Sonarqube
         run: ./gradlew sonarqube
         env:
