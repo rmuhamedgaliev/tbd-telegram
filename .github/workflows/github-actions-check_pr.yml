@@ -18,14 +18,17 @@ jobs:
           distribution: 'zulu'
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
-      - name: Prepare test env variables
-        run: |
-          export TBD_TELEGRAM_TEST_API_ID=${{ secrets.TBD_TELEGRAM_TEST_API_ID }}
-          export TBD_TELEGRAM_TEST_BOT_TOKEN=${{ secrets.TBD_TELEGRAM_TEST_BOT_TOKEN }}
-          export TBD_TELEGRAM_TEST_HASH=${{ secrets.TBD_TELEGRAM_TEST_HASH }}
       - name: Execute Gradle build
+        env:
+          TBD_TELEGRAM_TEST_API_ID: ${{ secrets.TBD_TELEGRAM_TEST_API_ID }}
+          TBD_TELEGRAM_TEST_BOT_TOKEN: ${{ secrets.TBD_TELEGRAM_TEST_BOT_TOKEN }}
+          TBD_TELEGRAM_TEST_HASH: ${{ secrets.TBD_TELEGRAM_TEST_HASH }}
         run: ./gradlew build
       - name: Run tests
+        env:
+          TBD_TELEGRAM_TEST_API_ID: ${{ secrets.TBD_TELEGRAM_TEST_API_ID }}
+          TBD_TELEGRAM_TEST_BOT_TOKEN: ${{ secrets.TBD_TELEGRAM_TEST_BOT_TOKEN }}
+          TBD_TELEGRAM_TEST_HASH: ${{ secrets.TBD_TELEGRAM_TEST_HASH }}
         run: ./gradlew test
       - name: Run run Sonarqube
         run: ./gradlew sonarqube
