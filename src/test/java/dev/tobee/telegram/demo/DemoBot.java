@@ -6,7 +6,7 @@ import dev.tobee.telegram.LongPollingTelegramBot;
 import dev.tobee.telegram.client.TbdAsyncClient;
 
 public class DemoBot {
-    private static final String HOST = "https://api.telegram.org";
+    private static final String HOST = "http://localhost:8081";
 
     public static void main(String[] args) {
         var token = System.getenv().get("TBD_TELEGRAM_TOKEN");

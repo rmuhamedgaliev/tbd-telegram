@@ -4,7 +4,9 @@ import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.message.ResponseWrapper;
@@ -30,7 +32,7 @@ public class GetUpdates implements Request<ResponseWrapper<List<Update>>> {
         Optional<Map<Object, Object>> body = getBody();
         if (body.isPresent()) {
             StringBuilder methodBuilder = new StringBuilder(method + "?");
-            for (Map.Entry<Object, Object> entry : body.get().entrySet()) {
+            for (Map.Entry<Object, Object> entry : body.get().entrySet().stream().filter(e -> Objects.nonNull(e.getValue())).collect(Collectors.toSet())) {
                 try {
                     methodBuilder
                             .append(URLEncoder.encode((String) entry.getKey(), StandardCharsets.UTF_8.toString())).append("=")
