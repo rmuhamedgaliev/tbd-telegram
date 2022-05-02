@@ -23,7 +23,7 @@ jobs:
           TBD_TELEGRAM_TEST_API_ID: ${{ secrets.TBD_TELEGRAM_TEST_API_ID }}
           TBD_TELEGRAM_TEST_BOT_TOKEN: ${{ secrets.TBD_TELEGRAM_TEST_BOT_TOKEN }}
           TBD_TELEGRAM_TEST_HASH: ${{ secrets.TBD_TELEGRAM_TEST_HASH }}
-          TBD_INTEGRATION_TEST: ${{ secrets.TBD_INTEGRATION_TEST }}º
+          TBD_INTEGRATION_TEST: ${{ secrets.TBD_INTEGRATION_TEST }}
         run: ./gradlew build
       - name: Publish Test Report
         uses: mikepenz/action-junit-report@v3
