@@ -72,6 +72,10 @@ tasks.test {
         showCauses = true
         showStackTraces = true
     }
+    reports {
+        junitXml.required.set(true)
+        html.required.set(true)
+    }
 }
 
 
