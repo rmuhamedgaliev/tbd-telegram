@@ -8,7 +8,6 @@ import dev.tobee.telegram.client.TbdAsyncClient;
 import dev.tobee.telegram.integration.TdLibInitHandler;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.message.SendMessage;
-import dev.tobee.telegram.request.user.GetMe;
 import it.tdlight.jni.TdApi;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,21 +15,8 @@ import org.junit.jupiter.api.extension.ExtendWith;
 
 @ExtendWith({TdLibInitHandler.class})
 public class TestSendMessageFromBotToBot {
-
     private static final String HOST = "https://api.telegram.org";
-
-    //    1900941618
     private static final TbdAsyncClient bot1 = new TbdAsyncClient(false, HOST, System.getenv("TBD_TELEGRAM_TOKEN"));
-
-    //    5379079840
-
-    @Test
-    public void checkGetMeTwoBots() {
-        GetMe getMe1 = new GetMe();
-        var getMeResponse1 = bot1.getRequest(getMe1).join();
-
-        Assertions.assertTrue(getMeResponse1.ok());
-    }
 
     @Test
     public void checkSendMessageFromBot2Bot() {
