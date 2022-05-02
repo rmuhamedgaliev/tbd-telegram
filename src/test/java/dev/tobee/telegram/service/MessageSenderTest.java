@@ -2,6 +2,8 @@ package dev.tobee.telegram.service;
 
 import dev.tobee.telegram.BaseRequestsTest;
 import dev.tobee.telegram.TdLibInitHandler;
+import dev.tobee.telegram.model.message.MessageEntity;
+import dev.tobee.telegram.model.message.MessageEntityType;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import it.tdlight.jni.TdApi;
 import org.junit.jupiter.api.Assertions;
@@ -9,6 +11,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 import java.util.OptionalLong;
 
@@ -109,6 +112,73 @@ public class MessageSenderTest extends BaseRequestsTest {
         Assertions.assertTrue(response.ok());
         Assertions.assertTrue(response.result().isPresent());
         Assertions.assertTrue(response.result().get().text().isPresent());
+    }
+
+    @Test
+    public void sendMessageWithoutNotification() {
+        String message = "Offshore organization verzeichnis greek theft forestry logitech.";
+
+        TdLibInitHandler.TD_LIB_INIT.getClient().addUpdateHandler(TdApi.UpdateNewMessage.class, update -> {
+            Assertions.assertNotNull(update.message.content);
+        });
+
+        var body = new SendMessageBody(
+                DESTINATION_USER,
+                message,
+                Optional.empty(),
+                Collections.emptyList(),
+                Optional.empty(),
+                Optional.of(Boolean.TRUE),
+                Optional.empty(),
+                OptionalLong.empty(),
+                Optional.empty(),
+                Optional.empty()
+        );
+
+        var response = messageService.sendMessage(body).join();
+
+        Assertions.assertTrue(response.ok());
+        Assertions.assertTrue(response.result().isPresent());
+        Assertions.assertTrue(response.result().get().text().isPresent());
+        Assertions.assertEquals(message, response.result().get().text().get());
+    }
+
+    @Test
+    public void sendMessageWithMessageEntity() {
+        String message = "#12345 Offshore organization verzeichnis greek theft forestry logitech.";
+
+        TdLibInitHandler.TD_LIB_INIT.getClient().addUpdateHandler(TdApi.UpdateNewMessage.class, update -> {
+            Assertions.assertTrue(((TdApi.MessageText)update.message.content).text.entities.length > 0);
+        });
+
+        var body = new SendMessageBody(
+                DESTINATION_USER,
+                message,
+                Optional.empty(),
+                List.of(
+                        new MessageEntity(
+                                MessageEntityType.BOLD,
+                                1,
+                                6,
+                                Optional.empty(),
+                                Optional.empty(),
+                                Optional.empty()
+                        )
+                ),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                OptionalLong.empty(),
+                Optional.empty(),
+                Optional.empty()
+        );
+
+        var response = messageService.sendMessage(body).join();
+
+        Assertions.assertTrue(response.ok());
+        Assertions.assertTrue(response.result().isPresent());
+        Assertions.assertTrue(response.result().get().text().isPresent());
+        Assertions.assertEquals(message, response.result().get().text().get());
     }
 
 }
