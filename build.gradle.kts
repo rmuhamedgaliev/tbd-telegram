@@ -50,6 +50,7 @@ dependencies {
     testImplementation(platform("it.tdlight:tdlight-java-bom:${Versions.tdlightVersion}"))
     testImplementation("it.tdlight:tdlight-java")
     testImplementation("it.tdlight:tdlight-natives-osx-amd64")
+    testImplementation("it.tdlight:tdlight-natives-linux-amd64")
 
     testImplementation(platform("org.junit:junit-bom:${Versions.junitVersion}"))
     testImplementation("org.junit.platform:junit-platform-launcher")
