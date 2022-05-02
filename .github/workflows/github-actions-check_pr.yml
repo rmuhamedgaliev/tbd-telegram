@@ -21,7 +21,7 @@ jobs:
       - name: Prepare test env variables
         run: |
           export TBD_TELEGRAM_TEST_API_ID=${{ secrets.TBD_TELEGRAM_TEST_API_ID }}
-          export TBD_TELEGRAM_TEST_BOT_TOKEN=${{ secrets.TBD_TELEGRAM_TEST_BOT_TOKENº }}
+          export TBD_TELEGRAM_TEST_BOT_TOKEN=${{ secrets.TBD_TELEGRAM_TEST_BOT_TOKEN }}
           export TBD_TELEGRAM_TEST_HASH=${{ secrets.TBD_TELEGRAM_TEST_HASH }}
       - name: Execute Gradle build
         run: ./gradlew build
