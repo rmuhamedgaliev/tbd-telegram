@@ -1,28 +1,9 @@
 package dev.tobee.telegram.model.message;
 
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.OptionalLong;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.chat.Chat;
 import dev.tobee.telegram.model.keyboard.InlineKeyboardMarkup;
-import dev.tobee.telegram.model.media.Animation;
-import dev.tobee.telegram.model.media.Audio;
-import dev.tobee.telegram.model.media.Contact;
-import dev.tobee.telegram.model.media.Dice;
-import dev.tobee.telegram.model.media.Document;
-import dev.tobee.telegram.model.media.Game;
-import dev.tobee.telegram.model.media.Invoice;
-import dev.tobee.telegram.model.media.Location;
-import dev.tobee.telegram.model.media.PassportData;
-import dev.tobee.telegram.model.media.PhotoSize;
-import dev.tobee.telegram.model.media.ProximityAlertTriggered;
-import dev.tobee.telegram.model.media.Sticker;
-import dev.tobee.telegram.model.media.SuccessfulPayment;
-import dev.tobee.telegram.model.media.Video;
-import dev.tobee.telegram.model.media.VideoNote;
+import dev.tobee.telegram.model.media.*;
 import dev.tobee.telegram.model.poll.Poll;
 import dev.tobee.telegram.model.video.VideoChatEnded;
 import dev.tobee.telegram.model.video.VideoChatParticipantsInvited;
@@ -30,6 +11,16 @@ import dev.tobee.telegram.model.video.VideoChatScheduled;
 import dev.tobee.telegram.model.video.VideoChatStarted;
 import dev.tobee.telegram.model.voice.Voice;
 
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
+
+/**
+ * This object represents a <a href="https://core.telegram.org/bots/api#message">message</a>.
+ *
+ * @author <a href="mailto:rinat.muhamedgaliev@gmail.com">Rinat Muhamedgaliev</a>
+ */
 public record Message(
         @JsonProperty("message_id") OptionalLong messageId,
         @JsonProperty("from") Optional<User> user,

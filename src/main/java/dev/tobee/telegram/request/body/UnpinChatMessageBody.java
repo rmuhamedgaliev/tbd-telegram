@@ -1,8 +1,8 @@
 package dev.tobee.telegram.request.body;
 
-import java.util.OptionalLong;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.OptionalLong;
 
 public record UnpinChatMessageBody(
         @JsonProperty("chat_id") long chatId,

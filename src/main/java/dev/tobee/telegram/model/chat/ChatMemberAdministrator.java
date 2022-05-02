@@ -1,9 +1,9 @@
 package dev.tobee.telegram.model.chat;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.message.User;
+
+import java.util.Optional;
 
 public record ChatMemberAdministrator(
         @JsonProperty("status") ChatMemberStatus status,

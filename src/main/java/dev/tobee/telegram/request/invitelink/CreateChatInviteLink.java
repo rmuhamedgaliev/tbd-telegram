@@ -1,13 +1,13 @@
 package dev.tobee.telegram.request.invitelink;
 
-import java.util.Map;
-import java.util.Optional;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.body.CreateChatInviteLinkBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
+
+import java.util.Map;
+import java.util.Optional;
 
 public class CreateChatInviteLink implements Request<ResponseWrapper<Boolean>> {
     private static final String METHOD = "createChatInviteLink";

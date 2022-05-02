@@ -1,8 +1,8 @@
 package dev.tobee.telegram.model.bot;
 
-import java.util.OptionalLong;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.OptionalLong;
 
 public record BotCommandScopeChatAdministrators(
         @JsonProperty("chat_id") OptionalLong chatId) implements BotCommandScope {

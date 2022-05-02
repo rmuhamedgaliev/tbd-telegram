@@ -1,11 +1,11 @@
 package dev.tobee.telegram.model.chat;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.User;
+
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.message.User;
 
 public record ChatInviteLink(
         @JsonProperty("invite_link") String inviteLink,

@@ -1,8 +1,5 @@
 package dev.tobee.telegram.util;
 
-import java.io.IOException;
-import java.util.Map;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.DeserializationFeature;
@@ -12,16 +9,19 @@ import com.fasterxml.jackson.databind.json.JsonMapper;
 import com.fasterxml.jackson.datatype.jdk8.Jdk8Module;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 
+import java.io.IOException;
+import java.util.Map;
+
 public class DefaultJsonMapper {
 
     private static final JsonMapper mapper = JsonMapper.builder()
-            .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
-            .addModule(new Jdk8Module())
-            .addModule(new ParameterNamesModule())
-            .enable(SerializationFeature.INDENT_OUTPUT)
-            .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
-            .serializationInclusion(JsonInclude.Include.NON_ABSENT)
-            .build();
+                                                       .propertyNamingStrategy(PropertyNamingStrategies.SNAKE_CASE)
+                                                       .addModule(new Jdk8Module())
+                                                       .addModule(new ParameterNamesModule())
+                                                       .enable(SerializationFeature.INDENT_OUTPUT)
+                                                       .configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false)
+                                                       .serializationInclusion(JsonInclude.Include.NON_ABSENT)
+                                                       .build();
 
     public static JsonMapper getMapper() {
         return mapper;
@@ -46,5 +46,4 @@ public class DefaultJsonMapper {
             throw new RuntimeException(e);
         }
     }
-
 }

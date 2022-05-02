@@ -6,3 +6,4 @@ build
 out
 .idea/
 tdlight-session
+.cache

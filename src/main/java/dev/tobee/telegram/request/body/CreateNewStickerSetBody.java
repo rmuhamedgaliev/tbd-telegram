@@ -1,10 +1,10 @@
 package dev.tobee.telegram.request.body;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.media.InputFile;
 import dev.tobee.telegram.model.media.MaskPosition;
+
+import java.util.Optional;
 
 public record CreateNewStickerSetBody(
         @JsonProperty("user_id") long userId,

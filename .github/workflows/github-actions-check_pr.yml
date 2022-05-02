@@ -18,6 +18,8 @@ jobs:
           distribution: 'zulu'
       - name: Setup Gradle
         uses: gradle/gradle-build-action@v2
+      - name: Prepare env
+        run: unzip -P ${{ secrets.TBD_SESSION_TESTS }} tdlight-session.zip
       - name: Execute Gradle build
         env:
           TBD_TELEGRAM_TEST_API_ID: ${{ secrets.TBD_TELEGRAM_TEST_API_ID }}

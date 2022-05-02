@@ -1,8 +1,8 @@
 package dev.tobee.telegram.model.media;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Optional;
 
 public record Venue(
         @JsonProperty("location") Location location,

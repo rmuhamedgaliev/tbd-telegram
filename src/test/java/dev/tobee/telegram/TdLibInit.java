@@ -1,13 +1,13 @@
 package dev.tobee.telegram;
 
-import java.nio.file.Paths;
-
 import it.tdlight.client.APIToken;
 import it.tdlight.client.AuthenticationData;
 import it.tdlight.client.SimpleTelegramClient;
 import it.tdlight.client.TDLibSettings;
 import it.tdlight.common.Init;
 import it.tdlight.common.utils.CantLoadLibrary;
+
+import java.nio.file.Paths;
 
 public class TdLibInit {
 
@@ -23,7 +23,6 @@ public class TdLibInit {
 
         var sessionPath = Paths.get("tdlight-session");
         settings.setDatabaseDirectoryPath(sessionPath.resolve("data"));
-
         this.client = new SimpleTelegramClient(settings);
     }
 
@@ -32,13 +31,13 @@ public class TdLibInit {
     }
 
     public void startClient() {
-        var authenticationData = AuthenticationData.bot(System.getenv("TBD_TELEGRAM_TEST_BOT_TOKEN"));
+        var authenticationData = AuthenticationData.user(79933884802L);
         client.start(authenticationData);
     }
 
     public void stopClient() {
         try {
-            client.waitForExit();
+            client.closeAndWait();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }

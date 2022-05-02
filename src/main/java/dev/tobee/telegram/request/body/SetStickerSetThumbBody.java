@@ -1,9 +1,9 @@
 package dev.tobee.telegram.request.body;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.media.InputFile;
+
+import java.util.Optional;
 
 public record SetStickerSetThumbBody(
         @JsonProperty("name") String name,

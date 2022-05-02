@@ -1,16 +1,16 @@
 package dev.tobee.telegram.request.body;
 
-import java.nio.file.Path;
-import java.util.List;
-import java.util.Optional;
-import java.util.OptionalInt;
-import java.util.OptionalLong;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.media.InputFile;
 import dev.tobee.telegram.model.message.MessageEntity;
 import dev.tobee.telegram.model.message.ParseMode;
 import dev.tobee.telegram.model.message.ReplyMarkup;
+
+import java.nio.file.Path;
+import java.util.List;
+import java.util.Optional;
+import java.util.OptionalInt;
+import java.util.OptionalLong;
 
 public record SendAnimationBody(
         @JsonProperty("chat_id") long chatId,

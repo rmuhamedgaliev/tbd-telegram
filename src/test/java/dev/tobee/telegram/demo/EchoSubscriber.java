@@ -1,20 +1,20 @@
 package dev.tobee.telegram.demo;
 
-import java.util.Collections;
-import java.util.Optional;
-import java.util.concurrent.Flow;
-
-import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.client.TelegramApiClient;
 import dev.tobee.telegram.model.message.Update;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.message.SendMessage;
 
+import java.util.Collections;
+import java.util.Optional;
+import java.util.concurrent.Flow;
+
 public class EchoSubscriber implements Flow.Subscriber<Update> {
 
-    private final TbdAsyncClient asyncClient;
+    private final TelegramApiClient asyncClient;
     private Flow.Subscription subscription;
 
-    public EchoSubscriber(TbdAsyncClient asyncClient) {
+    public EchoSubscriber(TelegramApiClient asyncClient) {
         this.asyncClient = asyncClient;
     }
 
