@@ -2,6 +2,7 @@ package dev.tobee.telegram.service;
 
 import dev.tobee.telegram.client.TelegramApiClient;
 import dev.tobee.telegram.model.message.Message;
+import dev.tobee.telegram.model.message.ParseMode;
 import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.message.SendMessage;
@@ -30,6 +31,57 @@ public record MessageService(TelegramApiClient client) {
                 chatId,
                 message,
                 Optional.empty(),
+                Collections.emptyList(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                OptionalLong.empty(),
+                Optional.empty(),
+                Optional.empty()
+        );
+
+        return sendMessage(textMessage);
+    }
+
+    public CompletableFuture<ResponseWrapper<Message>> sendMarkdownTextMessage(long chatId, String message) {
+        var textMessage = new SendMessageBody(
+                chatId,
+                message,
+                Optional.of(ParseMode.MARKDOWN),
+                Collections.emptyList(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                OptionalLong.empty(),
+                Optional.empty(),
+                Optional.empty()
+        );
+
+        return sendMessage(textMessage);
+    }
+
+    public CompletableFuture<ResponseWrapper<Message>> sendMarkdownV2TextMessage(long chatId, String message) {
+        var textMessage = new SendMessageBody(
+                chatId,
+                message,
+                Optional.of(ParseMode.MARKDOWN_V2),
+                Collections.emptyList(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                OptionalLong.empty(),
+                Optional.empty(),
+                Optional.empty()
+        );
+
+        return sendMessage(textMessage);
+    }
+
+    public CompletableFuture<ResponseWrapper<Message>> sendHTMLTextMessage(long chatId, String message) {
+        var textMessage = new SendMessageBody(
+                chatId,
+                message,
+                Optional.of(ParseMode.HTML),
                 Collections.emptyList(),
                 Optional.empty(),
                 Optional.empty(),

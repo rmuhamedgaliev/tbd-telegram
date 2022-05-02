@@ -1,10 +1,12 @@
 package dev.tobee.telegram;
 
 import dev.tobee.telegram.client.TelegramApiClient;
+import org.junit.jupiter.api.condition.EnabledIfEnvironmentVariable;
 import org.junit.jupiter.api.extension.ExtendWith;
 
 import java.util.Optional;
 
+@EnabledIfEnvironmentVariable(named = "TBD_INTEGRATION_TEST", matches = "true")
 @ExtendWith({TdLibInitHandler.class})
 public class BaseRequestsTest {
     protected static final String HOST = "https://api.telegram.org";
