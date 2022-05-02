@@ -1,8 +1,8 @@
 package dev.tobee.telegram.model.message;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Optional;
 
 public record MessageEntity(
         @JsonProperty("type") MessageEntityType type,

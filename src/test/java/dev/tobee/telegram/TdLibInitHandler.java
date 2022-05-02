@@ -6,9 +6,8 @@ import org.junit.jupiter.api.extension.ExtensionContext;
 
 public class TdLibInitHandler implements BeforeAllCallback, ExtensionContext.Store.CloseableResource {
 
-    private static boolean started = false;
-
     public static final TdLibInit TD_LIB_INIT;
+    private static boolean started = false;
 
     static {
         try {
@@ -23,6 +22,10 @@ public class TdLibInitHandler implements BeforeAllCallback, ExtensionContext.Sto
         if (!started) {
             started = true;
             TD_LIB_INIT.startClient();
+
+            context.getRoot()
+                   .getStore(ExtensionContext.Namespace.GLOBAL)
+                   .put("TestDataSetup-started", this);
         }
     }
 

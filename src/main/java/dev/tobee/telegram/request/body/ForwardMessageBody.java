@@ -1,9 +1,9 @@
 package dev.tobee.telegram.request.body;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import java.util.Optional;
 import java.util.OptionalLong;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 public record ForwardMessageBody(
         @JsonProperty("chat_id") long chatId,

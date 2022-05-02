@@ -1,10 +1,10 @@
 package dev.tobee.telegram.model.media;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.message.MessageEntity;
+
+import java.util.List;
+import java.util.Optional;
 
 public record Game(
         @JsonProperty("title") String title,

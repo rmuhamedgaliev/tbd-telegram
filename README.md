@@ -47,7 +47,7 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.concurrent.Flow;
 
-import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.client.TelegramApiClient;
 import dev.tobee.telegram.model.message.Update;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.message.SendMessage;
@@ -103,7 +103,7 @@ package dev.tobee.telegram.demo;
 import java.util.Collections;
 
 import dev.tobee.telegram.LongPollingTelegramBot;
-import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.client.TelegramApiClient;
 
 public class DemoBot {
     private static final String HOST = "https://api.telegram.org";

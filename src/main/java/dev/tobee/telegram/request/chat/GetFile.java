@@ -1,14 +1,14 @@
 package dev.tobee.telegram.request.chat;
 
-import java.util.Map;
-import java.util.Optional;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.media.File;
 import dev.tobee.telegram.model.message.ResponseWrapper;
 import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.body.GetFileBody;
 import dev.tobee.telegram.util.DefaultObjectMapper;
+
+import java.util.Map;
+import java.util.Optional;
 
 public class GetFile implements Request<ResponseWrapper<File>> {
     private static final String METHOD = "getFile";

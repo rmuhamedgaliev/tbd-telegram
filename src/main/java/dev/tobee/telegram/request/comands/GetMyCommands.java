@@ -1,9 +1,5 @@
 package dev.tobee.telegram.request.comands;
 
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-
 import com.fasterxml.jackson.core.type.TypeReference;
 import dev.tobee.telegram.model.bot.BotCommand;
 import dev.tobee.telegram.model.message.ResponseWrapper;
@@ -11,6 +7,10 @@ import dev.tobee.telegram.request.Request;
 import dev.tobee.telegram.request.body.GetMyCommandsBody;
 import dev.tobee.telegram.util.DefaultJsonMapper;
 import dev.tobee.telegram.util.DefaultObjectMapper;
+
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 
 public class GetMyCommands implements Request<ResponseWrapper<List<BotCommand>>> {
     private static final String METHOD = "getMyCommands";

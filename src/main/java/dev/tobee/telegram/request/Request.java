@@ -1,10 +1,10 @@
 package dev.tobee.telegram.request;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+
 import java.util.Collections;
 import java.util.Map;
 import java.util.Optional;
-
-import com.fasterxml.jackson.core.type.TypeReference;
 
 public interface Request<T> {
 

@@ -1,11 +1,11 @@
 package dev.tobee.telegram.model.chat;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.Message;
+
 import java.util.Optional;
 import java.util.OptionalInt;
 import java.util.OptionalLong;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.message.Message;
 
 public record Chat(
         @JsonProperty("id") long id,

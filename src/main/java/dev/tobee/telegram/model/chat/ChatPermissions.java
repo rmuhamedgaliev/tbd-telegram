@@ -1,8 +1,8 @@
 package dev.tobee.telegram.model.chat;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
+
+import java.util.Optional;
 
 public record ChatPermissions(
         @JsonProperty("can_send_messages") Optional<Boolean> canSendMessages,

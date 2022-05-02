@@ -1,10 +1,10 @@
 package dev.tobee.telegram;
 
-import dev.tobee.telegram.client.TbdAsyncClient;
+import dev.tobee.telegram.client.TelegramApiClient;
 
 public interface TelegramBot {
 
     void subscribeToUpdate();
 
-    TbdAsyncClient getClient();
+    TelegramApiClient getClient();
 }

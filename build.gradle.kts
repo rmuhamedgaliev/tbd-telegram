@@ -1,8 +1,5 @@
 import org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
-import org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
-import org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED
-import org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED
-import org.gradle.api.tasks.testing.logging.TestLogEvent.STANDARD_ERROR
+import org.gradle.api.tasks.testing.logging.TestLogEvent.*
 
 plugins {
     `java-library`
@@ -64,7 +61,9 @@ dependencies {
 }
 
 tasks.test {
-    useJUnitPlatform()
+    useJUnitPlatform {
+        excludeTags("integration")
+    }
     testLogging {
         events(PASSED, FAILED, STANDARD_ERROR, SKIPPED)
         exceptionFormat = FULL
@@ -76,6 +75,7 @@ tasks.test {
         junitXml.required.set(true)
         html.required.set(true)
     }
+    
 }
 
 

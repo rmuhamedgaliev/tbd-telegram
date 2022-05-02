@@ -1,9 +1,9 @@
 package dev.tobee.telegram.model.keyboard;
 
-import java.util.Optional;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import dev.tobee.telegram.model.message.LoginUrl;
+
+import java.util.Optional;
 
 public record InlineKeyboardButton(
         @JsonProperty("text") String text,

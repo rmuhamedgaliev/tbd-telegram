@@ -1,12 +1,12 @@
 package dev.tobee.telegram.request.body;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import dev.tobee.telegram.model.message.UpdateTypes;
+
 import java.nio.file.Path;
 import java.util.List;
 import java.util.Optional;
 import java.util.OptionalInt;
-
-import com.fasterxml.jackson.annotation.JsonProperty;
-import dev.tobee.telegram.model.message.UpdateTypes;
 
 public record SetWebHookBody(
         @JsonProperty("url") String url,
