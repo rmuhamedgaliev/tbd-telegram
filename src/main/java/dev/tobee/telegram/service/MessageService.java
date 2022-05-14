@@ -103,4 +103,29 @@ public record MessageService(TelegramApiClient client) {
     public CompletableFuture<ResponseWrapper<Message>> sendMessage(SendMessageBody body) {
         return client.postRequest(new SendMessage(body));
     }
+
+    /**
+     * Send reply with text to message
+     *
+     * @param chatId id of chat for reply
+     * @param message text of reply message
+     * @param messageId id of message for reply
+     * @return
+     */
+    public CompletableFuture<ResponseWrapper<Message>> sendReplyToMessage(long chatId, String message, OptionalLong messageId) {
+        var replyMessage = new SendMessageBody(
+                chatId,
+                message,
+                Optional.empty(),
+                Collections.emptyList(),
+                Optional.empty(),
+                Optional.empty(),
+                Optional.empty(),
+                messageId,
+                Optional.empty(),
+                Optional.empty()
+        );
+
+        return sendMessage(replyMessage);
+    }
 }

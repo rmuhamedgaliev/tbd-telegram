@@ -7,7 +7,7 @@ import java.util.Collections;
 import java.util.Optional;
 
 public class DemoBot {
-    private static final String HOST = "http://localhost:8081";
+    private static final String HOST = "https://api.telegram.org";
 
     public static void main(String[] args) {
         var token = System.getenv().get("TBD_TELEGRAM_TOKEN");

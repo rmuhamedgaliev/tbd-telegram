@@ -15,7 +15,7 @@ class MessageServiceTest extends BaseRequestsTest {
 
     private final MessageService messageService;
 
-    MessageServiceTest() {
+    public MessageServiceTest() {
         this.messageService = new MessageService(CLIENT);
     }
 
