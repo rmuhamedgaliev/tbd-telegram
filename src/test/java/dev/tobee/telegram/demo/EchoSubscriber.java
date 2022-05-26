@@ -5,48 +5,35 @@ import dev.tobee.telegram.model.message.Update;
 import dev.tobee.telegram.request.body.SendMessageBody;
 import dev.tobee.telegram.request.message.SendMessage;
 
-import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
+import java.util.OptionalLong;
 import java.util.concurrent.Flow;
 
-public class EchoSubscriber implements Flow.Subscriber<Update> {
+public class EchoSubscriber extends BaseSubscriber implements Flow.Subscriber<Update> {
 
-    private final TelegramApiClient asyncClient;
-    private Flow.Subscription subscription;
-
-    public EchoSubscriber(TelegramApiClient asyncClient) {
-        this.asyncClient = asyncClient;
-    }
-
-    @Override
-    public void onSubscribe(Flow.Subscription subscription) {
-        this.subscription = subscription;
-        this.subscription.request(1);
+    protected EchoSubscriber(TelegramApiClient client) {
+        super(client);
     }
 
     @Override
     public void onNext(Update item) {
-        asyncClient.postRequest(new SendMessage(new SendMessageBody(
-                item.message().orElseThrow().chat().id(),
-                item.message().orElseThrow().text().orElseThrow(),
-                Optional.empty(),
-                Collections.emptyList(),
-                Optional.empty(),
-                Optional.of(Boolean.FALSE),
-                Optional.empty(),
-                item.message().orElseThrow().messageId(),
-                Optional.empty(),
-                Optional.empty()
-        )));
-        this.subscription.request(1);
-    }
-
-    @Override
-    public void onError(Throwable throwable) {
-        throw new RuntimeException("Error on handle message");
-    }
-
-    @Override
-    public void onComplete() {
+        item.message().flatMap(message -> message.text().filter(text -> text.startsWith("/echo"))).ifPresent(command -> {
+                    var message = command.substring(command.indexOf(" ") + 1);
+                    client.postRequest(new SendMessage(new SendMessageBody(
+                            item.message().orElseThrow().chat().id(),
+                            message,
+                            Optional.empty(),
+                            List.of(),
+                            Optional.empty(),
+                            Optional.empty(),
+                            Optional.empty(),
+                            OptionalLong.empty(),
+                            Optional.empty(),
+                            Optional.empty()
+                    )));
+                }
+        );
+        super.onNext(item);
     }
 }
